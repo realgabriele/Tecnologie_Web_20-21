@@ -1,0 +1,5 @@
+<?php
+
+   $skin = "skins/front";
+
+?>
