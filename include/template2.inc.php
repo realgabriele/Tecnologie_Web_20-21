@@ -293,8 +293,8 @@ Class Template {
 		
 		if (gettype($name) == 'array') {
 
-			foreach($name as $key => $value) {
-				$this->setContent($key, $value);
+			foreach($name as $key => $val) {
+				$this->setContent($key, $val);
 			}
 
 		} else {
@@ -367,7 +367,7 @@ Class Template {
 	
 	function loadContent($content){   
 	
-		$finalContent = "";
+		$finalContent = array();
 		
 		$contentKeys=$content[0];
 		$contentValue=$content[1];
@@ -731,10 +731,9 @@ Class Template {
 			$this->buffer = $this->foreach->bindAll($this->content,$this->buffer);
 			$this->buffer = $this->loadEmptyContent($this->buffer);
 			
-		}	
-		
-		
-		
+		}
+
+
 		$this->parsed = true;
 	
 		
@@ -881,7 +880,7 @@ Class Template {
 		if (!$this->parsed) {
 			$this->parse();
 		}
-		
+
 		$this->buffer = preg_replace("~<\[(?!foreach\d+_\d+|\/foreach\d+_\d+).+\]>~Us","",$this->buffer,-1);
 		$this->buffer = preg_replace("~<\[foreach\d+_\d+\]>~Us","",$this->buffer,-1);
 		$this->buffer = preg_replace("~<\[\/foreach\d+_\d+\]>~Us","",$this->buffer,-1);
