@@ -1,9 +1,132 @@
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<link rel="stylesheet" href="../css/bootstrap.min.css" />
 
-<link rel="stylesheet" href="../css/cart.css">
-<script src="../js/cart.js"></script>
+<div class="shopping-cart">
 
-<!-- ===== -->
+    <!-- inner page banner -->
+    <div id="inner_banner" class="section inner_banner_section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="full">
+                        <div class="title-holder">
+                            <div class="title-holder-cell text-left">
+                                <h1 class="page-title">Shopping Cart</h1>
+                                <ol class="breadcrumb">
+                                    <li><a href="index.html">Home</a></li>
+                                    <li class="active">Shopping Cart</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end inner page banner -->
 
-ToDo: shopping cart
+    <div class="section padding_layout_1 Shopping_cart_section">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 col-md-12">
+                    <div class="product-table">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th>Quantity</th>
+                                <th class="text-center">Price</th>
+                                <th class="text-center">Total</th>
+                                <th> </th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            <[foreach]>
+                            <tr>
+                                <td class="col-sm-8 col-md-6">
+                                    <div class="media">
+                                        <a class="thumbnail pull-left" href="#">
+                                            <img class="media-object" src="<[base]>/images/<[foto]>" alt="#">
+                                        </a>
+                                        <div class="media-body">
+                                            <h4 class="media-heading">
+                                                <a href="#"><[nome]></a>
+                                            </h4>
+                                            <span>Status: </span><span class="text-success">In Stock</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="col-sm-1 col-md-1 align-middle" style="text-align: center">
+                                    <input class="form-control" value="<[quantita-carrello]>" type="email">
+                                </td>
+                                <td class="col-sm-1 col-md-1 text-center"><p class="price_table">€ <[prezzo::to_prezzo library="utility"]></p></td>
+                                <td class="col-sm-1 col-md-1 text-center"><p class="price_table">€ <[prezzo-totale::to_prezzo library="utility"]></p></td>
+                                <td class="col-sm-1 col-md-1"><button type="button" class="bt_main"><i class="fa fa-trash"></i> Remove</button></td>
+                            </tr>
+                            <[/foreach]>
+
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="shopping-cart-cart">
+                        <table>
+                            <tbody>
+                            <tr class="head-table">
+                                <td><h5>Cart Totals</h5></td>
+                                <td class="text-right"></td>
+                            </tr>
+                            <tr>
+                                <td><h4>Subtotal</h4></td>
+                                <td class="text-right"><h4>€ <[totale-carrello::to_prezzo library="utility"]></h4></td>
+                            </tr>
+                            <tr>
+                                <td><h5>Estimated shipping</h5></td>
+                                <td class="text-right"><h4>€ 0.00</h4></td>
+                            </tr>
+                            <tr>
+                                <td><h3>Total</h3></td>
+                                <td class="text-right"><h4>€ <[totale-carrello::to_prezzo library="utility"]></h4></td>
+                            </tr>
+                            <tr>
+                                <td><a href="index.php">
+                                    <button type="button" class="button">Continue Shopping</button>
+                                </a></td>
+                                <td><a href="#">
+                                    <button class="button">Checkout</button>
+                                </a></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="search_bar" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><i class="fa fa-close"></i></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-lg-8 col-md-8 col-sm-8 offset-lg-2 offset-md-2 offset-sm-2 col-xs-10 col-xs-offset-1">
+                            <div class="navbar-search">
+                                <form action="#" method="get" id="search-global-form" class="search-global">
+                                    <input type="text" placeholder="Type to search" autocomplete="off" name="s" id="search" value="" class="search-global__input">
+                                    <button class="search-global__btn"><i class="fa fa-search"></i></button>
+                                    <div class="search-global__note">Begin typing your search above and press return to search.</div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Model search bar -->
+
+</div>
+

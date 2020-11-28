@@ -1,6 +1,6 @@
 <?php
 
-Class tdw extends TagLibrary {
+Class utility extends TagLibrary {
 
     function dummy() {}
 
