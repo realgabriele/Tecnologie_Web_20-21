@@ -11,7 +11,7 @@ $main = new Template("frame-public.html");
 $body = new Template("index.html");
 $cart = new Template("cart.html");
 
-if (!$result = $mysqli->query("SELECT * FROM items")) {
+if (!$result = $mysqli->query("SELECT * FROM articoli")) {
     echo "Error: ", $mysqli->error;
 }
 
