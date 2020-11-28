@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Creato il: Nov 27, 2020 alle 16:50
+-- Creato il: Nov 28, 2020 alle 10:26
 -- Versione del server: 8.0.22-0ubuntu0.20.04.2
 -- Versione PHP: 7.4.3
 
@@ -24,10 +24,10 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `items`
+-- Struttura della tabella `articoli`
 --
 
-CREATE TABLE `items` (
+CREATE TABLE `articoli` (
   `id` int NOT NULL,
   `nome` varchar(256) NOT NULL,
   `descrizione` text NOT NULL,
@@ -37,20 +37,20 @@ CREATE TABLE `items` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Dump dei dati per la tabella `items`
+-- Dump dei dati per la tabella `articoli`
 --
 
-INSERT INTO `items` (`id`, `nome`, `descrizione`, `foto`, `quantita`, `prezzo`) VALUES
+INSERT INTO `articoli` (`id`, `nome`, `descrizione`, `foto`, `quantita`, `prezzo`) VALUES
 (1, 'Mascherina', 'mascherina chirurgica bellissima', '1.jpg', 24, 0.5),
 (2, 'Amuchina', 'amica di amuchina', '2.jpg', 2, 1.5);
 
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `users`
+-- Struttura della tabella `utenti`
 --
 
-CREATE TABLE `users` (
+CREATE TABLE `utenti` (
   `id` int NOT NULL,
   `nome` varchar(256) NOT NULL,
   `email` varchar(256) NOT NULL,
@@ -58,10 +58,10 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Dump dei dati per la tabella `users`
+-- Dump dei dati per la tabella `utenti`
 --
 
-INSERT INTO `users` (`id`, `nome`, `email`, `password`) VALUES
+INSERT INTO `utenti` (`id`, `nome`, `email`, `password`) VALUES
 (1, 'Giovanni Spada', 'giavannino@gmail.com', 'chebellalavita'),
 (2, 'Rita Calamita', 'Xx_rita_xX@yahoo.it', 'ritatuttominuscolo');
 
@@ -70,15 +70,15 @@ INSERT INTO `users` (`id`, `nome`, `email`, `password`) VALUES
 --
 
 --
--- Indici per le tabelle `items`
+-- Indici per le tabelle `articoli`
 --
-ALTER TABLE `items`
+ALTER TABLE `articoli`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indici per le tabelle `users`
+-- Indici per le tabelle `utenti`
 --
-ALTER TABLE `users`
+ALTER TABLE `utenti`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -86,15 +86,15 @@ ALTER TABLE `users`
 --
 
 --
--- AUTO_INCREMENT per la tabella `items`
+-- AUTO_INCREMENT per la tabella `articoli`
 --
-ALTER TABLE `items`
+ALTER TABLE `articoli`
   MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT per la tabella `users`
+-- AUTO_INCREMENT per la tabella `utenti`
 --
-ALTER TABLE `users`
+ALTER TABLE `utenti`
   MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
