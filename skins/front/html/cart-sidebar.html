@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="sidebar-cart" id="cart-sidebar-container">
+        <div class="sidebar-cart-header">
+            <i class="fa fa-shopping-cart cart-icon"></i><span class="badge"><[totale-quantita-carrello]></span>
+            <div class="sidebar-cart-total">
+                <span class="lighter-text">Total:</span>
+                <span class="main-color-text"><[totale-carrello::to_prezzo library="utility"]></span>
+            </div>
+        </div> <!--end sidebar-cart-header -->
+        <div style="position: relative">
+            <[if!empty nome]>
+            <[foreach]>
+            <ul class="sidebar-cart-items">
+                <li class="clearfix">
+                    <img src="<[base]>/images/<[foto]>" alt="item_foto" />
+                    <span class="item-name"><a href="#"><[nome]></a></span>
+                    <span class="item-price"><[prezzo::to_prezzo library="utility"]></span>
+                    <span class="item-quantity">Quantity: <[quantita-carrello]></span>
+                    <span class="item-total-price"><[prezzo-totale::to_prezzo library="utility"]></span>
+                </li>
+            </ul>
+            <[/foreach]>
+            <[/if!empty]>
+        </div>
+
+        <a href="cart.php" class="button">Checkout</a>
+    </div> <!--end sidebar-cart -->
+</div> <!--end container -->
