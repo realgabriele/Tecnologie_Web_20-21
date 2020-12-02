@@ -225,16 +225,15 @@ Class Template {
 	function parseIfNotEmpty($buffer) {
 		
 		$temp_buffer = $buffer;
-		
+
 		do{
 			$result = preg_match("~<\[if\!empty\s(\w+)\]>(.*)<\[\/if\!empty\]>~Us",$temp_buffer,$token);
-			
+
 			$field = $token[1];
 			$core = $token[2];
-		
+
 			if ($result){
-				
-				
+
 				if (isset($this->content[$field]) and ($this->content[$field] != "")) {
 					
 					$temp_buffer = str_replace("<[if!empty {$field}]>{$core}<[/if!empty]>", "{$core}", $temp_buffer);
@@ -663,7 +662,8 @@ Class Template {
 		$this->setContent("server", $_SERVER['SERVER_NAME']);
 		$this->setContent("skin", $GLOBALS['config']['skin']);
 		$this->setContent("base", $GLOBALS['config']['base']);
-		
+		$this->setContent("base_fe", $GLOBALS['config']['base']);
+
 		if (isset($_SESSION['user'])) {
 		
 			$this->setContent("user.username", $_SESSION['user']['username']);

@@ -10,7 +10,7 @@ Class utility extends TagLibrary {
     }
 
     function to_prezzo($name, $data, $pars) {
-        return number_format($data, 2);
+        return "€ " . number_format($data, 2);
     }
 
 }

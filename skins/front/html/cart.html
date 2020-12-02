@@ -1,6 +1,5 @@
 
-<div class="shopping-cart">
-
+<div class="shopping-cart" id="shopping-cart-container">
     <!-- inner page banner -->
     <div id="inner_banner" class="section inner_banner_section">
         <div class="container">
@@ -23,6 +22,10 @@
     </div>
     <!-- end inner page banner -->
 
+    <a onclick="add_to_cart(this, 1)">
+        <div class="button" style="text-align: left">Add to Cart</div>
+    </a>
+
     <div class="section padding_layout_1 Shopping_cart_section">
         <div class="container">
             <div class="row">
@@ -40,12 +43,14 @@
                             </thead>
                             <tbody>
 
+                            <[if!empty nome]>
                             <[foreach]>
                             <tr>
+                                <!-- Foto -->
                                 <td class="col-sm-8 col-md-6">
                                     <div class="media">
                                         <a class="thumbnail pull-left" href="#">
-                                            <img class="media-object" src="<[base]>/images/<[foto]>" alt="#">
+                                            <img class="media-object" src="<[base_fe]>/images/<[foto]>" alt="#">
                                         </a>
                                         <div class="media-body">
                                             <h4 class="media-heading">
@@ -55,15 +60,29 @@
                                         </div>
                                     </div>
                                 </td>
+                                <!-- Quantita -->
                                 <td class="col-sm-1 col-md-1 align-middle" style="text-align: center">
-                                    <input class="form-control" value="<[quantita-carrello]>" type="email">
+                                    <input class="form-control" value="<[quantita-carrello]>">
+                                    <div>
+                                        <a onclick="add_item(<[id]>)">
+                                            <div class="button">
+                                                <div class="fa fa-chevron-up"></div>
+                                            </div>
+                                        </a>
+                                        <a onclick="sub_item(<[id]>)">
+                                            <div class="button">
+                                                <div class="fa fa-chevron-down"></div>
+                                            </div>
+                                        </a>
+                                    </div>
                                 </td>
-                                <td class="col-sm-1 col-md-1 text-center"><p class="price_table">€ <[prezzo::to_prezzo library="utility"]></p></td>
-                                <td class="col-sm-1 col-md-1 text-center"><p class="price_table">€ <[prezzo-totale::to_prezzo library="utility"]></p></td>
+                                <!-- Prezzo -->
+                                <td class="col-sm-1 col-md-1 text-center"><p class="price_table"><[prezzo::to_prezzo library="utility"]></p></td>
+                                <td class="col-sm-1 col-md-1 text-center"><p class="price_table"><[prezzo-totale::to_prezzo library="utility"]></p></td>
                                 <td class="col-sm-1 col-md-1"><button type="button" class="bt_main"><i class="fa fa-trash"></i> Remove</button></td>
                             </tr>
                             <[/foreach]>
-
+                            <[/if!empty]>
 
                             </tbody>
                         </table>
@@ -77,7 +96,7 @@
                             </tr>
                             <tr>
                                 <td><h4>Subtotal</h4></td>
-                                <td class="text-right"><h4>€ <[totale-carrello::to_prezzo library="utility"]></h4></td>
+                                <td class="text-right"><h4><[totale-carrello::to_prezzo library="utility"]></h4></td>
                             </tr>
                             <tr>
                                 <td><h5>Estimated shipping</h5></td>
@@ -85,7 +104,7 @@
                             </tr>
                             <tr>
                                 <td><h3>Total</h3></td>
-                                <td class="text-right"><h4>€ <[totale-carrello::to_prezzo library="utility"]></h4></td>
+                                <td class="text-right"><h4><[totale-carrello::to_prezzo library="utility"]></h4></td>
                             </tr>
                             <tr>
                                 <td><a href="index.php">
@@ -127,6 +146,5 @@
         </div>
     </div>
     <!-- End Model search bar -->
-
 </div>
 

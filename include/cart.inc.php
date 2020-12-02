@@ -47,7 +47,6 @@ class Cart {
             $this->cartId = "cart";
             $this->useCookie = true;
         }
-
         $this->read();
     }
 
@@ -184,7 +183,7 @@ class Cart {
         $this->items[$id] = [
             'id' => $id,
             'quantita' => $quantity,
-            'attributes' => $attributes,
+            'attributi' => $attributes,
         ];
 
         $this->write();
@@ -239,7 +238,7 @@ class Cart {
 
         if (isset($this->items[$id])) {
             $this->items[$id]['quantita'] = $quantity;
-            $this->items[$id]['attributes'] = $attributes;
+            $this->items[$id]['attributi'] = $attributes;
 
             $this->write();
 
@@ -277,7 +276,7 @@ class Cart {
 
         if ($this->useDB) {
             require "dbms.inc.php";
-            $mysqli->query("DELETE FROM CartItem WHERE id=$this->cartId");
+            $mysqli->query("DELETE FROM articolo_carrello WHERE id=$this->cartId");
         }
 
         if ($this->useCookie) {
@@ -294,14 +293,14 @@ class Cart {
         if ($this->useDB) {
             require "dbms.inc.php";
 
-            $result = $mysqli->query("SELECT * FROM CartItem WHERE cart_id=$this->cartId");
+            $result = $mysqli->query("SELECT * FROM articolo_carrello WHERE carrello_id=$this->cartId");
 
             for ($i = 0; $i < $result->num_rows; $i++) {
                 $data = $result->fetch_assoc();
-                $this->items[$data['item_id']] = [
-                    'id' => $data['item_id'],
-                    'quantita' => $data['quantity'],
-                    'attributes' => [],
+                $this->items[$data['articolo_id']] = [
+                    'id' => $data['articolo_id'],
+                    'quantita' => $data['quantita'],
+                    'attributi' => [],
                 ];
             }
 
@@ -335,9 +334,11 @@ class Cart {
         if ($this->useDB) {
             require "dbms.inc.php";
 
-            $mysqli->query("DELETE FROM CartItem WHERE cart_id=$this->cartId");
+            $mysqli->query("DELETE FROM articolo_carrello WHERE carrello_id=$this->cartId");
             foreach ($this->items as $item) {
-                $mysqli->query("INSERT INTO CartItem(cart_id, item_id, quantity) VALUES ({$this->cartId}, {$item['id']}, {$item['quantita']})");
+                $mysqli->query(
+                    "INSERT INTO articolo_carrello(carrello_id, articolo_id, quantita)" .
+                    "VALUES ({$this->cartId}, {$item['id']}, {$item['quantita']})");
             }
 
             return;

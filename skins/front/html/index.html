@@ -40,11 +40,14 @@
                   <div class="center"> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star-o" aria-hidden="true"></i> </div>
                 </div>
                 <div class="product_price">
-                  <p><span class="new_price">€ <[prezzo::to_prezzo library="utility"]></span></p>
+                  <p><span class="new_price"><[prezzo::to_prezzo library="utility"]></span></p>
                 </div>
-                <div class="button">
-                  <button>Add to Cart!</button>
-                </div>
+                <a onclick="add_to_cart(this, 1)">
+                  <div class="button">
+                    Add to Cart!
+                  </div>
+                </a>
+
               </div>
             </div>
           </div>
