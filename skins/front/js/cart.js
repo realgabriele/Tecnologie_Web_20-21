@@ -17,8 +17,12 @@ function sub_item(id){
     ajax_cart_request({sub: id});
 }
 
-function del_item(){
+function del_item(id){
+    ajax_cart_request({del: id});
+}
 
+function update_item(id, quantity){
+    ajax_cart_request({set_item: id, set_quantity: quantity});
 }
 
 function add_to_cart(button, id){
@@ -26,19 +30,19 @@ function add_to_cart(button, id){
     cart = $("#cart-sidebar-button .fa-shopping-cart");     // cart element (target)
     animation = $(".addtocart-animation");  // animated div
 
-    start_pos = $(curr_elem).offset();
-    target_pos = $(cart).offset();
+    start = $.extend( $(curr_elem).offset(), $(curr_elem).width(), {"display": "block"} );
+    target = $.extend( $(cart).offset(), $(cart).width() );
+    console.log($(curr_elem).width());
 
-    animation.css({"display": "block"});
-    animation.css(start_pos);
-
-    animation.animate(target_pos, 500, function(){
+    animation.css(start);
+    animation.animate(target, 500, function(){
         animation.css({"display": "none"});
         cart.addClass('shake');
         setTimeout(function(){
             cart.removeClass('shake');
         }, 500)
-
     });
+
+    ajax_cart_request({add: id});
 
 }
