@@ -230,7 +230,7 @@ class Cart {
     public function update($id, $quantity = 1, $attributes = []) {
         $quantity = (preg_match('/^\d+$/', $quantity)) ? $quantity : 1;
 
-        if ($quantity == 0) {
+        if ($quantity <= 0) {
             $this->remove($id, $attributes);
 
             return true;

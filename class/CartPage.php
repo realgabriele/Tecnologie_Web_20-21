@@ -20,6 +20,12 @@ class CartPage extends FramePublic
         if (isset($_POST['sub'])){
             $this->cart->sub($_POST['sub']);
         }
+        if (isset($_POST['del'])){
+            $this->cart->remove($_POST['del']);
+        }
+        if (isset($_POST['set_item']) && isset($_POST['set_quantity'])){
+            $this->cart->update($_POST['set_item'], $_POST['set_quantity']);
+        }
     }
 
     public function updateBody()

@@ -22,10 +22,6 @@
     </div>
     <!-- end inner page banner -->
 
-    <a onclick="add_to_cart(this, 1)">
-        <div class="button" style="text-align: left">Add to Cart</div>
-    </a>
-
     <div class="section padding_layout_1 Shopping_cart_section">
         <div class="container">
             <div class="row">
@@ -62,13 +58,18 @@
                                 </td>
                                 <!-- Quantita -->
                                 <td class="col-sm-1 col-md-1 align-middle" style="text-align: center">
-                                    <input class="form-control" value="<[quantita-carrello]>">
+                                    <div>
+                                        <input class="form-control"
+                                               value="<[quantita-carrello]>" onblur="update_item(<[id]>, this.value)">
+                                    </div>
                                     <div>
                                         <a onclick="add_item(<[id]>)">
                                             <div class="button">
                                                 <div class="fa fa-chevron-up"></div>
                                             </div>
                                         </a>
+                                    </div>
+                                    <div>
                                         <a onclick="sub_item(<[id]>)">
                                             <div class="button">
                                                 <div class="fa fa-chevron-down"></div>
@@ -79,7 +80,11 @@
                                 <!-- Prezzo -->
                                 <td class="col-sm-1 col-md-1 text-center"><p class="price_table"><[prezzo::to_prezzo library="utility"]></p></td>
                                 <td class="col-sm-1 col-md-1 text-center"><p class="price_table"><[prezzo-totale::to_prezzo library="utility"]></p></td>
-                                <td class="col-sm-1 col-md-1"><button type="button" class="bt_main"><i class="fa fa-trash"></i> Remove</button></td>
+                                <td class="col-sm-1 col-md-1">
+                                    <a onclick="del_item(<[id]>)">
+                                        <button type="button" class="bt_main"><i class="fa fa-trash fa-2x pt-2"></i></button>
+                                    </a>
+                                </td>
                             </tr>
                             <[/foreach]>
                             <[/if!empty]>
