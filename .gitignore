@@ -4,3 +4,5 @@ include/dbms.inc.php
 include/config.inc.php
 
 
+include/config.inc.php
+include/dbms.inc.php

@@ -1,0 +1,25 @@
+.descrizione {
+    position: absolute;
+    box-shadow: 5px 5px 5px 3px rgba(0, 0, 0, 0.2);
+    font-size: 25px;
+    font-weight: 300;
+    color: #fff;
+    background: linear-gradient(135deg, #499dd4 20%, #1c283b 50%);
+    padding: 2px 5px;
+    border-radius: 4px;
+    top: 200px;
+    right: -580px;
+    left: 470px;
+}
+
+.descrizione2 {
+    position: absolute;
+    display: block;
+    padding: 0 20px;
+    top: 250px;
+    left: 450px;
+    right: -800px;
+    font-size: 15px;
+    font-weight: 400;
+    text-transform: uppercase;
+}
