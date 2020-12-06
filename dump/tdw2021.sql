@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Creato il: Dic 05, 2020 alle 19:30
+-- Creato il: Dic 06, 2020 alle 18:15
 -- Versione del server: 8.0.22-0ubuntu0.20.04.2
 -- Versione PHP: 7.4.3
 
@@ -71,6 +71,45 @@ INSERT INTO `articolo_carrello` (`carrello_id`, `articolo_id`, `quantita`) VALUE
 -- --------------------------------------------------------
 
 --
+-- Struttura della tabella `gruppi`
+--
+
+DROP TABLE IF EXISTS `gruppi`;
+CREATE TABLE `gruppi` (
+  `id` int NOT NULL,
+  `nome` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `descrizione` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dump dei dati per la tabella `gruppi`
+--
+
+INSERT INTO `gruppi` (`id`, `nome`, `descrizione`) VALUES
+(1, 'admin', 'administrator');
+
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `gruppo_servizio`
+--
+
+DROP TABLE IF EXISTS `gruppo_servizio`;
+CREATE TABLE `gruppo_servizio` (
+  `gruppo_id` int NOT NULL,
+  `servizio_id` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dump dei dati per la tabella `gruppo_servizio`
+--
+
+INSERT INTO `gruppo_servizio` (`gruppo_id`, `servizio_id`) VALUES
+(1, 1);
+
+-- --------------------------------------------------------
+
+--
 -- Struttura della tabella `phpauth_attempts`
 --
 
@@ -80,15 +119,6 @@ CREATE TABLE `phpauth_attempts` (
   `ip` char(39) NOT NULL,
   `expiredate` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dump dei dati per la tabella `phpauth_attempts`
---
-
-INSERT INTO `phpauth_attempts` (`id`, `ip`, `expiredate`) VALUES
-(2, '192.168.1.125', '2020-12-05 19:56:33'),
-(3, '192.168.1.125', '2020-12-05 19:56:34'),
-(4, '192.168.1.125', '2020-12-05 19:56:58');
 
 -- --------------------------------------------------------
 
@@ -209,7 +239,46 @@ CREATE TABLE `phpauth_sessions` (
 --
 
 INSERT INTO `phpauth_sessions` (`id`, `uid`, `hash`, `expiredate`, `ip`, `device_id`, `agent`, `cookie_crc`) VALUES
-(12, 1, '86de1ca53b5756eb6345b149244f0d711e8784a9', '2021-01-05 19:29:14', '192.168.1.125', NULL, 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.66 Safari/537.36', '74a23fffa952657353db074705db5c2084ee591b');
+(15, 1, 'dc723af031542e56f1c567c6c1a05907ddaae9a0', '2021-01-06 18:14:08', '192.168.1.125', NULL, 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.66 Safari/537.36', 'd910ac0fee5c86a63534ff5acaedd5f4fe891460');
+
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `servizi`
+--
+
+DROP TABLE IF EXISTS `servizi`;
+CREATE TABLE `servizi` (
+  `id` int NOT NULL,
+  `nome` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `descrizione` text COLLATE utf8mb4_unicode_ci
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dump dei dati per la tabella `servizi`
+--
+
+INSERT INTO `servizi` (`id`, `nome`, `descrizione`) VALUES
+(1, 'articolo.update', 'update di articolo');
+
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `utente_gruppo`
+--
+
+DROP TABLE IF EXISTS `utente_gruppo`;
+CREATE TABLE `utente_gruppo` (
+  `utente_id` int NOT NULL,
+  `gruppo_id` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dump dei dati per la tabella `utente_gruppo`
+--
+
+INSERT INTO `utente_gruppo` (`utente_id`, `gruppo_id`) VALUES
+(1, 1);
 
 -- --------------------------------------------------------
 
@@ -252,6 +321,19 @@ ALTER TABLE `articolo_carrello`
   ADD PRIMARY KEY (`carrello_id`,`articolo_id`);
 
 --
+-- Indici per le tabelle `gruppi`
+--
+ALTER TABLE `gruppi`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `nome` (`nome`);
+
+--
+-- Indici per le tabelle `gruppo_servizio`
+--
+ALTER TABLE `gruppo_servizio`
+  ADD PRIMARY KEY (`gruppo_id`,`servizio_id`);
+
+--
 -- Indici per le tabelle `phpauth_attempts`
 --
 ALTER TABLE `phpauth_attempts`
@@ -286,6 +368,19 @@ ALTER TABLE `phpauth_sessions`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indici per le tabelle `servizi`
+--
+ALTER TABLE `servizi`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `nome` (`nome`);
+
+--
+-- Indici per le tabelle `utente_gruppo`
+--
+ALTER TABLE `utente_gruppo`
+  ADD PRIMARY KEY (`utente_id`,`gruppo_id`);
+
+--
 -- Indici per le tabelle `utenti`
 --
 ALTER TABLE `utenti`
@@ -301,6 +396,12 @@ ALTER TABLE `utenti`
 --
 ALTER TABLE `articoli`
   MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT per la tabella `gruppi`
+--
+ALTER TABLE `gruppi`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT per la tabella `phpauth_attempts`
@@ -324,7 +425,13 @@ ALTER TABLE `phpauth_requests`
 -- AUTO_INCREMENT per la tabella `phpauth_sessions`
 --
 ALTER TABLE `phpauth_sessions`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
+-- AUTO_INCREMENT per la tabella `servizi`
+--
+ALTER TABLE `servizi`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT per la tabella `utenti`
