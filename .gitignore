@@ -1,9 +1,5 @@
 .idea/
-test/
-
-include/dbms.inc.php
-include/config.inc.php
-
+test*
 
 include/config.inc.php
 include/dbms.inc.php
