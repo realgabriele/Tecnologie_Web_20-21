@@ -1,10 +1,16 @@
 <?php
 session_start();
 
+/* general */
 require "include/config.inc.php";
 require "include/template2.inc.php";
 require "include/dbms.inc.php";
-require "include/cart.inc.php";
+require "include/utility.inc.php";
+/* user authentication */
+require 'include/classes/PHPAuth/Auth.php';
+require 'include/classes/PHPAuth/Config.php';
+/* cart */
+require "include/classes/Cart.php";
 
 class FramePublic
 {
@@ -12,27 +18,38 @@ class FramePublic
     public $main;
     public $body;
     public $cart_sidebar;
-    public $utente;
 
     /* objects */
+    public $auth;
     public $cart;
 
     public function __construct()
     {
         $this->main = new Template("frame-public.html");
         $this->cart_sidebar = new Template('cart-sidebar.html');
+        if(!isset($this->body)) $this->body = new Template("void");
 
-        // load the Cart or create a new one
+        /* load the Cart or create a new one */
         /*if (isset($_SESSION['auth'])) {
             $cart = new Cart($_SESSION['auth']['id']);
         } else {
             $cart = new Cart();
         }*/ $this->cart = new Cart("1");
 
+        /* load Authentication / Authorization class */
+        $dbh = new PDO("mysql:dbname=tdw2021;host=localhost", "web", "Pierantonio");
+        $this->auth = new PHPAuth\Auth($dbh, new PHPAuth\Config($dbh));
+
+        $this->check_authorization();
+
         $this->handleRequest();
 
         $this->updateHeader();
         $this->updateBody();
+    }
+
+    public function check_authorization(){
+        // default true
     }
 
     public function handleRequest(){

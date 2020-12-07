@@ -1,7 +1,6 @@
 <?php
 
 require "FramePublic.php";
-require "include/utility.inc.php";
 
 class CartPage extends FramePublic
 {

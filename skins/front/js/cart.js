@@ -5,7 +5,10 @@ function ajax_cart_request(pars){
         $('#cart-sidebar-badge').html(response.cart_badge);
 
     })
-        .fail(function() { console.log("error in ajax_cart_request"); })
+        .fail(function(error) {
+            console.log("error in ajax_cart_request");
+            console.log(error);
+        })
 }
 
 function add_item(id){

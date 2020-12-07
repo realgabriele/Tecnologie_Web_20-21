@@ -1,7 +1,7 @@
 <?php
 // handle AJAX request for adding/removing Items from Cart
 
-require "class/CartPage.php";
+require "include/classes/CartPage.php";
 
 $page = new CartPage();
 
