@@ -104,7 +104,7 @@ class Cart {
      * @return int
      */
     public function getTotalPrice() {
-        require 'dbms.inc.php';
+        global $mysqli;
         $price = 0;
 
         foreach ($this->items as $item) {
@@ -275,7 +275,7 @@ class Cart {
         $this->items = [];
 
         if ($this->useDB) {
-            require "dbms.inc.php";
+            global $mysqli;
             $mysqli->query("DELETE FROM articolo_carrello WHERE id=$this->cartId");
         }
 
@@ -291,7 +291,7 @@ class Cart {
      */
     private function read() {
         if ($this->useDB) {
-            require "dbms.inc.php";
+            global $mysqli;
 
             $result = $mysqli->query("SELECT * FROM articolo_carrello WHERE carrello_id=$this->cartId");
 
@@ -332,7 +332,7 @@ class Cart {
      */
     private function write() {
         if ($this->useDB) {
-            require "dbms.inc.php";
+            global $mysqli;
 
             $mysqli->query("DELETE FROM articolo_carrello WHERE carrello_id=$this->cartId");
             foreach ($this->items as $item) {
