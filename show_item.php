@@ -9,7 +9,7 @@ $body = new Template("show_item.html");
 
 $id = $_GET["id"];
 
-if (!$result = $mysqli->query("SELECT * FROM articoli")) {
+if (!$result = $mysqli->query("SELECT * FROM articoli WHERE id=$id")) {
     echo "Error: ", $mysqli->error;
 }
 
