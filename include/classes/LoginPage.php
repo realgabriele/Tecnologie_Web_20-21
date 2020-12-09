@@ -31,7 +31,7 @@ class LoginPage extends FramePublic
                 header("Location: index.php");
                 die();
             } else {
-
+                $this->error_msg = "login error: " . $res['message'];
             }
         }
     }
