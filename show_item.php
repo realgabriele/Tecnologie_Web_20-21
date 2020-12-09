@@ -9,7 +9,14 @@ $body = new Template("show_item.html");
 
 $id = $_GET["id"];
 
-// retrieve dal DB
+if (!$result = $mysqli->query("SELECT * FROM articoli WHERE id=$id")) {
+    echo "Error: ", $mysqli->error;
+}
+
+for($i=0; $i<$result->num_rows; $i++) {
+    $data = $result->fetch_assoc();
+    $body->setContent($data, null);
+}
 
 $main->setContent("body", $body->get());
 
