@@ -1963,33 +1963,6 @@ VALUES (:uid, :hash, :expiredate, :ip, :agent, :cookie_crc)
         $this->deleteExpiredRequests();
     }
 
-
-    /**
-     * Authorization function
-     * @param $action: action to be authorized
-     * @return bool
-     */
-    public function authorize_or_die($action) {
-        $allowed = false;
-        if (!$this->isAuthenticated) {
-            if (!$this->is_authorized(0, $action)) { // not allowed
-                // ToDo: redirect to login page
-                echo "do Login";
-                exit();
-            }
-            echo "Authorized";
-            return true;
-        } else {
-            if (!$this->is_authorized($this->getCurrentUID(), $action)){
-                // ToDo: error message
-                echo "not Authorized";
-                return false;
-            }
-            echo "Authorized";
-            return true;
-        }
-    }
-
     /**
      * Authorization of an action by a user
      * @param $uid: user ID to be authorized; 0 if not logged user
@@ -2007,8 +1980,6 @@ VALUES (:uid, :hash, :expiredate, :ip, :agent, :cookie_crc)
         $query_prepared->execute(['uid' => $uid, 'action' => $action]);
 
         $result = $query_prepared->fetchAll();
-
-        print_r($result);
 
         if (sizeof($result) > 0) {
             return true;

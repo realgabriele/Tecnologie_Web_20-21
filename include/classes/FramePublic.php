@@ -48,8 +48,15 @@ class FramePublic
         $this->updateBody();
     }
 
-    public function check_authorization(){
-        // default true
+    public function check_authorization($actions = []){
+        foreach ($actions as $action){
+            $id = $this->auth->isAuthenticated ? $this->auth->getCurrentUID() : 0;
+            if (!$this->auth->is_authorized($id, $action)) {
+                $this->render_error("Not Authorized!");
+                return false;
+            }
+        }
+        return true;
     }
 
     public function handleRequest(){
@@ -81,5 +88,14 @@ class FramePublic
         $this->main->setContent("body", $this->body->get());
         $this->main->setContent("cart-sidebar", $this->cart_sidebar->get());
         return $this->main->get();
+    }
+
+    private function render_error($message = ""){
+        if (!$this->auth->isAuthenticated) {
+            $this->body = new Template("login.html");
+        } else {
+            $this->body = new Template("error.html");
+            $this->body->setContent("error_message", $message);
+        }
     }
 }
