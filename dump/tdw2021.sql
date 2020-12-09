@@ -32,8 +32,9 @@ USE `tdw2021`;
 DROP TABLE IF EXISTS `articoli`;
 CREATE TABLE `articoli` (
   `id` int NOT NULL,
-  `nome` varchar(256) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nome` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `descrizione` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `descrizione_lunga` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `foto` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `quantita` int NOT NULL,
   `prezzo` float NOT NULL
@@ -43,9 +44,9 @@ CREATE TABLE `articoli` (
 -- Dump dei dati per la tabella `articoli`
 --
 
-INSERT INTO `articoli` (`id`, `nome`, `descrizione`, `foto`, `quantita`, `prezzo`) VALUES
-(1, 'Mascherina', 'mascherina chirurgica bellissima', '1.jpg', 24, 0.5),
-(2, 'Amuchina', 'amica di amuchina', '2.jpg', 2, 1.5);
+INSERT INTO `articoli` (`id`, `nome`, `descrizione`, `descrizione_lunga`, `foto`, `quantita`, `prezzo`) VALUES
+(1, 'Mascherina\r\nChirurgica', 'mascherina chirurgica bellissima', 'Una maschera (o mascherina) chirurgica, nota anche come maschera medica,\r\n                            o maschera facciale per uso medico,o mascherina igienica (soprattutto tra gli italiani svizzeri),\r\n                            è un dispositivo destinato a essere indossato dagli operatori sanitari durante un intervento chirurgico\r\n                            o altre attività in ambito sanitario al fine di evitare la dispersione di agenti patogeni.', 'https://i.postimg.cc/kDP21W0R/DEFDEF.png', 24, 0.5),
+(2, 'Amuchina Mani', 'Gel disinfettante mani', 'Amuchina Gel X-GERM Disinfettante Mani è un gel antisettico, studiato per disinfettare a fondo la pelle delle mani. La sua formulazione è in grado di ridurre efficacemente in pochi secondi germi e batteri presenti sulla cute. Amuchina Gel X-GERM Disinfettante Mani è attivo su virus, funghi e batteri.', 'https://i.postimg.cc/W4YHndfV/DEFDEF-copia.png', 2, 2.75);
 
 -- --------------------------------------------------------
 
