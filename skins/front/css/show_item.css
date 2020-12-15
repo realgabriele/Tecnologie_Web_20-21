@@ -8,7 +8,7 @@
 
 .card-head {
     position: relative;
-    height:35%;
+    height:254px;
     background: #fa782e;
     /* Old browsers */
     background: -moz-linear-gradient(-45deg, #499dd4 8%, #1c283b 83%);
@@ -31,7 +31,7 @@
 }
 
 .card-body {
-    height: 40%;
+    height: 280px;
     background: #fff;
     border-radius: 0 0 25px 25px;
 }
