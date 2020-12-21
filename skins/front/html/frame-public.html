@@ -50,9 +50,9 @@
                 <!-- search bar -->
                 <ul class="navbar-nav w-100 justify-content-center" style="width: 1500px;">
                     <li class="nav-item pt-4">
-                        <form class="form-inline mr-auto">
+                        <form class="form-inline mr-auto" action="index.php" method="get">
                             <div class="md-form">
-                                <input class="form-control" type="text" placeholder="Search">
+                                <input class="form-control" name="q" type="text" placeholder="Search">
                                 <i class="fa fa-search ml-3"></i>
                             </div>
                         </form>
@@ -66,9 +66,9 @@
                         <div id="navbar_menu">
                             <!-- menu items-->
                             <ul class="first-ul">
-                                <li> <a href="index.php">Home</a>
+                                <li> <a class="active" href="index.php">Home</a>
                                 </li>
-                                <li> <a class="active" href="index.html">Shop</a>
+                                <li> <a href="index.html">Shop</a>
                                     <ul>
                                         <li><a href="index.html">Shop List</a></li>
                                         <li><a href="it_shop_detail.html">Shop Detail</a></li>
@@ -82,11 +82,27 @@
                                         <li><a href="it_contact_2.html">Contact Page 2</a></li>
                                     </ul>
                                 </li>
+                                <!-- cart icon -->
                                 <li>
                                     <a href="#" id="cart-sidebar-button" class="pt-1 align-top">
                                         <i class="fa fa-shopping-cart fa-2x"></i>
                                         <span class="badge" id="cart-sidebar-badge"><[totale-quantita-carrello]></span>
                                     </a>
+                                </li>
+                                <!-- user icon -->
+                                <li>
+                                    <a href="#" id="user-sidebar-button" class="pt-1 ml-2 align-top">
+                                        <i class="fa fa-user fa-2x"></i>
+                                    </a>
+                                    <ul>
+                                        <[if!empty nome]>
+                                        <li><a href="user.php"><[nome]></a></li>
+                                        <li><a href="logout.php">Logout</a></li>
+                                        <[/if!empty]>
+                                        <[if!empty not_authenticated]>
+                                        <li><a href="login.php">Login</a></li>
+                                        <[/if!empty]>
+                                    </ul>
                                 </li>
                             </ul>
                         </div>

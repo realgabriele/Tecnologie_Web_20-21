@@ -1,7 +1,6 @@
 $(window).on('load', function() {
     $("#cart-sidebar-button").on("click", function() {
         set_sidebar_position()
-        // $("#cart-sidebar-container").fadeToggle( "fast");
         $("#cart-sidebar-container").animate({width: "toggle"});
     });
 });
@@ -19,6 +18,4 @@ function set_sidebar_position(){
         'top': top,
         'z-index': 100
     });
-
-    console.log($('#prova-container').css('position'));
 }

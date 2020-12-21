@@ -29,16 +29,16 @@ class FramePublic
         $this->cart_sidebar = new Template('cart-sidebar.html');
         if(!isset($this->body)) $this->body = new Template("void");
 
-        /* load the Cart or create a new one */
-        /*if (isset($_SESSION['auth'])) {
-            $cart = new Cart($_SESSION['auth']['id']);
-        } else {
-            $cart = new Cart();
-        }*/ $this->cart = new Cart("1");
-
         /* load Authentication / Authorization class */
-        $dbh = new PDO("mysql:dbname=tdw2021;host=localhost", "web", "Pierantonio");
-        $this->auth = new PHPAuth\Auth($dbh, new PHPAuth\Config($dbh));
+        $this->dbh = new PDO("mysql:dbname=tdw2021;host=localhost", "web", "Pierantonio");
+        $this->auth = new PHPAuth\Auth($this->dbh, new PHPAuth\Config($this->dbh));
+
+        /* load the Cart or create a new one */
+        if ($this->auth->isAuthenticated) {
+            $this->cart = new Cart($this->auth->getCurrentUID());
+        } else {
+            $this->cart = new Cart();
+        }
 
         $this->check_authorization();
 
@@ -52,11 +52,9 @@ class FramePublic
         foreach ($actions as $action){
             $id = $this->auth->isAuthenticated ? $this->auth->getCurrentUID() : 0;
             if (!$this->auth->is_authorized($id, $action)) {
-                $this->render_error("Not Authorized!");
-                return false;
+                $this->render_error("Operazione non autorizzata su questa tabella");
             }
         }
-        return true;
     }
 
     public function handleRequest(){
@@ -69,7 +67,17 @@ class FramePublic
 
     public function updateHeader(){
         global $mysqli;
-        // set every Item inside the Cart-Sidebar
+
+        /* set user information */
+        if ($this->auth->isAuthenticated){
+            $user_data = $this->auth->getCurrentUser(true);
+        } else {
+            $user_data = ['not_authenticated' => 'true'];
+        }
+        $this->main->setContent($user_data, null);
+
+
+        /* set every Item inside the Cart-Sidebar */
         foreach ($this->cart->getItems() as $cart_item) {
             $result = $mysqli->query("SELECT * FROM articoli WHERE id={$cart_item['id']}");
             $db_data = $result->fetch_assoc();
@@ -77,11 +85,11 @@ class FramePublic
             $data["prezzo-totale"] = $data['prezzo'] * $data['quantita-carrello'];
 
             $this->cart_sidebar->setContent($data, null);
-
-            $this->cart_sidebar->setContent("totale-carrello", $this->cart->getTotalPrice());
-            $this->cart_sidebar->setContent("totale-quantita-carrello", $this->cart->getTotalQuantity());
-            $this->main->setContent("totale-quantita-carrello", $this->cart->getTotalQuantity());
         }
+        $this->cart_sidebar->setContent("totale-carrello", $this->cart->getTotalPrice());
+        $this->cart_sidebar->setContent("totale-quantita-carrello", $this->cart->getTotalQuantity());
+        $this->main->setContent("totale-quantita-carrello", $this->cart->getTotalQuantity());
+
     }
 
     public function getPage(){
@@ -90,12 +98,18 @@ class FramePublic
         return $this->main->get();
     }
 
-    private function render_error($message = ""){
+    protected function render_error($message = ""){
         if (!$this->auth->isAuthenticated) {
+            // show login page
             $this->body = new Template("login.html");
+            $this->body->setContent("error_message", $message .
+            "<br>Se sei autorizzato effettua il login");
         } else {
             $this->body = new Template("error.html");
             $this->body->setContent("error_message", $message);
         }
+        $this->updateHeader();
+        echo $this->getPage();
+        exit();
     }
 }
