@@ -233,7 +233,6 @@ class Auth  /* implements AuthInterface*/
 
         $zxcvbn = new Zxcvbn();
 
-        echo $zxcvbn->passwordStrength($password)['score'];
         if ($zxcvbn->passwordStrength($password)['score'] < intval($this->config->password_min_score)) {
             $return['message'] = $this->__lang('password_weak');
 
@@ -469,11 +468,10 @@ class Auth  /* implements AuthInterface*/
         $data['cookie_crc'] = sha1($data['hash'] . $this->config->site_key);
 
         // don't use INET_ATON(:ip), use ip2long(), 'cause SQLite or PosgreSQL does not have INET_ATON() function
-        $query = "
-INSERT INTO {$this->config->table_sessions}
-(uid, hash, expiredate, ip, agent, cookie_crc)
-VALUES (:uid, :hash, :expiredate, :ip, :agent, :cookie_crc)
-";
+        $query = "INSERT INTO {$this->config->table_sessions}
+                (uid, hash, expiredate, ip, agent, cookie_crc)
+                VALUES (:uid, :hash, :expiredate, :ip, :agent, :cookie_crc)
+                ";
         $query_prepared = $this->dbh->prepare($query);
         $query_params = [
             'uid' => $uid,
@@ -1979,9 +1977,7 @@ VALUES (:uid, :hash, :expiredate, :ip, :agent, :cookie_crc)
         $query_prepared = $this->dbh->prepare($query);
         $query_prepared->execute(['uid' => $uid, 'action' => $action]);
 
-        $result = $query_prepared->fetchAll();
-
-        if (sizeof($result) > 0) {
+        if ($query_prepared->rowCount() > 0) {
             return true;
         } else {
             return false;
