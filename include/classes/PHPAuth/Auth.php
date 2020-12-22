@@ -1700,6 +1700,8 @@ class Auth  /* implements AuthInterface*/
         $STH = $this->dbh->prepare("UPDATE {$this->config->table_sessions} SET expiredate = ? WHERE {$where} = ?");
         $STH->execute([$expire, $arr]);
 
+        // renew cookie expire date
+        setcookie($this->config->cookie_name, $_COOKIE[$this->config->cookie_name], strtotime($this->config->cookie_remember), $this->config->cookie_path, $this->config->cookie_domain, $this->config->cookie_secure, $this->config->cookie_http);
         return;
     }
 
