@@ -1,0 +1,47 @@
+<div class="container">
+    <div class="row">
+        <div class="col-1">
+            <a href="show.php?table=metodipagamento">
+                <div class="fa fa-angle-left fa-3x"></div>
+            </a>
+        </div>
+        <div class="col-6">
+            <form action="create.php?table=metodipagamento" method="post">
+                <input type="hidden" name="id" value="<[id]>">
+
+                <div class="form-group py-2">
+                    <label for="intestatario-carta">Intestatario</label>
+                    <input type="text" class="form-control" placeholder="Inserisci nome e cognome dell'intestatario"
+                           id="intestatario-carta" name="intestatario_carta" value="<[intestatario_carta-old]>">
+                </div>
+                <div class="form-group py-2">
+                    <label for="numero-carta">Numero Carta</label>
+                    <input type="text" class="form-control" placeholder="Inserisci le 16 cifre della carta"
+                           id="numero-carta" name="numero_carta" value="<[numero_carta-old]>">
+                </div>
+                <div class="form-row py-2">
+                    <div class="col form-group pr-3">
+                        <label for="scadenza-carta">Data di Scadenza</label>
+                        <input type="text" class="form-control" placeholder="MM/YYYY"
+                               id="scadenza-carta" name="scadenza_carta" value="<[scadenza_carta-old]>">
+                    </div>
+                    <div class="col form-group pl-3">
+                        <label for="cvv-carta">CVV</label>
+                        <input type="password" class="form-control" placeholder="Inserisci CVV"
+                               id="cvv-carta" name="cvv_carta" value="<[cvv_carta-old]>">
+                    </div>
+                </div>
+                <div class="py-2">
+                    <button type="submit" class="btn btn-primary">Crea</button>
+                </div>
+
+                <[if!empty success_msg]>
+                <div class="mt-3 alert alert-success"><[success_msg]></div>
+                <[/if!empty]>
+                <[if!empty error_msg]>
+                <div class="mt-3 alert alert-danger"><[error_msg]></div>
+                <[/if!empty]>
+            </form>
+        </div>
+    </div>
+</div>

@@ -44,11 +44,9 @@ class DeletePage extends FramePublic
                 $this->render_error("database error: "  . $query_prepared->errorCode());
             } else {
                 $this->body->setContent("success_msg", "Eliminato con successo");
+                // redirect alla pagina show_multiple
+                header("location: show.php?table={$this->table_name}");
+                die();
             }
-    }
-
-    public function updateBody()
-    {
-        //ToDo: redirect
     }
 }

@@ -3,3 +3,19 @@
 -------------------------------------------------------------------*/
 
 /** ADD YOUR AWESOME CODES HERE **/
+
+div.container {
+    padding-top: 25px;
+    padding-bottom: 75px;
+}
+
+nav {
+    border-bottom: 3px solid #057299;
+}
+
+
+/** show_multiple **/
+.elemento-multiple-container {
+    box-shadow: 5px 5px 5px 3px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
+}

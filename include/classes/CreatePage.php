@@ -43,13 +43,16 @@ class CreatePage extends FramePublic
             $bindParams = array_values($params);
 
             if (!$query_prepared->execute($bindParams)) {
-                $this->render_error("database error: "  . $query_prepared->errorCode());
+                // $this->render_error("database error: "  . $query_prepared->errorCode());
+                print_r($query_prepared->errorInfo());
+                $this->body->setContent("error_msg", "database error: "  . $query_prepared->errorCode());
             } else {
                 $this->body->setContent("success_msg", "Creato con successo");
-                // ToDo: redirect alla pagina `show` o `edit`
+                // redirect alla pagina show_single
+                $this->new_row_id = $this->dbh->lastInsertId();
+                header("location: show.php?table={$this->table_name}&id={$this->new_row_id}");
+                die();
             }
-
-            $this->new_row_id = $this->dbh->lastInsertId();
         }
     }
 
@@ -58,6 +61,5 @@ class CreatePage extends FramePublic
         echo $this->new_row_id;
 
         $this->body->setContent(array_key_append($_POST, "-old"), null);
-        $this->body->setContent("table", $this->table_name);
     }
 }

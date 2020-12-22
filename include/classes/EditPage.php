@@ -69,6 +69,5 @@ class EditPage extends FramePublic
 
         $row = $query_prepared->fetch(PDO::FETCH_ASSOC);
         $this->body->setContent($row, null);
-        $this->body->setContent("table", $this->table_name);
     }
 }

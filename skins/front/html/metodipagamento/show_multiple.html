@@ -1,31 +1,28 @@
 <div class="container">
-    <div class="h1">Indirizzi: </div>
+    <div class="h1">Metodi di Pagamento: </div>
     <div class="row">
         <div class="col-1">
-            <div class="fa fa-map-marker fa-5x"></div>
+            <div class="fa fa-credit-card fa-5x"></div>
         </div>
         <div class="col">
             <[if!empty id]><[foreach]>
             <div class="row">
                 <div class="col-9 ml-5 elemento-multiple-container">
-                    <a href="show.php?table=indirizzi&id=<[id]>">
+                    <a href="show.php?table=metodipagamento&id=<[id]>">
                         <div class="row">
-                            <div class="h1"><[alias]></div>
+                            <div class="h1"><[numero_carta]></div>
                         </div>
                     </a>
                     <div class="row ml-4">
-                        <div class="h2 font-weight-bold"><[nome]> <[cognome]></div>
-                    </div>
-                    <div class="row ml-4">
-                        <div class="h4">@&nbsp;<[via]></div>
+                        <div class="h2 font-weight-bold"><[intestatario_carta]></div>
                     </div>
                 </div>
             </div>
             <[/foreach]><[/if!empty]>
         </div>
         <div class="col-2">
-            <a href="create.php?table=indirizzi">
-                <div class="h1">Nuovo Indirizzo</div>
+            <a href="create.php?table=metodipagamento">
+                <div class="h1">Nuovo MdP</div>
             </a>
         </div>
     </div>
