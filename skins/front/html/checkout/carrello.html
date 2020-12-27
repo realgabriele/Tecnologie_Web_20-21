@@ -1,0 +1,44 @@
+<div class="form-card shopping-cart">
+    <h2 class="fs-title">Il tuo carrello</h2>
+
+    <[if!empty nome]>
+    <[foreach]>
+    <div class="row">
+        <!-- Foto -->
+        <div class="col-2">
+            <div class="media">
+                <a class="thumbnail pull-left" href="#">
+                    <img class="media-object" src="<[foto]>" alt="#">
+                </a>
+            </div>
+        </div>
+        <!-- Nome -->
+        <div class="col-7">
+            <div class="media-body">
+                <h4 class="media-heading">
+                    <a href="#"><[nome]></a>
+                </h4>
+                <span>Prezzo: <[prezzo::to_prezzo library="utility"]></span>
+                <span>Quantita: <[quantita-carrello]></span>
+            </div>
+        </div>
+
+        <!-- Prezzo Totale -->
+        <div class="col-3 text-center pt-5">
+            <p class="price_table"><[prezzo-totale::to_prezzo library="utility"]></p>
+        </div>
+    </div>
+    <[/foreach]>
+    <[/if!empty]>
+
+    <div class="row">
+        <div class="col-2"></div>
+        <div class="col-7 text-right">
+            <h3>Totale: </h3>
+        </div>
+        <div class="col-3 text-center pt-1">
+            <p class="price_table" style="font-size: 20px; font-weight: bold"><[totale-carrello::to_prezzo library="utility"]></p>
+        </div>
+    </div>
+
+</div>

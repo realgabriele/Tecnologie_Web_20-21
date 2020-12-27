@@ -1,0 +1,25 @@
+<div class="form-card">
+    <div class="row">
+        <div class="col">
+            <h2 class="fs-title">Indirizzo di Spedizione</h2>
+        </div>
+        <a href="show.php?table=indirizzi" class="col-3-offset-9 pt-4 mr-3">modifica Indirizzi</a>
+    </div>
+
+    <div class="radio-group">
+        <div class="radio selected"><div class="row"><div class="col-1"><input type="radio" id="spedizione1" name="spedizione" value="1" checked></div><div class="col-10"><label for="spedizione1">Spedizione 1</label></div></div></div>
+
+        <[foreach]>
+        <div class="radio">
+            <div class="row">
+                <div class="col-1">
+                    <input type="radio" id="spedizione<[id]>" name="spedizione" value="<[id]>">
+                </div>
+                <div class="col-10">
+                    <label for="spedizione<[id]>"><[alias]></label>
+                </div>
+            </div>
+        </div>
+        <[/foreach]>
+    </div>
+</div>
