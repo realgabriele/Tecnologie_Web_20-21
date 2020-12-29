@@ -50,6 +50,10 @@ class Cart {
         $this->read();
     }
 
+    public function getCartId() {
+        return $this->cartId;
+    }
+
     /**
      * Get items in  cart.
      *
@@ -370,5 +374,4 @@ class Cart {
             setcookie("cart", null, -1);
         }
     }
-
 }

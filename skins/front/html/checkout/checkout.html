@@ -10,7 +10,8 @@
                 <p>Fill all form field to go to next step</p>
                 <div class="row">
                     <div class="col-md-12 mx-0">
-                        <form id="msform" action="order.php" method="post">
+                        <form id="msform" action="place_order.php?table=ordini" method="post">
+                            <input type="hidden" name="id" value="0">
                             <!-- progressbar -->
                             <ul id="progressbar">
                                 <li class="cart active" id="cart"><strong>Carrello</strong></li>
@@ -41,22 +42,21 @@
                                 <input type="button" name="previous" class="previous action-button-previous" value="Previous" /> <input type="button" name="make_payment" class="next action-button" value="Confirm" />
                             </fieldset>
 
-                            <!-- finish -->
+                            <!-- conferma (riepilogo) -->
                             <fieldset>
                                 <div class="form-card">
                                     <h2 class="fs-title text-center">Success !</h2> <br><br>
                                     <div class="row justify-content-center">
                                         <div class="col-3"> <img src="https://img.icons8.com/color/96/000000/ok--v2.png" class="fit-image"> </div>
-                                    </div> <br><br>
-                                    <div class="row justify-content-center">
-                                        <div class="col-7 text-center">
-                                            <h5>You Have Successfully Signed Up</h5>
-                                        </div>
                                     </div>
                                 </div>
+
+                                <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
+                                <input type="submit" />
                             </fieldset>
 
                             <!-- pagamento -->
+                            <!--
                             <fieldset>
                                 <div class="form-card">
                                     <h2 class="fs-title">Payment Information</h2>
@@ -91,6 +91,7 @@
                                     </div>
                                 </div> <input type="button" name="previous" class="previous action-button-previous" value="Previous" /> <input type="button" name="make_payment" class="next action-button" value="Confirm" />
                             </fieldset>
+                            -->
                         </form>
                     </div>
                 </div>

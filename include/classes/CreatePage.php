@@ -50,6 +50,7 @@ class CreatePage extends FramePublic
                 $this->body->setContent("success_msg", "Creato con successo");
                 // redirect alla pagina show_single
                 $this->new_row_id = $this->dbh->lastInsertId();
+                $this->handle_new_id();
                 header("location: show.php?table={$this->table_name}&id={$this->new_row_id}");
                 die();
             }
@@ -62,4 +63,6 @@ class CreatePage extends FramePublic
 
         $this->body->setContent(array_key_append($_POST, "-old"), null);
     }
+
+    protected function handle_new_id() {}
 }

@@ -7,12 +7,11 @@
     </div>
 
     <div class="radio-group">
-        <div class="radio selected"><div class="row"><div class="col-1"><input type="radio" id="pagamento1" name="pagamento" value="1" checked></div><div class="col-10"><label for="pagamento1">Pagamento 1</label></div></div></div>
         <[foreach]>
         <div class="radio">
             <div class="row">
                 <div class="col-1">
-                    <input type="radio" id="pagamento<[id]>" name="pagamento" value="<[id]>">
+                    <input type="radio" id="pagamento<[id]>" name="metodopagamento_id" value="<[id]>">
                 </div>
                 <div class="col-10">
                     <label for="pagamento<[id]>"><[numero_carta]></label>
