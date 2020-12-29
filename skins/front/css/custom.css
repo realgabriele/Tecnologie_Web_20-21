@@ -11,8 +11,12 @@ div.container {
 
 nav {
     border-bottom: 3px solid #057299;
+    margin-bottom: 30px;
 }
 
+footer {
+    margin-top: 50px;
+}
 
 /** show_multiple **/
 .elemento-multiple-container {
