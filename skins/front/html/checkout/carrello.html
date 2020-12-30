@@ -3,20 +3,18 @@
 
     <[if!empty nome]>
     <[foreach]>
-    <div class="row">
+    <div class="row py-1">
         <!-- Foto -->
         <div class="col-2">
             <div class="media">
-                <a class="thumbnail pull-left" href="#">
-                    <img class="media-object" src="<[foto]>" alt="#">
-                </a>
+                <img class="media-object" src="<[foto]>" alt="#">
             </div>
         </div>
         <!-- Nome -->
         <div class="col-7">
             <div class="media-body">
                 <h4 class="media-heading">
-                    <a href="#"><[nome]></a>
+                    <a href="show_item.php?id=<[id]>"><[nome]></a>
                 </h4>
                 <span>Prezzo: <[prezzo::to_prezzo library="utility"]></span>
                 <span>Quantita: <[quantita-carrello]></span>

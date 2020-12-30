@@ -97,6 +97,23 @@
     box-shadow: 0 0 0 2px white, 0 0 0 3px #616161
 }
 
+#msform .action-button-submit {
+    width: 100px;
+    background: limegreen;
+    font-weight: bold;
+    color: white;
+    border: 0 none;
+    border-radius: 0px;
+    cursor: pointer;
+    padding: 10px 5px;
+    margin: 10px 5px
+}
+
+#msform .action-button-submit:hover,
+#msform .action-button-submit:focus {
+    box-shadow: 0 0 0 2px white, 0 0 0 3px skyblue
+}
+
 select.list-dt {
     border: none;
     outline: 0;
