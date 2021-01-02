@@ -79,6 +79,11 @@
     padding:20px;
     font-size: 20px;
 }
+.product-rating2 {
+    position: relative;
+    padding:20px;
+    font-size: 10px;
+}
 
 .product-rating i.grey {
     color: #acacab;

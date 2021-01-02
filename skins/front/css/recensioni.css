@@ -23,4 +23,28 @@
     font-weight: 400;
     text-transform: uppercase;
 }
+.recensione {
+    position: absolute;
+    box-shadow: 5px 5px 5px 3px rgba(0, 0, 0, 0.2);
+    font-size: 25px;
+    font-weight: 300;
+    color: #fff;
+    background: linear-gradient(135deg, #11e0e2 10%, #39ee08 60%);
+    padding: 2px 5px;
+    border-radius: 4px;
+    top: 330px;
+    right: -274px;
+    left: 470px;
+}
 
+.descrizione3 {
+    position: absolute;
+    display: block;
+    padding: 0 20px;
+    top: 380px;
+    left: 450px;
+    width: 650px;
+    font-size: 15px;
+    font-weight: 400;
+    text-transform: uppercase;
+}
