@@ -120,6 +120,10 @@ a {
 	transition: all .3s ease-in-out;
 }
 
+a[href], a[onclick]{
+	cursor:pointer;
+}
+
 h1,
 h2,
 h3,
