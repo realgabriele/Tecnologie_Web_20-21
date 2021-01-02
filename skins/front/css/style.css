@@ -55,7 +55,7 @@
 	-------------------------------------------------------------------*/
 
 @import url(animate.css);
-@import url(font-awesome.min.css);
+@import url(../assets/fontawesome/css/all.min.css);
 
 /*------------------------------------------------------------------
 		3. BASIC
@@ -118,6 +118,10 @@ a {
 	-ms-transition: all .3s ease-in-out;
 	-o-transition: all .3s ease-in-out;
 	transition: all .3s ease-in-out;
+}
+
+a[href], a[onclick]{
+	cursor:pointer;
 }
 
 h1,
