@@ -202,6 +202,21 @@
     margin-left: -5px;
     box-shadow: -10px 20px 15px -10px rgba(28, 40, 59, 0.5);
 }
+.next {
+    position: relative;
+    right:-20px;
+    padding: 7px 20px;
+    text-align: center;
+    display: inline-block;
+    font-size: 15px;
+    font-weight: 200;
+    color: #fff;
+    border-radius: 7px;
+    margin-top: -15px;
+    margin-left: -5px;
+    box-shadow: -10px 20px 15px -10px rgba(28, 40, 59, 0.5);
+    background: linear-gradient(135deg, #39ee08 20%, #5e9cce 60%);
+}
 
 .product-price b {
     margin-left: 5px;
