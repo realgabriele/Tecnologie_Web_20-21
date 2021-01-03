@@ -1,29 +1,4 @@
-.descrizione {
-    position: absolute;
-    box-shadow: 5px 5px 5px 3px rgba(0, 0, 0, 0.2);
-    font-size: 25px;
-    font-weight: 300;
-    color: #fff;
-    background: linear-gradient(135deg, #499dd4 20%, #1c283b 50%);
-    padding: 2px 5px;
-    border-radius: 4px;
-    top: 150px;
-    right: -580px;
-    left: 470px;
-}
-
-.descrizione2 {
-    position: absolute;
-    display: block;
-    padding: 0 20px;
-    top: 200px;
-    left: 450px;
-    width: 650px;
-    font-size: 15px;
-    font-weight: 400;
-    text-transform: uppercase;
-}
-.recensione {
+.recensioni {
     position: absolute;
     box-shadow: 5px 5px 5px 3px rgba(0, 0, 0, 0.2);
     font-size: 25px;
@@ -37,7 +12,7 @@
     left: 470px;
 }
 
-.descrizione3 {
+.recensioni_container {
     position: absolute;
     display: block;
     padding: 0 20px;
@@ -45,6 +20,17 @@
     left: 450px;
     width: 650px;
     font-size: 20px;;
-    text-transform: uppercase;
 }
 
+.recensioni_container .recensione_rating {
+    color: #FF9529;
+}
+.recensioni_container .recensione_row {
+    display: none;
+}
+.recensioni_container .recensione_titolo {
+    font-weight: bold;
+}
+.recensioni_container .recensione_descrizione {}
+.recensioni_container .next_recensione_button {}
+.recensioni_container .previous_recensione_button {}

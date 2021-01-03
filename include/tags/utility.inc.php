@@ -26,6 +26,15 @@ Class utility extends TagLibrary {
         return str_repeat("*", strlen($data)-4) . substr($data, strlen($data)-4);
     }
 
+    /** rating value to stars elements */
+    function to_stars($name, $data, $pars) {
+        $content = "";
+        for ($i = 0; $i < 5; $i++){
+            // append a star, solid or regular
+            $content .= $i < $data ? '<i class="fas fa-star"></i>' : '<i class="far fa-star"></i>';
+        }
+        return $content;
+    }
 }
 
 ?>

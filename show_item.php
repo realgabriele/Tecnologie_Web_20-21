@@ -5,7 +5,7 @@ require "include/template2.inc.php";
 require "include/dbms.inc.php";
 
 $main = new Template("frame-public.html");
-$body = new Template("show_item.html");
+$body = new Template("articoli/show.html");
 
 $id = $_GET["id"];
 
@@ -18,8 +18,20 @@ for($i=0; $i<$result->num_rows; $i++) {
     $body->setContent($data, null);
 }
 
-$main->setContent("body", $body->get());
 
+$recensioni = new Template("articoli/recensioni.html");
+
+if (!$result = $mysqli->query("SELECT * FROM recensioni WHERE articolo_id=$id")) {
+    echo "Error: ", $mysqli->error;
+}
+for($i=0; $i<$result->num_rows; $i++) {
+    $data = $result->fetch_assoc();
+    $recensioni->setContent($data, null);
+}
+
+
+$body->setContent("recensioni", $recensioni->get());
+$main->setContent("body", $body->get());
 $main->close();
 
 ?>

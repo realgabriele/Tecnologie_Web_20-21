@@ -1,0 +1,33 @@
+<div class="container recensioni_container">
+    <div class="row">
+        <div class="col-1 previous_recensione_button mt-4">
+            <i class="fa fa-arrow-circle-left mr-3 "></i>
+        </div>
+
+        <div class="col">
+            <[foreach]>
+            <div class="row recensione_row">
+                <div class="col-12">
+                    <div class="row">
+                        <div class="recensione_rating">
+                            <[rating::to_stars library="utility"]>
+                        </div>
+                        <div class="recensione_titolo ml-4">
+                            <[titolo]>
+                        </div>
+                    </div>
+                    <div class="row pt-3">
+                        <div class="recensione_descrizione">
+                            <[descrizione]>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <[/foreach]>
+        </div>
+
+        <a class="col-1 next_recensione_button mt-4">
+            <i class="fa fa-arrow-circle-right ml-3 "></i>
+        </a>
+    </div>
+</div>

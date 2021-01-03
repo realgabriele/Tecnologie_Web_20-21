@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Creato il: Dic 22, 2020 alle 11:14
+-- Creato il: Gen 03, 2021 alle 10:54
 -- Versione del server: 8.0.22-0ubuntu0.20.04.3
 -- Versione PHP: 7.4.3
 
@@ -46,7 +46,7 @@ CREATE TABLE `articoli` (
 
 INSERT INTO `articoli` (`id`, `nome`, `descrizione`, `descrizione_lunga`, `foto`, `quantita`, `prezzo`) VALUES
 (1, 'Mascherina\r\nChirurgica', 'mascherina chirurgica bellissima', 'Una maschera (o mascherina) chirurgica, nota anche come maschera medica,\r\n                            o maschera facciale per uso medico,o mascherina igienica (soprattutto tra gli italiani svizzeri),\r\n                            è un dispositivo destinato a essere indossato dagli operatori sanitari durante un intervento chirurgico\r\n                            o altre attività in ambito sanitario al fine di evitare la dispersione di agenti patogeni.', 'https://i.postimg.cc/kDP21W0R/DEFDEF.png', 24, 0.5),
-(2, 'Amuchina Mani', 'Gel disinfettante mani', 'Amuchina Gel X-GERM Disinfettante Mani è un gel antisettico, studiato per disinfettare a fondo la pelle delle mani. La sua formulazione è in grado di ridurre efficacemente in pochi secondi germi e batteri presenti sulla cute. Amuchina Gel X-GERM Disinfettante Mani è attivo su virus, funghi e batteri.', 'https://i.postimg.cc/W4YHndfV/DEFDEF-copia.png', 2, 2.75);
+(2, 'Amuchina Mani', 'Gel disinfettante mani', 'Amuchina Gel X-GERM Disinfettante Mani è un gel antisettico, studiato per disinfettare a fondo la pelle delle mani. La sua formulazione è in grado di ridurre efficacemente in pochi secondi germi e batteri presenti sulla cute. Amuchina Gel X-GERM Disinfettante Mani è attivo su virus, funghi e batteri.', 'https://i.postimg.cc/W4YHndfV/DEFDEF-copia.png', 5, 2.75);
 
 -- --------------------------------------------------------
 
@@ -69,9 +69,31 @@ INSERT INTO `articolo_carrello` (`carrello_id`, `articolo_id`, `quantita`) VALUE
 (1, 1, 21),
 (1, 2, 12),
 (2, 1, 1),
-(2, 2, 4),
-(3, 1, 2),
-(3, 2, 2);
+(2, 2, 4);
+
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `articolo_ordine`
+--
+
+DROP TABLE IF EXISTS `articolo_ordine`;
+CREATE TABLE `articolo_ordine` (
+  `ordine_id` int NOT NULL,
+  `articolo_id` int NOT NULL,
+  `quantita` int DEFAULT NULL,
+  `prezzo` float DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dump dei dati per la tabella `articolo_ordine`
+--
+
+INSERT INTO `articolo_ordine` (`ordine_id`, `articolo_id`, `quantita`, `prezzo`) VALUES
+(6, 1, 4, 0.5),
+(6, 2, 3, 2.75),
+(8, 1, 5, 0.4),
+(8, 2, 2, 2.7);
 
 -- --------------------------------------------------------
 
@@ -118,7 +140,9 @@ INSERT INTO `gruppo_servizio` (`gruppo_id`, `servizio_id`) VALUES
 (1, 6),
 (1, 7),
 (1, 8),
-(1, 9);
+(1, 9),
+(1, 10),
+(1, 11);
 
 -- --------------------------------------------------------
 
@@ -170,7 +194,30 @@ CREATE TABLE `metodipagamento` (
 
 INSERT INTO `metodipagamento` (`id`, `utente_id`, `intestatario_carta`, `numero_carta`, `scadenza_carta`, `cvv_carta`) VALUES
 (1, 3, 'Administratore', '4537890672066', '2021-08-01', '123'),
-(2, 3, 'lallallero', '47820951702', '2020-01-13', '111');
+(2, 3, 'Lalla Llero', '47820951702', '2020-01-13', '111');
+
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `ordini`
+--
+
+DROP TABLE IF EXISTS `ordini`;
+CREATE TABLE `ordini` (
+  `id` int NOT NULL,
+  `utente_id` int NOT NULL,
+  `indirizzo_id` int NOT NULL,
+  `metodopagamento_id` int NOT NULL,
+  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dump dei dati per la tabella `ordini`
+--
+
+INSERT INTO `ordini` (`id`, `utente_id`, `indirizzo_id`, `metodopagamento_id`, `timestamp`) VALUES
+(6, 3, 1, 2, '2020-12-29 10:22:46'),
+(8, 3, 5, 1, '2020-12-30 09:31:34');
 
 -- --------------------------------------------------------
 
@@ -305,7 +352,32 @@ CREATE TABLE `phpauth_sessions` (
 
 INSERT INTO `phpauth_sessions` (`id`, `uid`, `hash`, `expiredate`, `ip`, `device_id`, `agent`, `cookie_crc`) VALUES
 (15, 1, 'dc723af031542e56f1c567c6c1a05907ddaae9a0', '2021-01-06 18:14:08', '192.168.1.125', NULL, 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.66 Safari/537.36', 'd910ac0fee5c86a63534ff5acaedd5f4fe891460'),
-(36, 3, '31eb5b11fa93df93d77facf89da83279a575de29', '2021-01-22 11:11:58', '192.168.1.125', NULL, 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.66 Safari/537.36', '25540db60b49a562e4171e82b1005c725eafd419');
+(36, 3, '31eb5b11fa93df93d77facf89da83279a575de29', '2021-02-03 09:50:12', '192.168.1.125', NULL, 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.66 Safari/537.36', '25540db60b49a562e4171e82b1005c725eafd419');
+
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `recensioni`
+--
+
+DROP TABLE IF EXISTS `recensioni`;
+CREATE TABLE `recensioni` (
+  `utente_id` int NOT NULL,
+  `articolo_id` int NOT NULL,
+  `titolo` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `descrizione` text COLLATE utf8mb4_unicode_ci,
+  `rating` int DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dump dei dati per la tabella `recensioni`
+--
+
+INSERT INTO `recensioni` (`utente_id`, `articolo_id`, `titolo`, `descrizione`, `rating`) VALUES
+(1, 1, 'Bellissimo TOP', 'mi sono trovato molto bene', 5),
+(1, 2, 'Non ce niente di meglio', 'questo boccione mi ha salvato la vita', 4),
+(2, 1, 'buona qualita', NULL, 4),
+(3, 1, 'si e\' rotta subito', 'per fortuna che era monouso', 2);
 
 -- --------------------------------------------------------
 
@@ -333,7 +405,9 @@ INSERT INTO `servizi` (`id`, `nome`, `descrizione`) VALUES
 (6, 'metodipagamento.show', NULL),
 (7, 'metodipagamento.edit', NULL),
 (8, 'metodipagamento.create', NULL),
-(9, 'metodipagamento.delete\r\n', NULL);
+(9, 'metodipagamento.delete\r\n', NULL),
+(10, 'ordini.create', NULL),
+(11, 'ordini.show', NULL);
 
 -- --------------------------------------------------------
 
@@ -397,6 +471,12 @@ ALTER TABLE `articolo_carrello`
   ADD PRIMARY KEY (`carrello_id`,`articolo_id`);
 
 --
+-- Indici per le tabelle `articolo_ordine`
+--
+ALTER TABLE `articolo_ordine`
+  ADD PRIMARY KEY (`ordine_id`,`articolo_id`);
+
+--
 -- Indici per le tabelle `gruppi`
 --
 ALTER TABLE `gruppi`
@@ -419,6 +499,12 @@ ALTER TABLE `indirizzi`
 -- Indici per le tabelle `metodipagamento`
 --
 ALTER TABLE `metodipagamento`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indici per le tabelle `ordini`
+--
+ALTER TABLE `ordini`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -454,6 +540,12 @@ ALTER TABLE `phpauth_requests`
 --
 ALTER TABLE `phpauth_sessions`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indici per le tabelle `recensioni`
+--
+ALTER TABLE `recensioni`
+  ADD PRIMARY KEY (`utente_id`,`articolo_id`);
 
 --
 -- Indici per le tabelle `servizi`
@@ -504,6 +596,12 @@ ALTER TABLE `metodipagamento`
   MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT per la tabella `ordini`
+--
+ALTER TABLE `ordini`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
 -- AUTO_INCREMENT per la tabella `phpauth_attempts`
 --
 ALTER TABLE `phpauth_attempts`
@@ -531,7 +629,7 @@ ALTER TABLE `phpauth_sessions`
 -- AUTO_INCREMENT per la tabella `servizi`
 --
 ALTER TABLE `servizi`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT per la tabella `utenti`
