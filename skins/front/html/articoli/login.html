@@ -1,43 +1,40 @@
-<div id="login-container" class="center" style="height: 550px"> <div style="width: 1200px">
+<div id="login-container" class="center" style="height: 470px"> <div style="width: 1200px">
     <link rel="stylesheet" href="<[base]>/css/login.css" />
-    <h2>Benvenuto in Farmacia Covid</h2>
+    <link rel="stylesheet" href="<[base]>/css/show_item.css" />
+    <link rel="stylesheet" href="<[base]>/css/recensioni.css" />
     <div class="container" id="container">
         <div class="form-container sign-up-container">
             <form action="#">
-                <h1>Crea un' account</h1>
+                <h1 class="nero">Crea un' account</h1>
                 <span>oppure usa la tua mail per registrati</span>
-                <input type="text" placeholder="Name" />
+                <input type="text" placeholder="Nome" />
+                <input type="text" placeholder="Cognome" />
                 <input type="email" placeholder="Email" />
                 <input type="password" placeholder="Password" />
-                <button>Sign Up</button>
+                <button>Registrati</button>
             </form>
         </div>
         <div class="form-container sign-in-container">
             <form action="#">
-                <h1>Sign in</h1>
-                <div class="social-container">
-                    <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
-                    <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
-                </div>
-                <span>or use your account</span>
+                <h1 class="nero">Log-In</h1>
+                <span>per entrare in Covid Pharmacy</span>
                 <input type="email" placeholder="Email" />
                 <input type="password" placeholder="Password" />
-                <a href="#">Forgot your password?</a>
-                <button>Sign In</button>
+                <a href="#">Hai dimenticato la password ?</a>
+                <button>Log-In</button>
             </form>
         </div>
         <div class="overlay-container">
             <div class="overlay">
                 <div class="overlay-panel overlay-left">
-                    <h1>Welcome Back!</h1>
-                    <p>To keep connected with us please login with your personal info</p>
-                    <button class="ghost" id="signIn">Sign In</button>
+                    <h1 class="bianco">Sei registrato ?</h1>
+                    <p>Clicca qui per inserire le tue credenziali.</p>
+                    <button class="ghost" id="signIn">Log-In</button>
                 </div>
                 <div class="overlay-panel overlay-right">
-                    <h1>Hello, Friend!</h1>
-                    <p>Enter your personal details and start journey with us</p>
-                    <button class="ghost" id="signUp">Sign Up</button>
+                    <h1 class="bianco">Non sei registrato ?</h1>
+                    <p>Nessun problema, clicca qui sotto per registrarti.</p>
+                    <button class="ghost" id="signUp">Registrati</button>
                 </div>
             </div>
         </div>
