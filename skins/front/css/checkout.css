@@ -160,23 +160,27 @@ select.list-dt:focus {
 }
 
 #progressbar #cart:before {
-    font-family: FontAwesome;
-    content: "\f07a"
+    font-family: 'Font Awesome 5 Free';
+    content: "\f07a";
+    font-weight: 900;
 }
 
 #progressbar #address:before {
-    font-family: FontAwesome;
-    content: "\f041"
+    font-family: 'Font Awesome 5 Free';
+    content: "\f041";
+    font-weight: 900;
 }
 
 #progressbar #payment:before {
-    font-family: FontAwesome;
-    content: "\f09d"
+    font-family: 'Font Awesome 5 Free';
+    content: "\f09d";
+    font-weight: 900;
 }
 
 #progressbar #confirm:before {
-    font-family: FontAwesome;
-    content: "\f00c"
+    font-family: 'Font Awesome 5 Free';
+    content: "\f00c";
+    font-weight: 900;
 }
 
 #progressbar li:before {
