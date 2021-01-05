@@ -120,7 +120,7 @@ a {
 	transition: all .3s ease-in-out;
 }
 
-a[href], a[onclick]{
+a[href], a[onclick], .clickable {
 	cursor:pointer;
 }
 
