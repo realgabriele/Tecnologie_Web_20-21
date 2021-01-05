@@ -229,10 +229,9 @@ Class Template {
 		do{
 			$result = preg_match("~<\[if\!empty\s(\w+)\]>(.*)<\[\/if\!empty\]>~Us",$temp_buffer,$token);
 
-			$field = $token[1];
-			$core = $token[2];
-
 			if ($result){
+				$field = $token[1];
+				$core = $token[2];
 
 				if (isset($this->content[$field]) and ($this->content[$field] != "")) {
 					
@@ -659,7 +658,7 @@ Class Template {
 		}
 
 		#$this->setContent("script", basename($_SERVER['SCRIPT_NAME']));
-		$this->setContent("server", $_SERVER['SERVER_NAME']);
+		#$this->setContent("server", $_SERVER['SERVER_NAME']);
 		$this->setContent("skin", $GLOBALS['config']['skin']);
 		$this->setContent("base", $GLOBALS['config']['base']);
 		$this->setContent("base_fe", $GLOBALS['config']['base']);
