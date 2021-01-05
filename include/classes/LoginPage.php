@@ -41,7 +41,7 @@ class LoginPage extends FramePublic
 
     public function updateBody()
     {
-        $this->body->setContent("error_message", $this->error_message);
+        $this->body->setContent("error_msg", $this->error_message);
 
         $this->body->setContent("referer", $this->referer);
         $this->body->setContent("email_old", $_POST['email']);

@@ -1,10 +1,10 @@
 <div id="login-container" class="center" style="height: 470px"> <div style="width: 1200px">
     <link rel="stylesheet" href="<[base]>/css/login.css" />
-    <link rel="stylesheet" href="<[base]>/css/show_item.css" />
-    <link rel="stylesheet" href="<[base]>/css/recensioni.css" />
+
+    <!-- Registrazione -->
     <div class="container" id="container">
         <div class="form-container sign-up-container">
-            <form action="#">
+            <form action="">
                 <h1 class="nero">Crea un' account</h1>
                 <span>oppure usa la tua mail per registrati</span>
                 <input type="text" placeholder="Nome" />
@@ -14,16 +14,23 @@
                 <button>Registrati</button>
             </form>
         </div>
+
+        <!-- Log-In -->
         <div class="form-container sign-in-container">
-            <form action="#">
+            <form action="login.php" method="post">
+                <input type="hidden" name="referer" value="<[referer]>">
+
                 <h1 class="nero">Log-In</h1>
                 <span>per entrare in Covid Pharmacy</span>
-                <input type="email" placeholder="Email" />
-                <input type="password" placeholder="Password" />
+                <input type="email" name="email" placeholder="Email" value="<[email_old]>" />
+                <input type="password" name="password" placeholder="Password" />
                 <a href="#">Hai dimenticato la password ?</a>
+                <div class="alert-danger"><[error_msg]></div>
                 <button>Log-In</button>
             </form>
         </div>
+
+
         <div class="overlay-container">
             <div class="overlay">
                 <div class="overlay-panel overlay-left">
