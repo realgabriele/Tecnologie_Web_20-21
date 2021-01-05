@@ -1,6 +1,4 @@
 <?php
 
 $skin = "skins/front";
-$GLOBALS['config']['base'] = "/directory/path/to/root";
-
-
+$GLOBALS['config']['base'] = "/root-directory/$skin";

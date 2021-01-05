@@ -12,14 +12,14 @@ class ShopPage extends FramePublic
 
     public function updateBody()
     {
-        global $mysqli;
-        if (!$result = $mysqli->query("SELECT * FROM articoli")) {
-            echo "Error: ", $mysqli->error;
+        if (!$result = $this->dbh->query("SELECT * FROM articoli")) {
+            echo "Error: ";
+            print_r($this->dbh->errorInfo());
         }
 
-        for($i=0; $i<$result->num_rows; $i++) {
-            $data = $result->fetch_assoc();
-            $this->body->setContent($data, null);
+        $data = $result->fetchAll(PDO::FETCH_ASSOC);
+        foreach ($data as $row) {
+            $this->body->setContent($row, null);
         }
     }
 }

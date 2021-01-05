@@ -29,11 +29,10 @@ class CartPage extends FramePublic
 
     public function updateBody()
     {
-        global $mysqli;
         // set all the single Items inside the Cart
         foreach ($this->cart->getItems() as $cart_item) {
-            $result = $mysqli->query("SELECT * FROM articoli WHERE id={$cart_item['id']}");
-            $db_data = $result->fetch_assoc();
+            $result = $this->dbh->query("SELECT * FROM articoli WHERE id={$cart_item['id']}");
+            $db_data = $result->fetch(PDO::FETCH_ASSOC);
             $data = array_merge(array_key_append($cart_item, "-carrello"), $db_data);
             $data["prezzo-totale"] = $data['prezzo'] * $data['quantita-carrello'];
 

@@ -9,23 +9,24 @@ $body = new Template("articoli/show.html");
 
 $id = $_GET["id"];
 
-if (!$result = $mysqli->query("SELECT * FROM articoli WHERE id=$id")) {
+global $dbh;
+if (!$result = $dbh->query("SELECT * FROM articoli WHERE id=$id")) {
     echo "Error: ", $mysqli->error;
 }
 
-for($i=0; $i<$result->num_rows; $i++) {
-    $data = $result->fetch_assoc();
+for($i=0; $i<$result->rowCount(); $i++) {
+    $data = $result->fetch(PDO::FETCH_ASSOC);
     $body->setContent($data, null);
 }
 
 
 $recensioni = new Template("articoli/recensioni.html");
 
-if (!$result = $mysqli->query("SELECT * FROM recensioni WHERE articolo_id=$id")) {
+if (!$result = $dbh->query("SELECT * FROM recensioni WHERE articolo_id=$id")) {
     echo "Error: ", $mysqli->error;
 }
-for($i=0; $i<$result->num_rows; $i++) {
-    $data = $result->fetch_assoc();
+for($i=0; $i<$result->rowCount(); $i++) {
+    $data = $result->fetch(PDO::FETCH_ASSOC);
     $recensioni->setContent($data, null);
 }
 

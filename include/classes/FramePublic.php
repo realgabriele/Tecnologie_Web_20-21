@@ -30,14 +30,15 @@ class FramePublic
         if(!isset($this->body)) $this->body = new Template("void");
 
         /* load Authentication / Authorization class */
-        $this->dbh = new PDO("mysql:dbname=tdw2021;host=localhost", "web", "Pierantonio");
-        $this->auth = new PHPAuth\Auth($this->dbh, new PHPAuth\Config($this->dbh));
+        global $dbh;
+        $this->dbh = $dbh;
+        $this->auth = new PHPAuth\Auth($dbh, new PHPAuth\Config($dbh));
 
         /* load the Cart or create a new one */
         if ($this->auth->isAuthenticated) {
             $this->cart = new Cart($this->auth->getCurrentUID());
         } else {
-            $this->cart = new Cart();
+            $this->cart = new Cart(3);
         }
 
         $this->check_authorization();
@@ -66,8 +67,6 @@ class FramePublic
     }
 
     public function updateHeader(){
-        global $mysqli;
-
         /* set user information */
         if ($this->auth->isAuthenticated){
             $user_data = $this->auth->getCurrentUser(true);
@@ -79,8 +78,8 @@ class FramePublic
 
         /* set every Item inside the Cart-Sidebar */
         foreach ($this->cart->getItems() as $cart_item) {
-            $result = $mysqli->query("SELECT * FROM articoli WHERE id={$cart_item['id']}");
-            $db_data = $result->fetch_assoc();
+            $result = $this->dbh->query("SELECT * FROM articoli WHERE id={$cart_item['id']}");
+            $db_data = $result->fetch(PDO::FETCH_ASSOC);
             $data = array_merge(array_key_append($cart_item, "-carrello"), $db_data);
             $data["prezzo-totale"] = $data['prezzo'] * $data['quantita-carrello'];
 

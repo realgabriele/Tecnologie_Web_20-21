@@ -1,10 +1,15 @@
 <?php
+    $mysql_hostname = "localhost";
+    $mysql_username = "root";
+    $mysql_password = "";
+    $mysql_database = "tdw2021";
 
-   $mysqli = new mysqli("localhost", "root", "", "tdw2021");
-   
-   if($mysqli->connect_errno) {
+    $dbh = new PDO("mysql:dbname=$mysql_database;host=$mysql_hostname", $mysql_username, $mysql_password);
+
+    /*
+    $mysqli = new mysqli("localhost", "root", "", "tdw2021");
+    if($mysqli->connect_errno) {
       echo "Error: ", $mysqli->connect_error;
       exit;
-   }
-
+    }
 ?>

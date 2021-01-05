@@ -24,13 +24,11 @@ class CheckoutPage extends FramePublic
 
     protected function setCarrello()
     {
-        global $mysqli;
-
         $carrello = new Template("checkout/carrello.html");
 
         foreach ($this->cart->getItems() as $cart_item) {
-            $result = $mysqli->query("SELECT * FROM articoli WHERE id={$cart_item['id']}");
-            $db_data = $result->fetch_assoc();
+            $result = $this->dbh->query("SELECT * FROM articoli WHERE id={$cart_item['id']}");
+            $db_data = $result->fetch(PDO::FETCH_ASSOC);
             $data = array_merge(array_key_append($cart_item, "-carrello"), $db_data);
             $data["prezzo-totale"] = $data['prezzo'] * $data['quantita-carrello'];
 

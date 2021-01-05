@@ -108,12 +108,12 @@ class Cart {
      * @return int
      */
     public function getTotalPrice() {
-        global $mysqli;
+        global $dbh;
         $price = 0;
 
         foreach ($this->items as $item) {
-            $res = $mysqli->query("SELECT prezzo FROM articoli WHERE id={$item['id']}");
-            $price += $item['quantita'] * $res->fetch_array()[0];
+            $res = $dbh->query("SELECT prezzo FROM articoli WHERE id={$item['id']}");
+            $price += $item['quantita'] * $res->fetch()[0];
         }
 
         return $price;
@@ -279,8 +279,8 @@ class Cart {
         $this->items = [];
 
         if ($this->useDB) {
-            global $mysqli;
-            $mysqli->query("DELETE FROM articolo_carrello WHERE id=$this->cartId");
+            global $dbh;
+            $dbh->query("DELETE FROM articolo_carrello WHERE id=$this->cartId");
         }
 
         if ($this->useCookie) {
@@ -295,15 +295,15 @@ class Cart {
      */
     private function read() {
         if ($this->useDB) {
-            global $mysqli;
+            global $dbh;
 
-            $result = $mysqli->query("SELECT * FROM articolo_carrello WHERE carrello_id=$this->cartId");
+            $result = $dbh->query("SELECT * FROM articolo_carrello WHERE carrello_id=$this->cartId");
 
-            for ($i = 0; $i < $result->num_rows; $i++) {
-                $data = $result->fetch_assoc();
-                $this->items[$data['articolo_id']] = [
-                    'id' => $data['articolo_id'],
-                    'quantita' => $data['quantita'],
+            $data = $result->fetchAll(PDO::FETCH_ASSOC);
+            foreach ($data as $item) {
+                $this->items[$item['articolo_id']] = [
+                    'id' => $item['articolo_id'],
+                    'quantita' => $item['quantita'],
                     'attributi' => [],
                 ];
             }
@@ -336,11 +336,11 @@ class Cart {
      */
     private function write() {
         if ($this->useDB) {
-            global $mysqli;
+            global $dbh;
 
-            $mysqli->query("DELETE FROM articolo_carrello WHERE carrello_id=$this->cartId");
+            $dbh->query("DELETE FROM articolo_carrello WHERE carrello_id=$this->cartId");
             foreach ($this->items as $item) {
-                $mysqli->query(
+                $dbh->query(
                     "INSERT INTO articolo_carrello(carrello_id, articolo_id, quantita)" .
                     "VALUES ({$this->cartId}, {$item['id']}, {$item['quantita']})");
             }
