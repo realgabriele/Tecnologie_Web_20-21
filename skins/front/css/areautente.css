@@ -7,13 +7,14 @@
     align-items: center;
     flex-direction: column;
     font-family: 'Montserrat', sans-serif;
-    height: 100vh;
+    height: 500vh;
     margin: -20px 0 50px;
 }
 
 #areautente-container .benvenuto {
     position: absolute;
-    top: 20px;
+    top: 30px;
+    left: 30px;
     font-size: 25px;
     font-weight: 300;
     color: #fff;
@@ -25,9 +26,78 @@
     font-size: medium;
 }
 
+#areautente-container .datanascita {
+position:relative;
+    top: -354px;
+    left: 160px;
+    width: 50%;
+    letter-spacing: 0.1px;
+}
+
+#areautente-container .scadenza {
+    position: relative;
+    width: 18%;
+    top: 8px;
+    left: 90px;
+    color: #fff;
+    background: #ffb13b;
+    padding: 2px 5px;
+    border-radius: 4px;
+    margin-right: 200px;
+    font-weight: bold;
+    font-size: 8px;
+    letter-spacing: 1px;
+    margin: 0;
+    color: #000000;
+
+}
+
+
+
+#areautente-container .spedizione {
+    position: relative;
+    margin-top: 10px;
+    left: 0px;
+    width: 45%;
+    top: 10px;
+    height:20px;
+    font-weight: bold;
+    font-size: 15px;
+    text-align: center;
+    font-size: 15px;
+    display: block;
+    color: #000000;
+    box-shadow: -5px 5px 5px rgba(0, 0, 0, 0.3) ;
+    border-radius: 4px;
+    text-transform: uppercase;
+}
+
+#areautente-container .pagamenti {
+    position: relative;
+    margin-top: 30px;
+    left: 0px;
+    width: 45%;
+    top: 10px;
+    height:20px;
+    font-weight: bold;
+    font-size: 15px;
+    text-align: center;
+    font-size: 15px;
+    display: block;
+    color: #000000;
+    box-shadow: -5px 5px 5px rgba(0, 0, 0, 0.3) ;
+    border-radius: 4px;
+    text-transform: uppercase;
+}
+
+
+#areautente-container .divisione {
+    margin-top: 10px;
+}
+
 
 #areautente-container .nome{
-
+    align-content: center;
     padding: 20px 20px 5px 20px;
     margin-top: -5%;
     display: block;
@@ -36,12 +106,19 @@
 }
 
 #areautente-container h1.bianco {
+    font-size: 18px;
     font-weight: bold;
     margin: 0;
     color: #FFFFFF;
 }
 
-
+#areautente-container h1.email {
+    font-weight: bold;
+    font-size: 15px;
+    margin: 0;
+    color: #000000;
+    text-transform: lowercase;
+}
 
 #areautente-container h1.nero {
     font-weight: bold;
@@ -135,18 +212,7 @@
     min-height: 480px;
 }
 
-#areautente-container .form-container {
-    position: absolute;
-    top: 0;
-    height: 100%;
-    transition: all 0.6s ease-in-out;
-}
 
-#areautente-container .sign-in-container {
-    left: 0;
-    width: 50%;
-    z-index: 2;
-}
 
 #areautente-container .container.right-panel-active .sign-in-container {
     transform: translateX(100%);
