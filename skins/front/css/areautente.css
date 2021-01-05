@@ -28,7 +28,7 @@
 
 #areautente-container .datanascita {
 position:relative;
-    top: -354px;
+    top: -423px;
     left: 160px;
     width: 50%;
     letter-spacing: 0.1px;
@@ -97,6 +97,8 @@ position:relative;
 
 
 #areautente-container .nome{
+    position: relative;
+    top: 60px;
     align-content: center;
     padding: 20px 20px 5px 20px;
     margin-top: -5%;
