@@ -5,11 +5,4 @@
     $mysql_database = "tdw2021";
 
     $dbh = new PDO("mysql:dbname=$mysql_database;host=$mysql_hostname", $mysql_username, $mysql_password);
-
-    /*
-    $mysqli = new mysqli("localhost", "root", "", "tdw2021");
-    if($mysqli->connect_errno) {
-      echo "Error: ", $mysqli->connect_error;
-      exit;
-    }
 ?>
