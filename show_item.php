@@ -5,7 +5,7 @@ require "include/template2.inc.php";
 require "include/dbms.inc.php";
 
 $main = new Template("frame-public.html");
-$body = new Template("articoli/show.html");
+$body = new Template("articoli/show_single.html");
 
 $id = $_GET["id"];
 
