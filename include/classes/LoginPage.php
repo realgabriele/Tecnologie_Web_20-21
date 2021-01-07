@@ -5,7 +5,7 @@ require "FramePublic.php";
 class LoginPage extends FramePublic
 {
     protected $referer;
-    protected $error_message;
+    protected $error_msg;
 
     public function __construct()
     {
@@ -34,16 +34,16 @@ class LoginPage extends FramePublic
                 echo $this->referer;
                 die();
             } else {
-                $this->error_message = "login error: " . $res['message'];
+                $this->error_msg = "login error: " . $res['message'];
             }
         }
     }
 
     public function updateBody()
     {
-        $this->body->setContent("error_msg", $this->error_message);
+        $this->body->setContent("error_msg", $this->error_msg);
 
         $this->body->setContent("referer", $this->referer);
-        $this->body->setContent("email_old", $_POST['email']);
+        $this->body->setContent("email_old", $_POST['email'] ?? "");
     }
 }
