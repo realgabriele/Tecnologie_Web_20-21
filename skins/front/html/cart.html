@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="<[base]>/css/cart.css">
 
 <div class="shopping-cart" id="shopping-cart-container">
     <!-- inner page banner -->
@@ -32,21 +33,21 @@
                             <tr>
                                 <th>Product</th>
                                 <th>Quantity</th>
-                                <th class="text-center">Price</th>
-                                <th class="text-center">Total</th>
+                                <th>Price</th>
+                                <th>Total</th>
                                 <th> </th>
                             </tr>
                             </thead>
-                            <tbody>
 
+                            <tbody>
                             <[if!empty nome]>
                             <[foreach]>
-                            <tr>
-                                <!-- Foto -->
-                                <td class="col-sm-8 col-md-6">
+                            <tr class="row" style="width: 140%;">
+                                <!-- Foto e Info -->
+                                <td class="col-md-6">
                                     <div class="media">
                                         <a class="thumbnail pull-left" href="#">
-                                            <img class="media-object" src="<[base_fe]>/images/<[foto]>" alt="#">
+                                            <img class="media-object" src="<[foto]>" alt="#">
                                         </a>
                                         <div class="media-body">
                                             <h4 class="media-heading">
@@ -57,32 +58,34 @@
                                     </div>
                                 </td>
                                 <!-- Quantita -->
-                                <td class="col-sm-1 col-md-1 align-middle" style="text-align: center">
-                                    <div>
-                                        <input class="form-control"
-                                               value="<[quantita-carrello]>" onblur="update_item(<[id]>, this.value)">
-                                    </div>
-                                    <div>
-                                        <a onclick="add_item(<[id]>)">
-                                            <div class="button">
-                                                <div class="fa fa-chevron-up"></div>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div>
+                                <td class="col-md-3">
+                                    <div class="row quantity-row">
+                                    <span class="col-4 quantity-down">
                                         <a onclick="sub_item(<[id]>)">
                                             <div class="button">
                                                 <div class="fa fa-chevron-down"></div>
                                             </div>
                                         </a>
+                                    </span>
+                                    <span class="col-4 quantity-value">
+                                        <input class="form-control text-right"
+                                               value="<[quantita-carrello]>" onblur="update_item(<[id]>, this.value)">
+                                    </span>
+                                    <span class="col-4 quantity-up">
+                                        <a onclick="add_item(<[id]>)">
+                                            <div class="button">
+                                                <i class="fa fa-chevron-up"></i>
+                                            </div>
+                                        </a>
+                                    </span>
                                     </div>
                                 </td>
                                 <!-- Prezzo -->
-                                <td class="col-sm-1 col-md-1 text-center"><p class="price_table"><[prezzo::to_prezzo library="utility"]></p></td>
-                                <td class="col-sm-1 col-md-1 text-center"><p class="price_table"><[prezzo-totale::to_prezzo library="utility"]></p></td>
+                                <td class="col-sm-1 col-md-1"><p class="price_table"><[prezzo::to_prezzo library="utility"]></p></td>
+                                <td class="col-sm-1 col-md-1"><p class="price_table"><[prezzo-totale::to_prezzo library="utility"]></p></td>
                                 <td class="col-sm-1 col-md-1">
                                     <a onclick="del_item(<[id]>)">
-                                        <button type="button" class="bt_main"><i class="fas fa-trash fa-2x pt-2"></i></button>
+                                        <button type="button" class="bt_main del_button"><i class="fas fa-trash fa-2x pt-2"></i></button>
                                     </a>
                                 </td>
                             </tr>
