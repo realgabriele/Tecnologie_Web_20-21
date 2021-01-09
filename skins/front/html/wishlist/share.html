@@ -1,0 +1,42 @@
+<div class="container">
+    <div class="col-1">
+        <a href="show.php?table=wishlist&id=<[id_wishlist]>">
+            <div class="fa fa-angle-left fa-3x"></div>
+        </a>
+    </div>
+    <div class="h1">condivisione: <[nome_wishlist]> </div>
+    <div class="row">
+        <div class="col-1">
+            <i class="fas fa-share-alt fa-4x"></i>
+        </div>
+        <div class="col">
+            <div class="row">
+                <div class="col-9 ml-5 elemento-multiple-container">
+                    <form method="post">
+                        <input type="email" name="add" />
+                        <input type="submit" />
+                    </form>
+                </div>
+            </div>
+            <[if!empty id_utente]><[foreach]>
+            <div class="row">
+                <div class="col-9 ml-5 elemento-multiple-container">
+                    <div class="row">
+                        <div class="col-10">
+                            <div style="font-size: 26px"><[email_utente]></div>
+                        </div>
+                        <div class="col-2">
+                            <form method="post">
+                                <input type="hidden" name="del" value="<[id_utente]>">
+                                <button type="submit" class="button">
+                                    <i class="fa fa-minus"></i>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <[/foreach]><[/if!empty]>
+        </div>
+    </div>
+</div>

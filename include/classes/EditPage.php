@@ -53,7 +53,7 @@ class EditPage extends FramePublic
             $bindParams = array_values(array_merge($params, [$this->row_id]));
 
             if (!$query_prepared->execute($bindParams)) {
-                $this->render_error("database error: "  . $query_prepared->errorCode());
+                $this->render_error("database error: " . $query_prepared->errorCode());
             } else {
                 $this->body->setContent("success_msg", "Salvato con successo");
             }

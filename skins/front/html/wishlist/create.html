@@ -1,0 +1,31 @@
+<div class="container">
+    <div class="row">
+        <div class="col-1">
+            <a href="show.php?table=wishlist">
+                <div class="fa fa-angle-left fa-3x"></div>
+            </a>
+        </div>
+        <div class="col-9">
+            <form action="create.php?table=wishlist" method="post">
+                <input type="hidden" name="id">
+
+                <div class="form-group py-2">
+                    <label for="nome-wishlist">Nome della Wishlist</label>
+                    <input type="text" class="form-control" placeholder="Inserisci il nome della wishlist"
+                           id="nome-wishlist" name="nome" value="<[nome-old]>">
+                </div>
+
+                <div class="py-2">
+                    <button type="submit" class="btn btn-primary">Crea</button>
+                </div>
+
+                <[if!empty success_msg]>
+                <div class="mt-3 alert alert-success"><[success_msg]></div>
+                <[/if!empty]>
+                <[if!empty error_msg]>
+                <div class="mt-3 alert alert-danger"><[error_msg]></div>
+                <[/if!empty]>
+            </form>
+        </div>
+    </div>
+</div>

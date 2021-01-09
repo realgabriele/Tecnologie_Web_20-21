@@ -1,0 +1,49 @@
+<div class="container shopping-cart">
+    <div class="row">
+        <div class="col-1">
+            <a href="show_wishlist.php?table=wishlist">
+                <div class="fa fa-angle-left fa-3x"></div>
+            </a>
+        </div>
+        <div class="col-8">
+            <div class="row">
+                <div class="h1"><[nome]></div>
+                <a href="share.php?table=wishlist&id=<[id]>">
+                    <div class="fa fa-share-alt-square fa-2x pt-2 ml-5"></div>
+                </a>
+            </div>
+
+            <[if!empty nome_articolo]><[foreach]>
+            <div class="row py-1">
+                <!-- Foto -->
+                <div class="col-2">
+                    <div class="media">
+                        <img class="media-object" src="<[foto_articolo]>" alt="pic">
+                    </div>
+                </div>
+                <!-- Nome -->
+                <div class="col-7">
+                    <div class="media-body">
+                        <h3 class="media-heading pt-4">
+                            <a href="show_item.php?id=<[articoli.id]>"><[nome_articolo]></a>
+                        </h3>
+                    </div>
+                </div>
+
+                <!-- Prezzo -->
+                <div class="col-3">
+                    <p class="price_table"><[prezzo_articolo::to_prezzo library="utility"]></p>
+                </div>
+            </div>
+            <[/foreach]><[/if!empty]>
+
+        </div>
+        <div class="col-3">
+            <div class="row">
+                <a href="delete_wishlist.php?table=wishlist&id=<[id]>">
+                    <div class="fa fa-trash fa-3x pt-2"></div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

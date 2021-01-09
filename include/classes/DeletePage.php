@@ -48,5 +48,9 @@ class DeletePage extends FramePublic
                 header("location: show.php?table={$this->table_name}");
                 die();
             }
+
+            $this->deleteMany();
     }
+
+    protected function deleteMany() {}
 }

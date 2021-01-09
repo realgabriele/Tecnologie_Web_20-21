@@ -19,21 +19,11 @@ class CreateOrderPage  extends CreatePage
             " JOIN `articoli` ON ac.articolo_id = `articoli`.id ".
             " WHERE carrello_id = :carrello_id";
         $query_prepared = $this->dbh->prepare($query);
-        $a = $query_prepared->execute(['ordine_id' => $this->new_row_id, 'carrello_id' => $this->cart->getCartId()]);
-        if (!$a){
-            echo "a";
-            print_r($query_prepared->errorCode());
-            print_r($query_prepared->errorInfo());
-        }
+        $query_prepared->execute(['ordine_id' => $this->new_row_id, 'carrello_id' => $this->cart->getCartId()]);
 
         // remove old articolo_carrello entries
         $query = "DELETE FROM `articolo_carrello` WHERE carrello_id = ?";
         $query_prepared = $this->dbh->prepare($query);
-        $b = $query_prepared->execute([$this->cart->getCartId()]);
-        if (!$b){
-            echo "b";
-            print_r($query_prepared->errorCode());
-            print_r($query_prepared->errorInfo());
-        }
+        $query_prepared->execute([$this->cart->getCartId()]);
     }
 }

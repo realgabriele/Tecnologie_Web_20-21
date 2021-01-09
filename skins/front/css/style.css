@@ -1586,8 +1586,8 @@ body.light_blue #full_slider.full_slider_inner {
 	-------------------------------------------------------------------*/
 
 .padding_layout_1 {
-	padding-top: 120px;
-	padding-bottom: 115px;
+	padding-top: 20px;
+	padding-bottom: 15px;
 }
 
 .padding_layout_2 {
@@ -4158,6 +4158,7 @@ footer ul.social_icons {
 }
 
 .price_table {
+	margin-top: 35px;
 	font-size: 18px;
 	font-weight: 400;
 	color: #333;
@@ -4177,7 +4178,6 @@ footer ul.social_icons {
 	padding: 0px 20px;
 	height: 45px;
 	line-height: 45px;
-	margin: 33px 0 0 30px;
 }
 
 .shopping-cart table tbody tr.cart-form td {
@@ -4279,7 +4279,6 @@ footer ul.social_icons {
 	padding: 0px 20px;
 	height: 45px;
 	line-height: 45px;
-	margin: 33px 0 0 30px;
 	background: #039ee3;
 	transition: ease all 0.5s;
 	border: none;
