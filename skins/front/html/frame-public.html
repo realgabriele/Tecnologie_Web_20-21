@@ -24,8 +24,6 @@
     <link rel="stylesheet" href="<[base]>/css/colors1.css" />
     <!-- custom css -->
     <link rel="stylesheet" href="<[base]>/css/custom.css" />
-    <!-- cart sidebar css -->
-    <link rel="stylesheet" href="<[base]>/css/cart-sidebar.css">
     <!-- wow Animation css -->
     <link rel="stylesheet" href="<[base]>/css/animate.css" />
     <!-- zoom effect -->
@@ -94,6 +92,12 @@
                                         <i class="fa fa-shopping-cart fa-2x"></i>
                                         <span class="badge" id="cart-sidebar-badge"><[totale-quantita-carrello]></span>
                                     </a>
+
+                                    <ul style="width: 360px">
+                                        <div class="container sidebar-cart" id="cart-sidebar-container">
+                                            <[cart-sidebar]>
+                                        </div>
+                                    </ul>
                                 </li>
                                 <!-- user icon -->
                                 <li>
@@ -122,10 +126,6 @@
     <!-- header bottom end -->
 </header>
 <!-- end header -->
-
-<div id="cart-sidebar">
-    <[cart-sidebar]>
-</div>
 
 <main id="main-body">
     <[body]>
@@ -211,7 +211,6 @@
 <!-- custom js -->
 <script src="<[base]>/js/custom.js"></script>
 <!-- cart sidebar js -->
-<script src="<[base]>/js/cart-sidebar.js"></script>
 <script src="<[base]>/js/cart.js"></script>
 <!-- revolution js files -->
 <script src="<[base]>/revolution/js/jquery.themepunch.tools.min.js"></script>

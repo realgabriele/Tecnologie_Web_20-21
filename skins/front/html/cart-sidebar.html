@@ -1,5 +1,7 @@
+<link rel="stylesheet" href="<[base]>/css/cart-sidebar.css">
+
 <div class="row">
-    <div class="sidebar-cart" id="cart-sidebar-container">
+    <div class="col-12">
         <div class="sidebar-cart-header">
             <i class="fa fa-shopping-cart cart-icon"></i><span class="badge"><[totale-quantita-carrello]></span>
             <div class="sidebar-cart-total">
@@ -7,22 +9,26 @@
                 <span class="main-color-text"><[totale-carrello::to_prezzo library="utility"]></span>
             </div>
         </div> <!--end sidebar-cart-header -->
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
         <div style="position: relative">
             <[if!empty nome]>
             <[foreach]>
-            <ul class="sidebar-cart-items">
-                <li class="clearfix">
+            <div class="row sidebar-cart-items">
+                <div class="col-12 clearfix">
                     <img src="<[foto]>" alt="item_foto" />
                     <span class="item-name"><a href="#"><[nome]></a></span>
                     <span class="item-price"><[prezzo::to_prezzo library="utility"]></span>
                     <span class="item-quantity">Quantity: <[quantita-carrello]></span>
                     <span class="item-total-price"><[prezzo-totale::to_prezzo library="utility"]></span>
-                </li>
-            </ul>
+                </div>
+            </div>
             <[/foreach]>
             <[/if!empty]>
         </div>
+    </div>
 
-        <a href="cart.php" class="button">Checkout</a>
-    </div> <!--end sidebar-cart -->
-</div> <!--end container -->
+    <a href="cart.php" class="button my-2">Checkout</a>
+</div>

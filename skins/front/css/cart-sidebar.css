@@ -12,27 +12,25 @@
     white-space: nowrap;
 }
 .sidebar-cart {
-    display: none;
-    margin: 20px 0;
-    float: right;
+    position: relative;
     background: whitesmoke;
-    width: 360px;
-    position: absolute;
-    right: 50px;
     border-radius: 3px;
-    padding: 20px;
-    overflow: hidden;
-    white-space: nowrap;
 }
 .sidebar-cart .sidebar-cart-header {
     border-bottom: 1px solid #e8e8e8;
     padding-bottom: 30px;
 }
 .sidebar-cart .sidebar-cart-header .sidebar-cart-total {
+    font-weight: bold;
+    font-size: 21px;
     float: right;
 }
 .sidebar-cart .sidebar-cart-items {
     padding-top: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    background: #fff;
+    color: #666 !important;
 }
 .sidebar-cart .sidebar-cart-items li {
     margin-bottom: 18px;
@@ -61,18 +59,11 @@
     color: #6394f8;
     font-size: 16px;
 }
-.sidebar-cart:after {
-    bottom: 100%;
-    left: 89%;
-    border: solid transparent;
-    content: " ";
-    height: 0;
-    width: 0;
-    position: absolute;
-    pointer-events: none;
-    border-bottom-color: white;
-    border-width: 8px;
-    margin-left: -8px;
+
+#cart-sidebar-container {
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 0px;
 }
 #cart-sidebar-container .cart-icon {
     color: #515783;
@@ -89,7 +80,7 @@
     display: block;
     border-radius: 3px;
     font-size: 16px;
-    margin: 25px 0 15px 0;
+    margin: auto;
 }
 #cart-sidebar-container .button:hover {
     background: #729ef9;

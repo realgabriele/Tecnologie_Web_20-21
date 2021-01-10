@@ -3,6 +3,15 @@ $(window).on('load', function() {
         set_sidebar_position()
         $("#cart-sidebar-container").animate({width: "toggle"});
     });
+
+    $("#cart-sidebar-button")
+        .on("mouseenter", function() {
+            set_sidebar_position()
+            $("#cart-sidebar-container").slideDown();
+        })
+        .on("mouseleave", function () {
+            $("#cart-sidebar-container").slideUp();
+        });
 });
 
 function set_sidebar_position(){
@@ -16,6 +25,6 @@ function set_sidebar_position(){
         'position': 'absolute',
         'right': right,
         'top': top,
-        'z-index': 100
+        'z-index': 101
     });
 }
