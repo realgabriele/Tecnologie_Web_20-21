@@ -1,0 +1,70 @@
+<div style="height: 700px">
+    <link rel="stylesheet" href="<[base]>/css/show_item.css" />
+    <link rel="stylesheet" href="<[base]>/css/recensioni.css" />
+    <div class="container">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-head">
+                    <img src="<[foto]>" alt="Shoe" class="product-img">
+                </div>
+                <div class="card-body">
+                    <div class="product-desc">
+                        <span class="product-title">
+                        <b><[nome]></b>
+                            <span class="badge">
+                                New
+                            </span>
+
+                        </span>
+                        <BR>
+                        <span class="product-caption">
+                            <[descrizione]>
+                        </span>
+                        <span class="product-rating">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star grey"></i>
+                            <i class="fa fa-star grey"></i>
+                        </span>
+                    </div>
+                    <div class="product-properties">
+                        <br>
+                        <br>
+                        <span class="product-size">
+                            <ul class="ul-size">
+                                <li><a onclick="show_price(<[prezzo]>, 1)" class="active">1</a></li>
+                                <li><a onclick="show_price(<[prezzo]>, 5)" class="active">5</a></li>
+                                <li><a onclick="show_price(<[prezzo]>, 10)" class="active">10</a></li>
+
+                            </ul>
+                        </span>
+                        <span class="product-price">
+                            EUR<b id="total_item_price"> <[prezzo]> </b>
+                        </span>
+
+                        <span class="descrizione">
+                            INFORMAZIONI SU QUESTO ARTICOLO
+                        </span>
+
+                        <span class="descrizione2">
+                            <[descrizione_lunga]>
+                        </span>
+
+                        <span class="scrivi">
+                        <i  class="fas fa-edit"></i>
+                        </span>
+
+                        <span class="recensioni">
+                                RECENSIONI
+                        </span>
+
+                        <[recensioni]>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="<[base]>/js/show_item.js"></script>
+</div>
