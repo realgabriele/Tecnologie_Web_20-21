@@ -20,7 +20,15 @@
     /* IE6-9 fallback on horizontal gradient */
     border-radius: 25px 25px 0 0;
 }
-
+.scrivi {
+    position: absolute;
+    top: 335px;
+    right: -310px;
+    font-size: 20px;
+    color: orange;
+    margin-left: 5px;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25),
+}
 .product-img {
     position: absolute;
     left: 0;
