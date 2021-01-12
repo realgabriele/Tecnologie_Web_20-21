@@ -5,7 +5,7 @@
       <div class="col-md-9">
         <div class="row">
 
-          <[foreach]>
+          <[if!empty id]><[foreach]>
           <div class="col-md-4 col-sm-6 col-xs-12 margin_bottom_30_all">
             <div class="product_list">
               <div class="product_img text_align_center"> <img class="img-responsive" src="<[foto]>" alt=""> </div>
@@ -31,27 +31,29 @@
               </div>
             </div>
           </div>
-          <[/foreach]>
-
-
+          <[/foreach]><[/if!empty]>
         </div>
       </div>
+
+      <!-- Sidebar -->
       <div class="col-md-3">
         <div class="side_bar">
           <div class="side_bar_blog">
-            <h4>SEARCH</h4>
-            <div class="side_bar_search">
-              <div class="input-group stylish-input-group">
-                <input class="form-control" placeholder="Search" type="text">
-                <span class="input-group-addon">
-                <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
-                </span> </div>
-            </div>
+            <form>
+              <h4>SEARCH</h4>
+              <div class="side_bar_search">
+                <div class="input-group stylish-input-group">
+                  <input class="form-control" placeholder="Search" type="text" name="q" value="<[q_old]>">
+                  <span class="input-group-addon">
+                    <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+                  </span>
+                </div>
+              </div>
+
+              <input type="number" name="cat" value="<[cat_old]>">
+            </form>
           </div>
-          <div class="side_bar_blog">
-            <h4>GET A QUOTE</h4>
-            <p>An duo lorem altera gloriatur. No imperdiet adver sarium pro. No sit sumo lorem. Mei ea eius elitr consequ unturimperdiet.</p>
-            <a class="btn sqaure_bt" href="it_service.html">View Service</a> </div>
+
           <div class="side_bar_blog">
             <h4>OUR SERVICE</h4>
             <div class="categary">
