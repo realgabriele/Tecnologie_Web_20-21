@@ -11,7 +11,8 @@ $id = $_GET["id"];
 
 global $dbh;
 if (!$result = $dbh->query("SELECT * FROM articoli WHERE id=$id")) {
-    echo "Error: ", $result->errorInfo();
+    echo "Error: ", $dbh->errorInfo();
+    exit(1);
 }
 
 for($i=0; $i<$result->rowCount(); $i++) {
@@ -23,7 +24,8 @@ for($i=0; $i<$result->rowCount(); $i++) {
 $recensioni = new Template("articoli/recensioni.html");
 
 if (!$result = $dbh->query("SELECT * FROM recensioni WHERE articolo_id=$id")) {
-    echo "Error: ", $result->errorInfo();
+    echo "Error: ", $dbh->errorInfo();
+    exit(1);
 }
 for($i=0; $i<$result->rowCount(); $i++) {
     $data = $result->fetch(PDO::FETCH_ASSOC);
