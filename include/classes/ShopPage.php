@@ -15,27 +15,33 @@ class ShopPage extends FramePublic
 
     public function handleRequest()
     {
+        $filtered_get = array_filter($_GET);
+
+        $query = "SELECT `articoli`.* FROM `articoli` ";
         $conditions = [];
         $parameters = [];
         $joins = [];
-        $query = "SELECT * FROM `articoli` ";
 
-        if (isset($_GET['q'])) {        // query string
+        if (isset($filtered_get['q'])) {        // query string
             $conditions[] = " ( nome LIKE :q OR ".
                 " descrizione LIKE :q OR ".
                 " descrizione_lunga LIKE :q ) ";
-            $parameters['q'] = "%" . $_GET['q'] . "%";
-            $parameters['q'] = "%" . $_GET['q'] . "%";
-            $parameters['q'] = "%" . $_GET['q'] . "%";
+            $parameters['q'] = "%" . $filtered_get['q'] . "%";
 
 
         }
-        if (isset($_GET['cat'])) {      // category id
+        if (isset($filtered_get['cat'])) {      // category id
             $joins[] = " JOIN `articolo_categoria` AS AC ON id = AC.articolo_id ";
-            $conditions[] = " AC.categoria_id = :cat ";
-            $parameters['cat'] = $_GET['cat'];
+
+            $conds = [];
+            foreach ($filtered_get['cat'] as $i => $cat){
+                $conds[] = " AC.categoria_id = :cat{$i} ";
+                $parameters["cat{$i}"] = $cat;
+            }
+            $conditions[] = " ( " . implode(" OR ", $conds) . " ) ";
         }
 
+        /* prepare query */
         if (!empty($joins)) {
             $query .= implode("", $joins);
         }
@@ -43,16 +49,8 @@ class ShopPage extends FramePublic
             $query .= " WHERE " . implode(" AND ", $conditions);
         }
 
-        echo "\nquery\n";
-        print_r($query);
-        echo "\njoins\n";
-        print_r($joins);
-        echo "\nconditions\n";
-        print_r($conditions);
-        echo "\nparameters\n";
-        print_r($parameters);
-        echo "\n\n";
-
+        $query .= " GROUP BY id ";  // no duplicates
+        
         $this->query_prepared = $this->dbh->prepare($query);
         foreach ($parameters as $param => &$value) {
             $this->query_prepared->bindParam($param, $value);
@@ -64,14 +62,25 @@ class ShopPage extends FramePublic
     {
         $this->body->setContent(array_key_append($_GET, "_old"), null);
 
+        // set Articoli mostrati
         if (! $this->query_prepared->execute()) {
             echo "Error: ";
             print_r($this->query_prepared->errorInfo());
         }
-
         $data = $this->query_prepared->fetchAll(PDO::FETCH_ASSOC);
         foreach ($data as $row) {
             $this->body->setContent($row, null);
+        }
+
+        // set lista di Categorie
+        if (!$result = $this->dbh->query("SELECT * FROM `categorie`")){
+            echo "Error: "; print_r($this->dbh->errorInfo());
+        }
+        $data = $result->fetchAll(PDO::FETCH_ASSOC);
+        foreach ($data as $row) {
+            $row['check'] = in_array($row['id'], $_GET['cat']) ? "checked" : "";
+            print_r($row);
+            $this->body->setContent(array_key_append($row, "_cat"), null);
         }
     }
 }

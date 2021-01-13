@@ -50,7 +50,15 @@
                 </div>
               </div>
 
-              <input type="number" name="cat" value="<[cat_old]>">
+              <!--  ToDo: mettere una checkbox
+                    ToDo: consentire solo categorie dei prodotti mostrati
+                    ToDo: mettere if!empty -->
+
+              <[foreach]>
+              <input type="checkbox" id="cat<[id_cat]>" name="cat[]" value="<[id_cat]>" <[check_cat]> >
+              <label for="cat<[id_cat]>"><[nome_cat]></label><br>
+              <[/foreach]>
+
             </form>
           </div>
 

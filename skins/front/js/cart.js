@@ -1,6 +1,6 @@
 function ajax_cart_request(pars){
     $.post('ajax_cart.php', pars, function(response){
-        $('#cart-sidebar').html(response.cart_sidebar);
+        $('#cart-sidebar-container').html(response.cart_sidebar);
         $('#shopping-cart-container').parent().html(response.cart_body);
         $('#cart-sidebar-badge').html(response.cart_badge);
 
