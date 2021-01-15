@@ -20,7 +20,7 @@ class CreatePage extends FramePublic
     {
         if (!isset($this->table_name)) $this->render_error("Tabella non specificata");
 
-        parent::check_authorization([$this->table_name . ".create"]);
+        parent::check_authorization(array_merge($actions, [$this->table_name . ".create"]));
     }
 
     public function handleRequest()

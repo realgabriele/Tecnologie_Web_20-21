@@ -1,6 +1,6 @@
 <?php
 
-require "include/classes/ShowWishlistPage.php";
+require "include/classes/ShowSharedPage.php";
 
-$page = new ShowWishlistPage();
+$page = new ShowSharedPage();
 echo $page->getPage();

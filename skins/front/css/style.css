@@ -2691,10 +2691,6 @@ span.skill {
 		12. SIDEBAR
 	-------------------------------------------------------------------*/
 
-.side_bar h4 {
-	margin-top: 0;
-}
-
 .side_bar_blog {
 	margin-bottom: 50px;
 	float: left;
@@ -2751,11 +2747,17 @@ span.skill {
 .categary li:focus {
 	padding-left: 30px;
 	background: #039ee3;
+	color: #fff;
 }
 
 .categary li:hover a,
 .categary li:focus a {
 	color: #fff;
+}
+
+.categary input[type="checkbox"] {
+	width : 19px;
+	height: 19px;
 }
 
 .tags a {

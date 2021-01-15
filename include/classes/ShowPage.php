@@ -23,7 +23,7 @@ class ShowPage extends FramePublic
     {
         if (!isset($this->table_name)) $this->render_error("Tabella non specificata");
 
-        parent::check_authorization([$this->table_name . '.show']);
+        parent::check_authorization(array_merge($actions, [$this->table_name . '.show']));
 
         if ($this->single_page){
             // controlla se l'utente loggato è il possessore di quella entry
@@ -32,7 +32,6 @@ class ShowPage extends FramePublic
                 " WHERE `utenti`.id = :uid AND `{$this->table_name}`.id = :id";
             $query_prepared = $this->dbh->prepare($query);
             $query_prepared->execute(['uid' => $this->auth->getCurrentUID(), 'id' => $this->row_id]);
-
             if (!$query_prepared->rowCount() > 0) {
                 $this->render_error("Non autorizzato a visualizzare questa entry");
             }

@@ -8,9 +8,11 @@
         <div class="col-8">
             <div class="row">
                 <div class="h1"><[nome]></div>
+                <[if!empty can_edit]>
                 <a href="share.php?table=wishlist&id=<[id]>">
                     <div class="fa fa-share-alt-square fa-2x pt-2 ml-5"></div>
                 </a>
+                <[/if!empty]>
             </div>
 
             <[if!empty nome_articolo]><[foreach]>
@@ -25,7 +27,7 @@
                 <div class="col-7">
                     <div class="media-body">
                         <h3 class="media-heading pt-4">
-                            <a href="show_item.php?id=<[articoli.id]>"><[nome_articolo]></a>
+                            <a href="show_item.php?id=<[id_articolo]>"><[nome_articolo]></a>
                         </h3>
                     </div>
                 </div>
@@ -40,9 +42,11 @@
         </div>
         <div class="col-3">
             <div class="row">
+                <[if!empty can_edit]>
                 <a href="delete_wishlist.php?table=wishlist&id=<[id]>">
                     <div class="fa fa-trash fa-3x pt-2"></div>
                 </a>
+                <[/if!empty]>
             </div>
         </div>
     </div>

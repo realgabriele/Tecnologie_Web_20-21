@@ -50,7 +50,7 @@ class ShopPage extends FramePublic
         }
 
         $query .= " GROUP BY id ";  // no duplicates
-        
+
         $this->query_prepared = $this->dbh->prepare($query);
         foreach ($parameters as $param => &$value) {
             $this->query_prepared->bindParam($param, $value);
@@ -79,7 +79,6 @@ class ShopPage extends FramePublic
         $data = $result->fetchAll(PDO::FETCH_ASSOC);
         foreach ($data as $row) {
             $row['check'] = in_array($row['id'], $_GET['cat']) ? "checked" : "";
-            print_r($row);
             $this->body->setContent(array_key_append($row, "_cat"), null);
         }
     }

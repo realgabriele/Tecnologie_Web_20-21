@@ -11,6 +11,6 @@ class DeleteWishlistPage extends DeletePage
         $query_prepared = $this->dbh->prepare($query);
         $a = $query_prepared->execute([$this->row_id]);
 
-        print_r($query_prepared->errorInfo());
+        // remove old wishlist_condivisione entries
     }
 }

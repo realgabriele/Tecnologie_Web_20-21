@@ -50,17 +50,26 @@
                 </div>
               </div>
 
-              <!--  ToDo: mettere una checkbox
-                    ToDo: consentire solo categorie dei prodotti mostrati
+              <!--  ToDo: consentire solo categorie dei prodotti mostrati
                     ToDo: mettere if!empty -->
 
-              <[foreach]>
-              <input type="checkbox" id="cat<[id_cat]>" name="cat[]" value="<[id_cat]>" <[check_cat]> >
-              <label for="cat<[id_cat]>"><[nome_cat]></label><br>
-              <[/foreach]>
+              <h4>CATEGORIE</h4>
+              <div class="categary">
+                <ul>
+                  <[foreach]>
+                  <li>
+                    <input type="checkbox" id="cat<[id_cat]>" name="cat[]" value="<[id_cat]>" <[check_cat]> >
+                    <label for="cat<[id_cat]>" class="ml-3"><[nome_cat]></label><br>
+                  </li>
+                  <[/foreach]>
+                </ul>
+              </div>
+
+              <button type="submit" class="btn btn-primary"><i class="fa fa-search" aria-hidden="true"></i></button>
 
             </form>
           </div>
+
 
           <div class="side_bar_blog">
             <h4>OUR SERVICE</h4>
