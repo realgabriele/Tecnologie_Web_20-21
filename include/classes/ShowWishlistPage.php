@@ -2,7 +2,7 @@
 
 require "ShowPage.php";
 
-class ShowSharedPage extends ShowPage
+class ShowWishlistPage extends ShowPage
 {
     protected $can_edit = true;
 
@@ -60,7 +60,6 @@ class ShowSharedPage extends ShowPage
         $result = $query_prepared->fetchAll(PDO::FETCH_ASSOC);
 
         foreach ($result as $row) {
-            $row["prezzo-totale"] = $row['prezzo'] * $row['quantita'];
             $this->body->setContent(array_key_append($row, "_articolo"), null);
         }
     }

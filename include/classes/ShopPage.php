@@ -78,7 +78,7 @@ class ShopPage extends FramePublic
         }
         $data = $result->fetchAll(PDO::FETCH_ASSOC);
         foreach ($data as $row) {
-            $row['check'] = in_array($row['id'], $_GET['cat']) ? "checked" : "";
+            $row['check'] = in_array($row['id'], $_GET['cat'] ?? []) ? "checked" : "";
             $this->body->setContent(array_key_append($row, "_cat"), null);
         }
     }

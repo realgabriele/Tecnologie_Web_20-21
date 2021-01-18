@@ -1,5 +1,6 @@
 .idea/
 test*
+.htaccess
 
 include/config.inc.php
 include/dbms.inc.php
