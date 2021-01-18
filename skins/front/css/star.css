@@ -1,0 +1,89 @@
+#star .content {
+    text-align: center;
+}
+#star .content h1 {
+    font-family: 'Sansita', sans-serif;
+    letter-spacing: 1px;
+    font-size: 50px;
+    color: #282828;
+    margin-bottom: 10px;
+}
+#star .content  i {
+    color: #FFC107;
+}
+#star .content span {
+    position: absolute;
+    top: 250px;
+    display: inline-block;
+}
+#star .content  span:before, .content  span:after {
+    position: absolute;
+    content: "";
+    background-color: #282828;
+    width: 40px;
+    height: 2px;
+    top: 40%;
+}
+#star .content  span:before {
+    left: -45px;
+}
+#star .content  span:after {
+    right: -45px;
+}
+#star .content p {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 18px;
+    letter-spacing: 1px;
+}
+#star .wrapper {
+    position: absolute;
+    left: 75px;
+    top: -130px;
+    display: inline-block;
+    border: none;
+    font-size: 14px;
+    margin: 50px auto;
+    transform: translateX(-50%);
+}
+
+#star .wrapper input {
+    border: 0;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    position: absolute !important;
+    clip: rect(1px 1px 1px 1px);
+    clip: rect(1px, 1px, 1px, 1px);
+    opacity: 0;
+}
+
+#star .wrapper label {
+    position: relative;
+    float: right;
+    color: #C8C8C8;
+}
+
+#star .wrapper label:before {
+    margin: 5px;
+    content: "\f005";
+    font-family:"Font Awesome 5 Free";
+    display: inline-block;
+    font-size: 1.5em;
+    font-weight: 900;
+    color: #ccc;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+}
+
+#star .wrapper input:checked ~ label:before {
+    color: #FFC107;
+}
+
+#star .wrapper label:hover ~ label:before {
+    color: #ffdb70;
+}
+
+#star .wrapper label:hover:before {
+    color: #FFC107;
+}
