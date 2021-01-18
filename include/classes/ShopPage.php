@@ -17,10 +17,13 @@ class ShopPage extends FramePublic
     {
         $filtered_get = array_filter($_GET);
 
-        $query = "SELECT `articoli`.* FROM `articoli` ";
+        $query = "SELECT `articoli`.*, AVG(rating) AS rating FROM `articoli` ";
         $conditions = [];
         $parameters = [];
         $joins = [];
+
+        // recensioni
+        $joins[] = " JOIN recensioni ON `articoli`.id = `recensioni`.articolo_id ";
 
         if (isset($filtered_get['q'])) {        // query string
             $conditions[] = " ( nome LIKE :q OR ".
@@ -50,6 +53,8 @@ class ShopPage extends FramePublic
         }
 
         $query .= " GROUP BY id ";  // no duplicates
+
+        echo $query."\n";
 
         $this->query_prepared = $this->dbh->prepare($query);
         foreach ($parameters as $param => &$value) {

@@ -10,8 +10,8 @@ class ShowPage extends FramePublic
 
     public function __construct()
     {
-        $this->table_name = $_GET['table'];
-        $this->row_id = $_GET['id'];
+        $this->table_name = $_GET['table'] ?? null;
+        $this->row_id = $_GET['id'] ?? null;
         $this->single_page = isset($_GET['id']);
 
         $this->body = new Template($this->table_name . "/show_" . ($this->single_page ? "single" : "multiple") . ".html");
