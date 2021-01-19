@@ -1,31 +1,42 @@
 <div class="container shopping-cart">
-    <div style="font-size: 26px">Ordine n. <span class="font-weight-bold"><[id]></span>
-        del <span class="font-weight-bold"><[timestamp::to_date library="utility]></span>
-        alle <span class="font-weight-bold"><[timestamp::to_time library="utility]></span>
-    </div>
-    <[foreach]>
-        <div class="row py-1">
-            <!-- Foto -->
-            <div class="col-2">
-                <div class="media">
-                    <img class="media-object" src="<[foto]>" alt="#">
-                </div>
-            </div>
-            <!-- Nome -->
-            <div class="col-7">
-                <div class="media-body">
-                    <h4 class="media-heading">
-                        <a href="show_item.php?id=<[articoli.id]>"><[nome]></a>
-                    </h4>
-                    <span>Prezzo: <[prezzo::to_prezzo library="utility"]></span>
-                    <span>Quantita: <[quantita]></span>
-                </div>
-            </div>
-
-            <!-- Prezzo Totale -->
-            <div class="col-3 text-center pt-5">
-                <p class="price_table"><[prezzo-totale::to_prezzo library="utility"]></p>
-            </div>
+    <div class="row">
+        <div class="col-1">
+            <a href="show.php?table=ordini">
+                <div class="fa fa-angle-left fa-3x"></div>
+            </a>
         </div>
-    <[/foreach]>
+        <div class="col">
+            <div class="row">
+                <div style="font-size: 26px">Ordine n. <span class="font-weight-bold"><[id]></span>
+                    del <span class="font-weight-bold"><[timestamp::to_date library="utility]></span>
+                    alle <span class="font-weight-bold"><[timestamp::to_time library="utility]></span>
+                </div>
+            </div>
+            <[foreach]>
+            <div class="row py-1">
+                <!-- Foto -->
+                <div class="col-2">
+                    <div class="media">
+                        <img class="media-object" src="<[foto]>" alt="#">
+                    </div>
+                </div>
+                <!-- Nome -->
+                <div class="col-7">
+                    <div class="media-body">
+                        <h4 class="media-heading">
+                            <a href="show_item.php?id=<[articoli.id]>"><[nome]></a>
+                        </h4>
+                        <span>Prezzo: <[prezzo::to_prezzo library="utility"]></span>
+                        <span>Quantita: <[quantita]></span>
+                    </div>
+                </div>
+
+                <!-- Prezzo Totale -->
+                <div class="col-3 text-center pt-5">
+                    <p class="price_table"><[prezzo-totale::to_prezzo library="utility"]></p>
+                </div>
+            </div>
+            <[/foreach]>
+        </div>
+    </div>
 </div>

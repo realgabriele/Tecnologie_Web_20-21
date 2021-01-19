@@ -30,9 +30,8 @@ class ShopPage extends FramePublic
                 " descrizione LIKE :q OR ".
                 " descrizione_lunga LIKE :q ) ";
             $parameters['q'] = "%" . $filtered_get['q'] . "%";
-
-
         }
+
         if (isset($filtered_get['cat'])) {      // category id
             $joins[] = " JOIN `articolo_categoria` AS AC ON id = AC.articolo_id ";
 
@@ -53,8 +52,6 @@ class ShopPage extends FramePublic
         }
 
         $query .= " GROUP BY id ";  // no duplicates
-
-        echo $query."\n";
 
         $this->query_prepared = $this->dbh->prepare($query);
         foreach ($parameters as $param => &$value) {
