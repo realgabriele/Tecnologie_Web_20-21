@@ -192,9 +192,9 @@
 }
 
 .product-price {
-    position: relative;
-    top:-25px;
-    right:-220px;
+    position: absolute;
+    top:460px;
+    right:-50px;
     background: #499dd4;
     padding: 7px 20px;
     text-align: center;
@@ -251,6 +251,7 @@
     background: linear-gradient(135deg, #499dd4 20%, #1c283b 50%);
     padding: 2px 5px;
     border-radius: 4px;
+    width: auto;
     top: 150px;
     right: -580px;
     left: 470px;
