@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Creato il: Gen 09, 2021 alle 11:46
+-- Creato il: Gen 19, 2021 alle 09:34
 -- Versione del server: 8.0.22-0ubuntu0.20.04.3
 -- Versione PHP: 7.4.3
 
@@ -45,7 +45,7 @@ CREATE TABLE `articoli` (
 --
 
 INSERT INTO `articoli` (`id`, `nome`, `descrizione`, `descrizione_lunga`, `foto`, `disponibilita`, `prezzo`) VALUES
-(1, 'Mascherina\r\nChirurgica', 'mascherina chirurgica bellissima', 'Una maschera (o mascherina) chirurgica, nota anche come maschera medica,\r\n                            o maschera facciale per uso medico,o mascherina igienica (soprattutto tra gli italiani svizzeri),\r\n                            è un dispositivo destinato a essere indossato dagli operatori sanitari durante un intervento chirurgico\r\n                            o altre attività in ambito sanitario al fine di evitare la dispersione di agenti patogeni.', 'https://i.postimg.cc/kDP21W0R/DEFDEF.png', 24, 0.5),
+(1, 'Mascherina Chirurgica', 'mascherina chirurgica bellissima', 'Una maschera (o mascherina) chirurgica, nota anche come maschera medica,\r\n                            o maschera facciale per uso medico,o mascherina igienica (soprattutto tra gli italiani svizzeri),\r\n                            è un dispositivo destinato a essere indossato dagli operatori sanitari durante un intervento chirurgico\r\n                            o altre attività in ambito sanitario al fine di evitare la dispersione di agenti patogeni.', 'https://i.postimg.cc/kDP21W0R/DEFDEF.png', 24, 0.5),
 (2, 'Amuchina Mani', 'Gel disinfettante mani', 'Amuchina Gel X-GERM Disinfettante Mani è un gel antisettico, studiato per disinfettare a fondo la pelle delle mani. La sua formulazione è in grado di ridurre efficacemente in pochi secondi germi e batteri presenti sulla cute. Amuchina Gel X-GERM Disinfettante Mani è attivo su virus, funghi e batteri.', 'https://i.postimg.cc/W4YHndfV/DEFDEF-copia.png', 5, 2.75);
 
 -- --------------------------------------------------------
@@ -70,8 +70,29 @@ INSERT INTO `articolo_carrello` (`carrello_id`, `articolo_id`, `quantita`) VALUE
 (1, 2, 12),
 (2, 1, 1),
 (2, 2, 4),
-(3, 1, 5),
-(3, 2, 8);
+(3, 1, 3),
+(3, 2, 3);
+
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `articolo_categoria`
+--
+
+DROP TABLE IF EXISTS `articolo_categoria`;
+CREATE TABLE `articolo_categoria` (
+  `articolo_id` int NOT NULL,
+  `categoria_id` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dump dei dati per la tabella `articolo_categoria`
+--
+
+INSERT INTO `articolo_categoria` (`articolo_id`, `categoria_id`) VALUES
+(1, 1),
+(1, 3),
+(2, 2);
 
 -- --------------------------------------------------------
 
@@ -127,8 +148,17 @@ DROP TABLE IF EXISTS `categorie`;
 CREATE TABLE `categorie` (
   `id` int NOT NULL,
   `nome` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `descrizione` text COLLATE utf8mb4_unicode_ci NOT NULL
+  `descrizione` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dump dei dati per la tabella `categorie`
+--
+
+INSERT INTO `categorie` (`id`, `nome`, `descrizione`) VALUES
+(1, 'mascherine', NULL),
+(2, 'disinfettanti', NULL),
+(3, 'DPI', 'Dispositivi di Protezione Individuale');
 
 -- --------------------------------------------------------
 
@@ -393,7 +423,8 @@ CREATE TABLE `phpauth_sessions` (
 
 INSERT INTO `phpauth_sessions` (`id`, `uid`, `hash`, `expiredate`, `ip`, `device_id`, `agent`, `cookie_crc`) VALUES
 (15, 1, 'dc723af031542e56f1c567c6c1a05907ddaae9a0', '2021-01-06 18:14:08', '192.168.1.125', NULL, 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.66 Safari/537.36', 'd910ac0fee5c86a63534ff5acaedd5f4fe891460'),
-(40, 3, '68c6adb50f1cfccf0da9a47dd65595b665a20ab2', '2021-02-09 11:42:32', '192.168.1.125', NULL, 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.66 Safari/537.36', '07b26cd711a33d655584ab6b9a9297b84135619d');
+(40, 3, '68c6adb50f1cfccf0da9a47dd65595b665a20ab2', '2021-02-19 09:31:09', '192.168.1.125', NULL, 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.66 Safari/537.36', '07b26cd711a33d655584ab6b9a9297b84135619d'),
+(42, 4, '914e867222c6084ec76cd198c933cb6ec73a7779', '2021-02-15 09:25:20', '192.168.1.125', NULL, 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.66 Safari/537.36', '2663d7be10cc05bdf60845c12504b8344e2427ab');
 
 -- --------------------------------------------------------
 
@@ -416,7 +447,7 @@ CREATE TABLE `recensioni` (
 
 INSERT INTO `recensioni` (`utente_id`, `articolo_id`, `titolo`, `descrizione`, `rating`) VALUES
 (1, 1, 'Bellissimo TOP', 'mi sono trovato molto bene', 5),
-(1, 2, 'Non ce niente di meglio', 'questo boccione mi ha salvato la vita', 4),
+(1, 2, 'Non ce niente di meglio', 'questo boccione mi ha salvato la vita', 5),
 (2, 1, 'buona qualita', NULL, 4),
 (3, 1, 'si e\' rotta subito', 'per fortuna che era monouso', 2);
 
@@ -472,8 +503,8 @@ CREATE TABLE `utente_gruppo` (
 --
 
 INSERT INTO `utente_gruppo` (`utente_id`, `gruppo_id`) VALUES
-(1, 1),
-(3, 1);
+(3, 1),
+(4, 1);
 
 -- --------------------------------------------------------
 
@@ -499,7 +530,7 @@ INSERT INTO `utenti` (`id`, `nome`, `email`, `password`, `isactive`, `dt`) VALUE
 (1, 'Giovanni Spada', 'giavannino@gmail.com', '$2y$10$EAhLhUi0SsKAa5/shXAnXOHePRVmGjvOjp7UYLERqDC1xI5BBaso2', 1, '2020-12-04 11:35:09'),
 (2, 'Rita Calamita', 'Xx_rita_xX@yahoo.it', 'Questa Psw deve essere un hash', 1, '2020-12-03 15:16:44'),
 (3, 'admin', 'admin@admin.net', '$2y$10$iJcIRXGq21lUfMBwiXrrYevzrRy5WjXlve2QdGM2Gx2zbqjBZFUxa', 1, '2020-12-16 17:39:43'),
-(4, 'aaa', 'aaa@email.com', '$2y$10$r/Y1zZk7cgI5LpD8njh8reG/ulE66mP1HviblPKpcBEeKBK.vPJbK', 1, '2021-01-07 09:41:45');
+(4, 'aaa', 'aaa@email.it', '$2y$10$r/Y1zZk7cgI5LpD8njh8reG/ulE66mP1HviblPKpcBEeKBK.vPJbK', 1, '2021-01-07 09:41:45');
 
 -- --------------------------------------------------------
 
@@ -539,7 +570,7 @@ CREATE TABLE `wishlist_condivisione` (
 --
 
 INSERT INTO `wishlist_condivisione` (`wishlist_id`, `utente_id`) VALUES
-(5, 3),
+(1, 4),
 (5, 4);
 
 --
@@ -559,6 +590,12 @@ ALTER TABLE `articolo_carrello`
   ADD PRIMARY KEY (`carrello_id`,`articolo_id`);
 
 --
+-- Indici per le tabelle `articolo_categoria`
+--
+ALTER TABLE `articolo_categoria`
+  ADD PRIMARY KEY (`articolo_id`,`categoria_id`);
+
+--
 -- Indici per le tabelle `articolo_ordine`
 --
 ALTER TABLE `articolo_ordine`
@@ -569,6 +606,12 @@ ALTER TABLE `articolo_ordine`
 --
 ALTER TABLE `articolo_wishlist`
   ADD PRIMARY KEY (`articolo_id`,`wishlist_id`);
+
+--
+-- Indici per le tabelle `categorie`
+--
+ALTER TABLE `categorie`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indici per le tabelle `gruppi`
@@ -684,6 +727,12 @@ ALTER TABLE `articoli`
   MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT per la tabella `categorie`
+--
+ALTER TABLE `categorie`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT per la tabella `gruppi`
 --
 ALTER TABLE `gruppi`
@@ -711,7 +760,7 @@ ALTER TABLE `ordini`
 -- AUTO_INCREMENT per la tabella `phpauth_attempts`
 --
 ALTER TABLE `phpauth_attempts`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT per la tabella `phpauth_emails_banned`
@@ -729,7 +778,7 @@ ALTER TABLE `phpauth_requests`
 -- AUTO_INCREMENT per la tabella `phpauth_sessions`
 --
 ALTER TABLE `phpauth_sessions`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT per la tabella `servizi`
