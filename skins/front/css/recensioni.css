@@ -12,6 +12,14 @@
     left: 470px;
 }
 
+.carrello {
+    position: absolute;
+    right: 5px;
+    top: 400px;
+    font-size: 30px;
+    color: #6db19b;
+}
+
 .recensioni_container {
     position: absolute;
     display: block;
