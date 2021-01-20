@@ -178,16 +178,16 @@ position:relative;
     margin: 0;
     color: #000000;
 }
-#areautente-container #igialla {
+#areautente-container .igialla {
     position: absolute;
     top: 230px;
     right: 40px;
     font-size: 50px;
     color: orange;
     margin-left: 5px;
-    box-shadow: 0 14px 28px rgba(0,0,0,0.25),
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25);
 }
-#areautente-container #igialla2 {
+#areautente-container .igialla2 {
     color: orange;
     margin-left: 5px;
 }

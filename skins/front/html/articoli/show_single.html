@@ -21,11 +21,7 @@
                             <[descrizione]>
                         </span>
                         <span class="product-rating">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star grey"></i>
-                            <i class="fa fa-star grey"></i>
+                            <[rating::to_stars library="utility"]>
                         </span>
                     </div>
                     <div class="product-properties">
@@ -33,10 +29,9 @@
                         <br>
                         <span class="product-size">
                             <ul class="ul-size">
-                                <li><a onclick="show_price(<[prezzo]>, 1)" class="active">1</a></li>
-                                <li><a onclick="show_price(<[prezzo]>, 5)" class="active">5</a></li>
-                                <li><a onclick="show_price(<[prezzo]>, 10)" class="active">10</a></li>
-
+                                <li><a onclick="show_price(<[prezzo]>, 1, <[id]>)" class="active">1</a></li>
+                                <li><a onclick="show_price(<[prezzo]>, 5, <[id]>)" class="active">5</a></li>
+                                <li><a onclick="show_price(<[prezzo]>, 10, <[id]>)" class="active">10</a></li>
                             </ul>
                         </span>
                         <span class="product-price">
@@ -51,20 +46,19 @@
                             <[descrizione_lunga]>
                         </span>
 
-                        <span class="scrivi">
-                        <i  class="fas fa-edit"></i>
-                        </span>
+                        <a href="scrivi_recensione.php?id=<[id]>" class="scrivi">
+                            <i class="fas fa-edit"></i>
+                        </a>
 
                         <span class="recensioni">
-                                RECENSIONI
+                            RECENSIONI
                         </span>
 
                         <[recensioni]>
 
-
-                        <span class="carrello">
-                        <i class="fas fa-cart-plus"></i>
-                        </span>
+                        <a id="addmultiple-button" onclick="add_to_cart(this, <[id]>)" class="carrello">
+                            <i class="fas fa-cart-plus"></i>
+                        </a>
 
 
                     </div>

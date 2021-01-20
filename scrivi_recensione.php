@@ -20,7 +20,6 @@ for($i=0; $i<$result->rowCount(); $i++) {
     $body->setContent($data, null);
 }
 
-
 $recensioni = new Template("articoli/recensioni.html");
 
 if (!$result = $dbh->query("SELECT * FROM recensioni WHERE articolo_id=$id")) {

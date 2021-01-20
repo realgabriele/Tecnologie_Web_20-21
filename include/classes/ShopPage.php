@@ -23,7 +23,7 @@ class ShopPage extends FramePublic
         $joins = [];
 
         // recensioni
-        $joins[] = " JOIN recensioni ON `articoli`.id = `recensioni`.articolo_id ";
+        $joins[] = " LEFT JOIN `recensioni` ON `articoli`.id = `recensioni`.articolo_id ";
 
         if (isset($filtered_get['q'])) {        // query string
             $conditions[] = " ( nome LIKE :q OR ".

@@ -1,5 +1,6 @@
-function show_price(price, quantity){
+function show_price(price, quantity, item_id){
     $("#total_item_price").html((price * quantity).toFixed(2));
+    $("#addmultiple-button").attr("onclick", "add_to_cart(this, " + item_id + ", " + quantity + ")");
 }
 
 

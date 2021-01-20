@@ -28,7 +28,7 @@ function update_item(id, quantity){
     ajax_cart_request({set_item: id, set_quantity: quantity});
 }
 
-function add_to_cart(button, id){
+function add_to_cart(button, id, quantity=1){
     curr_elem = $(button);      // clicked element (start)
     cart = $("#cart-sidebar-button .fa-shopping-cart");     // cart element (target)
     animation = $(".addtocart-animation");  // animated div
@@ -46,6 +46,6 @@ function add_to_cart(button, id){
         }, 500)
     });
 
-    ajax_cart_request({add: id});
+    ajax_cart_request({add: id, quantity: quantity});
 
 }

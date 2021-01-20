@@ -14,7 +14,7 @@ class CartPage extends FramePublic
     public function handleRequest()
     {
         if (isset($_POST['add'])){
-            $this->cart->add($_POST['add']);
+            $this->cart->add($_POST['add'], $_POST['quantity'] ?? 1);
         }
         if (isset($_POST['sub'])){
             $this->cart->sub($_POST['sub']);
