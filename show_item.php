@@ -12,8 +12,8 @@ $id = $_GET["id"];
 global $dbh;
 if (!$result = $dbh->query("SELECT `articoli`.*,AVG(rating) AS rating ".
     " FROM articoli LEFT JOIN `recensioni` ON `articoli`.id = `recensioni`.articolo_id ".
-    " WHERE id=$id")) {
-    echo "Error: ", $result->errorInfo();
+    " WHERE `articoli`.id=$id")) {
+    echo "Error: "; print_r($dbh->errorInfo());
 }
 
 for($i=0; $i<$result->rowCount(); $i++) {
