@@ -59,8 +59,6 @@ class CreatePage extends FramePublic
 
     public function updateBody()
     {
-        echo $this->new_row_id;
-
         $this->body->setContent(array_key_append($_POST, "-old"), null);
     }
 
