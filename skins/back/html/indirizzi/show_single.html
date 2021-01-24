@@ -1,0 +1,86 @@
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-1">
+                    <a href="admin_show.php?table=indirizzi">
+                        <button class="btn btn-primary"><i class="fas fa-angle-left"></i></button>
+                    </a>
+                </div>
+                <div class="col-sm-6">
+                    <h1 class="m-0 text-dark">Indirizzo</h1>
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <!-- User Informations -->
+            <div class="row">
+                <!-- left column -->
+                <div class="col-md-6">
+                    <!-- general form elements -->
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Informazioni</h3>
+                            <a href="admin_edit.php?table=indirizzi&id=<[id]>">
+                                <button class="btn btn-default float-right">Modifica</button>
+                            </a>
+                        </div>
+                        <!-- /.card-header -->
+                        <!-- card body start -->
+                        <div class="card-body">
+                            <div class="card-group">
+                                <span class="card-label">Proprietario: </span>
+                                <span class="card-text">
+                                    <a href="admin_show.php?table=utenti&id=<[utente_id]>">
+                                        <[utente_id::show_many2one tab2_name="utenti" column="nome" library="admin"]>
+                                    </a>
+                                </span>
+                            </div>
+                            <div class="card-group">
+                                <span class="card-label">Nome dell'Indirizzo: </span>
+                                <span class="card-text"><[alias]></span>
+                            </div>
+                            <div class="card-group">
+                                <span class="card-label">Cognome: </span>
+                                <span class="card-text"><[cognome]></span>
+                                <span class="mx-5"></span>
+                                <span class="card-label">Nome: </span>
+                                <span class="card-text"><[nome]></span>
+                            </div>
+                            <div class="card-group">
+                                <span class="card-label">Via: </span>
+                                <span class="card-text"><[via]></span>
+                            </div>
+                            <div class="card-group">
+                                <span class="card-label">Città: </span>
+                                <span class="card-text"><[citta]></span>
+                                <span class="mx-5"></span>
+                                <span class="card-label">Provincia: </span>
+                                <span class="card-text"><[provincia]></span>
+                                <span class="mx-5"></span>
+                                <span class="card-label">CAP: </span>
+                                <span class="card-text"><[cap]></span>
+                            </div>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                </div>
+                <!--/.col (left) -->
+            </div>
+
+            <[id::show_one2many
+            tab1_name="indirizzi" tab2_name="ordini"
+            tab1id_name="indirizzo" columns="id;timestamp"
+            library=admin]>
+
+        </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+</div>

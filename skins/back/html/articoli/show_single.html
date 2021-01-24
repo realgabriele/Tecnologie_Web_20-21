@@ -1,0 +1,86 @@
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-1">
+                    <a href="admin_show.php?table=articoli">
+                        <button class="btn btn-primary"><i class="fas fa-angle-left"></i></button>
+                    </a>
+                </div>
+                <div class="col-sm-6">
+                    <h1 class="m-0 text-dark">Articolo</h1>
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <!-- User Informations -->
+            <div class="row">
+                <!-- left column -->
+                <div class="col-md-8">
+                    <!-- general form elements -->
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Informazioni</h3>
+                            <a href="admin_edit.php?table=articoli&id=<[id]>">
+                                <button class="btn btn-default float-right">Modifica</button>
+                            </a>
+                        </div>
+                        <!-- /.card-header -->
+                        <!-- card body start -->
+                        <div class="card-body">
+                            <div class="card-group float-right">
+                                <div class="card-img">
+                                    <img src="<[foto]>" style="height: 250px">
+                                </div>
+                            </div>
+                            <div class="card-group">
+                                <span class="card-label">Nome del Prodotto: </span>
+                                <span class="card-text"><[nome]></span>
+                            </div>
+                            <div class="card-group">
+                                <span class="card-label">Prezzo: </span>
+                                <span class="card-text"><[prezzo::to_prezzo library=utility]></span>
+                            </div>
+                            <div class="card-group">
+                                <span class="card-label">Descrizione: </span>
+                                <span class="card-text"><[descrizione]></span>
+                            </div>
+                            <div class="card-group">
+                                <span class="card-label">Descrizione Lunga: </span>
+                                <span class="card-text"><[descrizione_lunga]></span>
+                            </div>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                </div>
+                <!--/.col (left) -->
+            </div>
+
+            <[id::show_many2many
+            tab1_name="articoli" tab2_name="categorie"
+            tab1id_name="articolo" tab2id_name="categoria"
+            assoc_name="articolo_categoria" columns="nome;descrizione"
+            library=admin]>
+
+            <[id::show_one2many
+            tab1_name="articoli" tab2_name="recensioni"
+            tab1id_name="articolo" columns="titolo;rating;descrizione"
+            library=admin]>
+
+            <[id::show_many2many
+            tab1_name="articoli" tab2_name="ordini"
+            tab1id_name="articolo" tab2id_name="ordine"
+            assoc_name="articolo_ordine" columns="id;timestamp"
+            library=admin]>
+
+        </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+</div>

@@ -1,0 +1,56 @@
+<div class="content-wrapper">
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <!-- Table -->
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Tutti gli Indirizzi</h3>
+                            <div class="float-right mr-4">
+                                <a href="admin_add.php?table=indirizzi">
+                                    <button type="submit" class="btn btn-primary"><i class="fas fa-plus"></i></button>
+                                </a>
+                            </div>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <table class="table table-head-fixed text-nowrap dataTableMultiple">
+                                <thead>
+                                <tr>
+                                    <th>Alias</th>
+                                    <th>Nome</th>
+                                    <th>Via</th>
+                                    <th>Città</th>
+                                    <th></th>
+                                </tr>
+                                </thead>
+                                <tbody class="table-body">
+                                <[foreach]>
+                                <tr>
+                                    <td><[alias]></td>
+                                    <td><[cognome]> <[nome]></td>
+                                    <td><[via]></td>
+                                    <td><[citta]></td>
+                                    <td>
+                                        <a href="admin_show.php?table=indirizzi&id=<[id]>">
+                                        <button class="btn btn-info float-right py-0">
+                                            Vedi
+                                        </button>
+                                        </a>
+                                    </td>
+                                </tr>
+                                <[/foreach]>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+</div>

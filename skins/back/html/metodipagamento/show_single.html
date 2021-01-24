@@ -1,0 +1,76 @@
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-1">
+                    <a href="admin_show.php?table=metodipagamento">
+                        <button class="btn btn-primary"><i class="fas fa-angle-left"></i></button>
+                    </a>
+                </div>
+                <div class="col-sm-6">
+                    <h1 class="m-0 text-dark">Metodo di Pagamento</h1>
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <!-- User Informations -->
+            <div class="row">
+                <!-- left column -->
+                <div class="col-md-6">
+                    <!-- general form elements -->
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Informazioni</h3>
+                            <a href="admin_edit.php?table=metodipagamento&id=<[id]>">
+                                <button class="btn btn-default float-right">Modifica</button>
+                            </a>
+                        </div>
+                        <!-- /.card-header -->
+                        <!-- card body start -->
+                        <div class="card-body">
+                            <div class="card-group">
+                                <span class="card-label">Proprietario: </span>
+                                <span class="card-text">
+                                    <a href="admin_show.php?table=utenti&id=<[utente_id]>">
+                                        <[utente_id::show_many2one tab2_name="utenti" column="nome" library="admin"]>
+                                    </a>
+                                </span>
+                            </div>
+                            <div class="card-group">
+                                <span class="card-label">Intestatario della Carta: </span>
+                                <span class="card-text"><[intestatario_carta]></span>
+                            </div>
+                            <div class="card-group">
+                                <span class="card-label">Numero della Carta: </span>
+                                <span class="card-text"><[numero_carta]></span>
+                            </div>
+                            <div class="card-group">
+                                <span class="card-label">Data di Scadenza: </span>
+                                <span class="card-text"><[scadenza_carta::to_date library="utility"]></span>
+                                <span class="mx-5"></span>
+                                <span class="card-label">CVV: </span>
+                                <span class="card-text"><[cvv_carta]></span>
+                            </div>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                </div>
+                <!--/.col (left) -->
+            </div>
+
+            <[id::show_one2many
+            tab1_name="indirizzi" tab2_name="ordini"
+            tab1id_name="indirizzo" columns="id;timestamp"
+            library=admin]>
+
+        </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+</div>

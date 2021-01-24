@@ -1,0 +1,82 @@
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-1">
+                    <a href="admin_show.php?table=utenti">
+                        <button class="btn btn-primary"><i class="fas fa-angle-left"></i></button>
+                    </a>
+                </div>
+                <div class="col-sm-6">
+                    <h1 class="m-0 text-dark">Utente</h1>
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <!-- User Informations -->
+            <div class="row">
+                <!-- left column -->
+                <div class="col-md-6">
+                    <!-- general form elements -->
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Informazioni</h3>
+                            <a href="admin_edit.php?table=utenti&id=<[id]>">
+                                <button class="btn btn-default float-right">Modifica</button>
+                            </a>
+                        </div>
+                        <!-- /.card-header -->
+                        <!-- card body start -->
+                        <div class="card-body">
+                            <div class="card-group">
+                                <span class="card-label">Nome dell'Utente: </span>
+                                <span class="card-text"><[nome]></span>
+                            </div>
+                            <div class="card-group">
+                                <span class="card-label">Email: </span>
+                                <span class="card-text"><[email]></span>
+                            </div>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                </div>
+                <!--/.col (left) -->
+            </div>
+
+            <[id::show_many2many
+            tab1_name="utenti" tab2_name="gruppi"
+            tab1id_name="utente" tab2id_name="gruppo"
+            assoc_name="utente_gruppo" columns="nome;descrizione"
+            library=admin]>
+
+            <[id::show_one2many
+            tab1_name="utenti" tab2_name="ordini"
+            tab1id_name="utente" columns="id;timestamp"
+            library=admin]>
+
+            <[id::show_one2many
+            tab1_name="utenti" tab2_name="recensioni"
+            tab1id_name="utente" columns="titolo;rating;descrizione"
+            library=admin]>
+
+            <[id::show_one2many
+            tab1_name="utenti" tab2_name="indirizzi"
+            tab1id_name="utente" columns="alias;nome;cognome;via;citta;provincia;cap"
+            library=admin]>
+
+            <[id::show_one2many
+            tab1_name="utenti" tab2_name="metodipagamento"
+            tab1id_name="utente" columns="intestatario_carta;numero_carta;scadenza_carta"
+            library=admin]>
+
+        </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+</div>
