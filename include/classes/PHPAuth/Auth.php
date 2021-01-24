@@ -206,7 +206,7 @@ class Auth  /* implements AuthInterface */
      */
     public function getSessionUID()
     {
-        return $_SESSION['auth_uid'];
+        return $_SESSION['auth_uid'] ?? null;
     }
 
     public function setSessionUID($uid)
@@ -650,7 +650,7 @@ class Auth  /* implements AuthInterface */
     }
 
     /**
-     * Gets user data for current user (from cookie/session) and returns an array, password is not returned
+     * Gets user data for current user and returns an array, password is not returned
      * @param bool $updateSession = false
      * @return array $data
      * @return boolean false if no current user
