@@ -49,55 +49,35 @@
                             SCRIVI LA TUA RECENSIONE
                         </span>
 
-                  <h1 class="rating"> VALUTA IL PRODOTTO </h1>
-
-
                         <span class="boxrecensione">
+                            <form action="inviarec.php?id=<[id]>" method="post">
 
-                            <form>
+                                <div class="group">
+                                    <input type="text" name="titolo" value="<[titolo]>" required>
+                                    <span class="highlight"></span>
+                                    <label>Titolo</label>
+                                </div>
 
+                                <div class="group">
+                                    <input type="text" name="descrizione" value="<[descrizione]>" required>
+                                    <span class="highlight"></span>
+                                    <label>Testo</label>
+                                </div>
 
+                                <div class="group">
+                                    <input type="text" name="rating" value="<[rating]>" required>
+                                    <span class="highlight"></span>
+                                    <label>Stelle</label>
+                                </div>
 
+                                <span class="invia">
+                                <!-- <b class="recein">INVIA </b> -->
+                                <input type="submit" value="INVIA">
+                                </span>
+                            </form>
 
-
-
-    <div class="group">
-      <input type="text" required>
-      <span class="highlight"></span>
-      <label>Titolo</label>
-    </div>
-
-
-
-    <div class="group">
-      <input type="text" required>
-      <span class="highlight"></span>
-      <label>Testo</label>
-    </div>
-
-
-
-    <div id="star">
-        <div class="wrapper">
-  <input name="ratingRadio" type="radio" id="st1" value="1" />
-  <label for="st1"></label>
-  <input name="ratingRadio" type="radio" id="st2" value="2" />
-  <label for="st2"></label>
-  <input name="ratingRadio" type="radio" id="st3" value="3" />
-  <label for="st3"></label>
-  <input name="ratingRadio" type="radio" id="st4" value="4" />
-  <label for="st4"></label>
-  <input name="ratingRadio" type="radio" id="st5" value="5" />
-  <label for="st5"></label>
-         </div>
-    </div>
-
-<span class="invia">
-  <b class="recein">INVIA </b>
-</span>
-
-  </form>
-
+                    <div class="alert-success"><[success_msg]></div>
+                    <div class="alert-danger"><[error_msg]></div>
 
 
 

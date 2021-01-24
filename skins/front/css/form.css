@@ -3,7 +3,7 @@
 /* form starting stylings ------------------------------- */
 .boxrecensione {
     position: absolute;
-    top: 300px;
+    top: 230px;
     left: 470px;
 
 
@@ -49,8 +49,7 @@
 
 }
 .invia {
-    padding: 20px 20px 5px 20px;
-    margin-top: -5%;
+    padding: 20px 20px 5px 20px
     display: inline-block;
     font-size: 20px;
     font-weight: 500;
