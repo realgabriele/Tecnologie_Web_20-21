@@ -1,5 +1,6 @@
 <?php
-session_start();
+session_set_cookie_params(3600 * 24 * 7);   // 1 week
+session_start(['gc_maxlifetime'=>604800]);
 
 /* general */
 require "include/config.inc.php";
@@ -22,6 +23,7 @@ class FramePublic
     /* objects */
     public $auth;
     public $cart;
+    public $dbh;
 
     public function __construct()
     {
@@ -32,13 +34,13 @@ class FramePublic
         /* load Authentication / Authorization class */
         global $dbh;
         $this->dbh = $dbh;
-        $this->auth = new PHPAuth\Auth($dbh, new PHPAuth\Config($dbh));
+        $this->auth = new PHPAuth\Auth();
 
         /* load the Cart or create a new one */
         if ($this->auth->isAuthenticated) {
             $this->cart = new Cart($this->auth->getCurrentUID());
         } else {
-            $this->cart = new Cart(3);
+            $this->cart = new Cart();
         }
 
         $this->check_authorization();

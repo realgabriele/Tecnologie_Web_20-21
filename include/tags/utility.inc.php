@@ -8,6 +8,10 @@ Class utility extends TagLibrary {
         return $data;
     }
 
+    function shorten($name, $data, $pars) {
+        return substr($data, 0, $pars['length']) . " ...";
+    }
+
     function to_prezzo($name, $data, $pars) {
         return "€ " . number_format($data, 2);
     }

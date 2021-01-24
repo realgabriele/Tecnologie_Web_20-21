@@ -1,0 +1,23 @@
+.card-title {
+    font-size: 1.5rem;
+}
+
+.card-header .btn-default {
+    padding-top: 0.2rem;
+    padding-bottom: 0.2rem;
+}
+
+.card-label {
+    font-weight: 400;
+    padding-top: 3px;
+}
+
+.card-text {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-left: 1rem;
+}
+
+.recensione_stars {
+    color: #FF9529;
+}
