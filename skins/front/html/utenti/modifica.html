@@ -1,0 +1,43 @@
+<div>
+    <link rel="stylesheet" href="<[base]>/css/show_item.css" />
+    <link rel="stylesheet" href="<[base]>/css/recensioni.css" />
+    <link rel="stylesheet" href="<[base]>/css/form.css" />
+    <link rel="stylesheet" href="<[base]>/css/star.css" />
+
+    <style>
+        .footer_style_2 {
+            margin-top: 110vh;
+        }
+    </style>
+    <span class="boxrecensione">
+        <form action="updateutente.php" method="post">
+            <div class="group">
+                <input type="text" name="nome" value="<[nome]>" required>
+                <span class="highlight"></span>
+                <label>Nome</label>
+            </div>
+            <div class="group">
+                <input type="text" name="email" value="<[email]>" required>
+                <span class="highlight"></span>
+                <label>Email</label>
+            </div>
+            <div class="group">
+                <input type="password" name="password" required>
+                <span class="highlight"></span>
+                <label>Password</label>
+            </div>
+            <span class="invia">
+                <!-- <b class="recein">INVIA </b> -->
+                <input type="submit" value="INVIA">
+            </span>
+        </form>
+        <div class="alert-success"><[success_msg]></div>
+        <div class="alert-danger"><[error_msg]></div>
+    </span>
+</div>
+
+<script>
+    setTimeout(() => {
+        document.querySelector('footer').style.marginTop = "100vh"
+    }, 100);
+</script>

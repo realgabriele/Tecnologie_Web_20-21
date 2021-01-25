@@ -17,7 +17,8 @@ if (!$result = $dbh->query("SELECT * FROM articoli WHERE id=$id")) {
     exit(1);
 }
 
-$id_utente = $_SESSION['auth_id'];
+$id_utente = $_SESSION['auth_uid'];
+
 if($res = $dbh->query("SELECT * FROM recensioni WHERE articolo_id=$id AND utente_id=$id_utente")) {
     $content = $res->fetch(PDO::FETCH_ASSOC);
     if(isset($content['titolo']))
@@ -33,7 +34,7 @@ if($res = $dbh->query("SELECT * FROM recensioni WHERE articolo_id=$id AND utente
         $body->setContent("titolo", $titolo);
 
     if(isset($descrizione))
-        $body->setContent("descrizione", $descrizione);
+        $body->setContent("descrizione_rec", $descrizione);
 
     if(isset($rating))
         $body->setContent("rating", $rating);

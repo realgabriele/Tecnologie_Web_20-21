@@ -18,7 +18,7 @@ if($link === false){
 
 // Riprendo Campi HTML
 
-$utente_id=$_SESSION['auth_id'];
+$utente_id=$_SESSION['auth_uid'];
 $articolo_id = $_GET['id'];
 $titolo = mysqli_real_escape_string($link, $_REQUEST['titolo']);
 $descrizione = mysqli_real_escape_string($link, $_REQUEST['descrizione']);
@@ -28,12 +28,18 @@ $rating = mysqli_real_escape_string($link, $_REQUEST['rating']);
 $sql = "INSERT INTO recensioni (utente_id, articolo_id, titolo,descrizione,rating) 
 VALUES ('$utente_id', '$articolo_id','$titolo','$descrizione','$rating')";
 
+$sql_update = "UPDATE recensioni SET titolo='$titolo', descrizione='$descrizione', rating=$rating
+ WHERE articolo_id=$articolo_id AND utente_id=$utente_id";
 if(mysqli_query($link, $sql)) {
     echo "RECENSIONE AGGIUNTA";
     header('Location: show_item.php?id=' .  $articolo_id . '&created=Recensione inserita con successo' );
 } else {
-    echo "ERROR: HAI GIA' INSERITO LA QUERY $sql. " . mysqli_error($link);
-    header('Location: show_item.php?id=' .  $articolo_id . '&rejected=Recensione già esistente');
+    if(mysqli_query($link, $sql_update)) {
+        header ('Location: show_item.php?id=' . $articolo_id . '&created=Recensione aggiornata con successo');
+    } else {
+        echo "ERROR: HAI GIA' INSERITO LA QUERY $sql. " . mysqli_error($link);
+        header('Location: show_item.php?id=' . $articolo_id . '&rejected=Recensione già esistente');
+    }
 }
 
 
