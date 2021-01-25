@@ -1,16 +1,15 @@
 <?php
 
-require "FramePublic.php";
+require "FramePrivate.php";
 
-class CreatePage extends FramePublic
+class CreateBackPage extends FramePrivate
 {
     protected $table_name = null;
     protected $new_row_id = null;
 
-    public function __construct()
+    public function __construct($table_name)
     {
-        $this->table_name = $_GET['table'] ?? $_POST['table'];
-
+        $this->table_name = $table_name;
         $this->body = new Template($this->table_name . "/create.html");
 
         parent::__construct();
@@ -20,17 +19,20 @@ class CreatePage extends FramePublic
     {
         if (!isset($this->table_name)) $this->render_error("Tabella non specificata");
 
-        parent::check_authorization(array_merge($actions, [$this->table_name . ".create"]));
+        parent::check_authorization(array_merge($actions, ['backoffice' . $this->table_name . '.create']));
     }
 
     public function handleRequest()
     {
         $params = $_POST;
 
-        if (isset($params['id'])) { // se le varibili da modificare sono settate
+        if (isset($_FILES['image'])) {
+            $params['image'] = $this->save_image();
+        }
+
+        if (sizeof($params) > 0) { // se le varibili da modificare sono settate
             unset($params['table']);
             unset($params['id']);
-            $params['utente_id'] = $this->auth->getCurrentUID();
 
             $insertCol = implode(', ', array_keys($params));
             $insertVal = implode(', ', array_map(function ($value) {
@@ -50,7 +52,6 @@ class CreatePage extends FramePublic
                 $this->body->setContent("success_msg", "Creato con successo");
                 // redirect alla pagina show_single
                 $this->new_row_id = $this->dbh->lastInsertId();
-                $this->handle_new_id();
                 header("location: show.php?table={$this->table_name}&id={$this->new_row_id}");
                 die();
             }
@@ -59,8 +60,24 @@ class CreatePage extends FramePublic
 
     public function updateBody()
     {
-        $this->body->setContent(array_key_append($_POST, "-old"), null);
+        $this->body->setContent(array_key_append($_POST, "_old"), null);
     }
 
-    protected function handle_new_id() {}
+    protected function save_image()
+    {
+        $imagePath = "skins/assets/";
+        $imageName = pathinfo($_FILES['image']['tmp_name'], PATHINFO_FILENAME);
+        $imageExt = pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
+
+        // prevent overwrite of existing file
+        $i = '';
+        while(file_exists($imageName . $i . '.' . $imageExt)) {
+            $i++;
+        }
+
+        $basename = $imageName . $i . '.' . $imageExt;
+        if (move_uploaded_file($_FILES['image']['tmp_name'], $imagePath . $basename))
+            return $imagePath . $basename;
+        else return "";
+    }
 }

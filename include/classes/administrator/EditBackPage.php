@@ -22,7 +22,8 @@ class EditBackPage extends FramePrivate
         if (!isset($this->table_name)) $this->render_error("Tabella non specificata");
         if (!isset($this->row_id)) $this->render_error("ID non specificato");
 
-        parent::check_authorization(array_merge($actions, [$this->table_name . ".edit"]));
+        parent::check_authorization(array_merge($actions, ['backoffice' . $this->table_name . '.edit']));
+
     }
 
     public function handleRequest()

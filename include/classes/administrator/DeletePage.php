@@ -21,6 +21,8 @@ class DeletePage extends FramePublic
         if (!isset($this->row_id)) $this->render_error("ID non specificato");
 
         parent::check_authorization(array_merge($actions, [$this->table_name . ".delete"]));
+        parent::check_authorization(array_merge($actions, ['backoffice' . $this->table_name . '.show']));
+
 
         $query = "SELECT `utenti`.id FROM `utenti` ".
             " JOIN `{$this->table_name}` ON `utenti`.id = `{$this->table_name}`.utente_id ".
