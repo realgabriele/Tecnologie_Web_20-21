@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Creato il: Gen 19, 2021 alle 09:34
+-- Creato il: Gen 25, 2021 alle 19:13
 -- Versione del server: 8.0.22-0ubuntu0.20.04.3
 -- Versione PHP: 7.4.3
 
@@ -33,10 +33,9 @@ DROP TABLE IF EXISTS `articoli`;
 CREATE TABLE `articoli` (
   `id` int NOT NULL,
   `nome` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `descrizione` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `descrizione_lunga` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `foto` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `disponibilita` int NOT NULL,
+  `descrizione` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `descrizione_lunga` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `foto` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `prezzo` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -44,9 +43,10 @@ CREATE TABLE `articoli` (
 -- Dump dei dati per la tabella `articoli`
 --
 
-INSERT INTO `articoli` (`id`, `nome`, `descrizione`, `descrizione_lunga`, `foto`, `disponibilita`, `prezzo`) VALUES
-(1, 'Mascherina Chirurgica', 'mascherina chirurgica bellissima', 'Una maschera (o mascherina) chirurgica, nota anche come maschera medica,\r\n                            o maschera facciale per uso medico,o mascherina igienica (soprattutto tra gli italiani svizzeri),\r\n                            è un dispositivo destinato a essere indossato dagli operatori sanitari durante un intervento chirurgico\r\n                            o altre attività in ambito sanitario al fine di evitare la dispersione di agenti patogeni.', 'https://i.postimg.cc/kDP21W0R/DEFDEF.png', 24, 0.5),
-(2, 'Amuchina Mani', 'Gel disinfettante mani', 'Amuchina Gel X-GERM Disinfettante Mani è un gel antisettico, studiato per disinfettare a fondo la pelle delle mani. La sua formulazione è in grado di ridurre efficacemente in pochi secondi germi e batteri presenti sulla cute. Amuchina Gel X-GERM Disinfettante Mani è attivo su virus, funghi e batteri.', 'https://i.postimg.cc/W4YHndfV/DEFDEF-copia.png', 5, 2.75);
+INSERT INTO `articoli` (`id`, `nome`, `descrizione`, `descrizione_lunga`, `foto`, `prezzo`) VALUES
+(1, 'Mascherina Chirurgica', 'mascherina chirurgica bellissima', 'Una maschera (o mascherina) chirurgica, nota anche come maschera medica,\r\n                            o maschera facciale per uso medico,o mascherina igienica (soprattutto tra gli italiani svizzeri),\r\n                            è un dispositivo destinato a essere indossato dagli operatori sanitari durante un intervento chirurgico\r\n                            o altre attività in ambito sanitario al fine di evitare la dispersione di agenti patogeni.', 'https://i.postimg.cc/kDP21W0R/DEFDEF.png', 0.5),
+(2, 'Amuchina Mani', 'Gel disinfettante mani', 'Amuchina Gel X-GERM Disinfettante Mani è un gel antisettico, studiato per disinfettare a fondo la pelle delle mani. La sua formulazione è in grado di ridurre efficacemente in pochi secondi germi e batteri presenti sulla cute. Amuchina Gel X-GERM Disinfettante Mani è attivo su virus, funghi e batteri.', 'https://i.postimg.cc/W4YHndfV/DEFDEF-copia.png', 2.75),
+(3, 'prova', NULL, NULL, NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -71,7 +71,8 @@ INSERT INTO `articolo_carrello` (`carrello_id`, `articolo_id`, `quantita`) VALUE
 (2, 1, 1),
 (2, 2, 4),
 (3, 1, 3),
-(3, 2, 3);
+(3, 2, 14),
+(3, 3, 2);
 
 -- --------------------------------------------------------
 
@@ -178,7 +179,8 @@ CREATE TABLE `gruppi` (
 --
 
 INSERT INTO `gruppi` (`id`, `nome`, `descrizione`) VALUES
-(1, 'admin', 'administrator');
+(1, 'authenticated', 'generic authenticated user'),
+(2, 'admin', 'administrator');
 
 -- --------------------------------------------------------
 
@@ -212,7 +214,9 @@ INSERT INTO `gruppo_servizio` (`gruppo_id`, `servizio_id`) VALUES
 (1, 13),
 (1, 14),
 (1, 15),
-(1, 16);
+(1, 16),
+(1, 17),
+(1, 18);
 
 -- --------------------------------------------------------
 
@@ -241,7 +245,7 @@ INSERT INTO `indirizzi` (`id`, `utente_id`, `alias`, `nome`, `cognome`, `via`, `
 (1, 3, 'casa mia 1', 'Nomignolo', 'Cognomignolo', 'via Fasulla, 123 - sc. B', 'Springfield', 'SP', '50123'),
 (2, 1, 'casa altra', 'Carolina', 'Vissuti', 'viale dei Giradini', 'L\'Aquila', 'AQ', '67100'),
 (5, 3, 'Nuova casa', 'Amministra', 'Tore', 'via comunale, 4', 'Roma', 'RM', '55001'),
-(9, 3, 'provaaq', 'bnfadl', 'nbsjldf', 'ksdlfdsj;', '', '', '');
+(9, 3, 'provaaq', 'bnfadl', 'nbsjldf', 'ksdlfdsj', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -293,19 +297,6 @@ INSERT INTO `ordini` (`id`, `utente_id`, `indirizzo_id`, `metodopagamento_id`, `
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `phpauth_attempts`
---
-
-DROP TABLE IF EXISTS `phpauth_attempts`;
-CREATE TABLE `phpauth_attempts` (
-  `id` int NOT NULL,
-  `ip` char(39) NOT NULL,
-  `expiredate` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
 -- Struttura della tabella `phpauth_config`
 --
 
@@ -330,7 +321,7 @@ INSERT INTO `phpauth_config` (`setting`, `value`) VALUES
 ('cookie_http', '0'),
 ('cookie_name', 'phpauth_session_cookie'),
 ('cookie_path', '/'),
-('cookie_remember', '+1 month'),
+('cookie_remember', '+1 week'),
 ('cookie_renew', '+5 minutes'),
 ('cookie_secure', '0'),
 ('custom_datetime_format', 'Y-m-d H:i'),
@@ -375,18 +366,6 @@ INSERT INTO `phpauth_config` (`setting`, `value`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `phpauth_emails_banned`
---
-
-DROP TABLE IF EXISTS `phpauth_emails_banned`;
-CREATE TABLE `phpauth_emails_banned` (
-  `id` int NOT NULL,
-  `domain` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
 -- Struttura della tabella `phpauth_requests`
 --
 
@@ -395,36 +374,8 @@ CREATE TABLE `phpauth_requests` (
   `id` int NOT NULL,
   `uid` int NOT NULL,
   `token` char(20) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL,
-  `expire` datetime NOT NULL,
-  `type` enum('activation','reset') CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL
+  `expire` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Struttura della tabella `phpauth_sessions`
---
-
-DROP TABLE IF EXISTS `phpauth_sessions`;
-CREATE TABLE `phpauth_sessions` (
-  `id` int NOT NULL,
-  `uid` int NOT NULL,
-  `hash` char(40) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL,
-  `expiredate` datetime NOT NULL,
-  `ip` varchar(39) NOT NULL,
-  `device_id` varchar(36) DEFAULT NULL,
-  `agent` varchar(200) NOT NULL,
-  `cookie_crc` char(40) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dump dei dati per la tabella `phpauth_sessions`
---
-
-INSERT INTO `phpauth_sessions` (`id`, `uid`, `hash`, `expiredate`, `ip`, `device_id`, `agent`, `cookie_crc`) VALUES
-(15, 1, 'dc723af031542e56f1c567c6c1a05907ddaae9a0', '2021-01-06 18:14:08', '192.168.1.125', NULL, 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.66 Safari/537.36', 'd910ac0fee5c86a63534ff5acaedd5f4fe891460'),
-(40, 3, '68c6adb50f1cfccf0da9a47dd65595b665a20ab2', '2021-02-19 09:31:09', '192.168.1.125', NULL, 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.66 Safari/537.36', '07b26cd711a33d655584ab6b9a9297b84135619d'),
-(42, 4, '914e867222c6084ec76cd198c933cb6ec73a7779', '2021-02-15 09:25:20', '192.168.1.125', NULL, 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.66 Safari/537.36', '2663d7be10cc05bdf60845c12504b8344e2427ab');
 
 -- --------------------------------------------------------
 
@@ -434,6 +385,7 @@ INSERT INTO `phpauth_sessions` (`id`, `uid`, `hash`, `expiredate`, `ip`, `device
 
 DROP TABLE IF EXISTS `recensioni`;
 CREATE TABLE `recensioni` (
+  `id` int NOT NULL,
   `utente_id` int NOT NULL,
   `articolo_id` int NOT NULL,
   `titolo` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -445,11 +397,11 @@ CREATE TABLE `recensioni` (
 -- Dump dei dati per la tabella `recensioni`
 --
 
-INSERT INTO `recensioni` (`utente_id`, `articolo_id`, `titolo`, `descrizione`, `rating`) VALUES
-(1, 1, 'Bellissimo TOP', 'mi sono trovato molto bene', 5),
-(1, 2, 'Non ce niente di meglio', 'questo boccione mi ha salvato la vita', 5),
-(2, 1, 'buona qualita', NULL, 4),
-(3, 1, 'si e\' rotta subito', 'per fortuna che era monouso', 2);
+INSERT INTO `recensioni` (`id`, `utente_id`, `articolo_id`, `titolo`, `descrizione`, `rating`) VALUES
+(1, 1, 1, 'Bellissimo TOP', 'mi sono trovato molto bene', 5),
+(2, 1, 2, 'Non ce niente di meglio', 'questo boccione mi ha salvato la vita', 5),
+(3, 2, 1, 'buona qualita', NULL, 4),
+(4, 3, 1, 'si e\' rotta subito', 'per fortuna che era monouso', 2);
 
 -- --------------------------------------------------------
 
@@ -484,7 +436,9 @@ INSERT INTO `servizi` (`id`, `nome`, `descrizione`) VALUES
 (13, 'wishlist.create', NULL),
 (14, 'wishlist.delete', NULL),
 (15, 'wishlist.edit', NULL),
-(16, 'wishlist.share', NULL);
+(16, 'wishlist.share', NULL),
+(17, 'utenti.show', NULL),
+(18, 'recensioni.write', NULL);
 
 -- --------------------------------------------------------
 
@@ -504,6 +458,7 @@ CREATE TABLE `utente_gruppo` (
 
 INSERT INTO `utente_gruppo` (`utente_id`, `gruppo_id`) VALUES
 (3, 1),
+(3, 2),
 (4, 1);
 
 -- --------------------------------------------------------
@@ -517,20 +472,18 @@ CREATE TABLE `utenti` (
   `id` int NOT NULL,
   `nome` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `password` varchar(255) CHARACTER SET latin1 COLLATE latin1_general_ci DEFAULT NULL,
-  `isactive` tinyint(1) NOT NULL DEFAULT '0',
-  `dt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `password` varchar(255) CHARACTER SET latin1 COLLATE latin1_general_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dump dei dati per la tabella `utenti`
 --
 
-INSERT INTO `utenti` (`id`, `nome`, `email`, `password`, `isactive`, `dt`) VALUES
-(1, 'Giovanni Spada', 'giavannino@gmail.com', '$2y$10$EAhLhUi0SsKAa5/shXAnXOHePRVmGjvOjp7UYLERqDC1xI5BBaso2', 1, '2020-12-04 11:35:09'),
-(2, 'Rita Calamita', 'Xx_rita_xX@yahoo.it', 'Questa Psw deve essere un hash', 1, '2020-12-03 15:16:44'),
-(3, 'admin', 'admin@admin.net', '$2y$10$iJcIRXGq21lUfMBwiXrrYevzrRy5WjXlve2QdGM2Gx2zbqjBZFUxa', 1, '2020-12-16 17:39:43'),
-(4, 'aaa', 'aaa@email.it', '$2y$10$r/Y1zZk7cgI5LpD8njh8reG/ulE66mP1HviblPKpcBEeKBK.vPJbK', 1, '2021-01-07 09:41:45');
+INSERT INTO `utenti` (`id`, `nome`, `email`, `password`) VALUES
+(1, 'Giovanni Spada', 'giavannino@gmail.com', '$2y$10$EAhLhUi0SsKAa5/shXAnXOHePRVmGjvOjp7UYLERqDC1xI5BBaso2'),
+(2, 'Rita Calamita', 'Xx_rita_xX@yahoo.it', 'Questa Psw deve essere un hash'),
+(3, 'admin', 'admin@admin.net', '$2y$10$iJcIRXGq21lUfMBwiXrrYevzrRy5WjXlve2QdGM2Gx2zbqjBZFUxa'),
+(4, 'aaa', 'aaa@email.it', '$2y$10$r/Y1zZk7cgI5LpD8njh8reG/ulE66mP1HviblPKpcBEeKBK.vPJbK');
 
 -- --------------------------------------------------------
 
@@ -645,44 +598,25 @@ ALTER TABLE `ordini`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indici per le tabelle `phpauth_attempts`
---
-ALTER TABLE `phpauth_attempts`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `ip` (`ip`);
-
---
 -- Indici per le tabelle `phpauth_config`
 --
 ALTER TABLE `phpauth_config`
   ADD UNIQUE KEY `setting` (`setting`);
 
 --
--- Indici per le tabelle `phpauth_emails_banned`
---
-ALTER TABLE `phpauth_emails_banned`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indici per le tabelle `phpauth_requests`
 --
 ALTER TABLE `phpauth_requests`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `type` (`type`),
   ADD KEY `token` (`token`),
   ADD KEY `uid` (`uid`);
-
---
--- Indici per le tabelle `phpauth_sessions`
---
-ALTER TABLE `phpauth_sessions`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Indici per le tabelle `recensioni`
 --
 ALTER TABLE `recensioni`
-  ADD PRIMARY KEY (`utente_id`,`articolo_id`);
+  ADD PRIMARY KEY (`id`) USING BTREE,
+  ADD UNIQUE KEY `utente_id` (`utente_id`,`articolo_id`);
 
 --
 -- Indici per le tabelle `servizi`
@@ -724,7 +658,7 @@ ALTER TABLE `wishlist_condivisione`
 -- AUTO_INCREMENT per la tabella `articoli`
 --
 ALTER TABLE `articoli`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT per la tabella `categorie`
@@ -736,7 +670,7 @@ ALTER TABLE `categorie`
 -- AUTO_INCREMENT per la tabella `gruppi`
 --
 ALTER TABLE `gruppi`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT per la tabella `indirizzi`
@@ -757,34 +691,16 @@ ALTER TABLE `ordini`
   MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT per la tabella `phpauth_attempts`
---
-ALTER TABLE `phpauth_attempts`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
-
---
--- AUTO_INCREMENT per la tabella `phpauth_emails_banned`
---
-ALTER TABLE `phpauth_emails_banned`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT per la tabella `phpauth_requests`
 --
 ALTER TABLE `phpauth_requests`
   MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT per la tabella `phpauth_sessions`
---
-ALTER TABLE `phpauth_sessions`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
-
---
 -- AUTO_INCREMENT per la tabella `servizi`
 --
 ALTER TABLE `servizi`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT per la tabella `utenti`
