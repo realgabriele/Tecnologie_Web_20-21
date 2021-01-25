@@ -1,3 +1,7 @@
+a[href], a[onclick], button[type=submit], .clickable {
+    cursor:pointer;
+}
+
 .card-title {
     font-size: 1.5rem;
 }
@@ -20,4 +24,22 @@
 
 .recensione_stars {
     color: #FF9529;
+}
+
+.edit-crossed:before {
+    font-family: 'Font Awesome 5 Free';
+    content: "\f057";
+    font-style: normal;
+    font-weight: 400;
+    color: indianred;
+    font-size: 1.5rem;
+}
+
+.edit-checked:before {
+    font-family: 'Font Awesome 5 Free';
+    content: "\f058";
+    font-style: normal;
+    font-weight: 900;
+    color: green;
+    font-size: 1.5rem;
 }

@@ -1,16 +1,16 @@
 <?php
 
-require "FramePublic.php";
+require "FramePrivate.php";
 
-class EditPage extends FramePublic
+class EditBackPage extends FramePrivate
 {
     protected $table_name = null;
     protected $row_id = null;
 
-    public function __construct()
+    public function __construct($table_name, $row_id)
     {
-        $this->table_name = $_GET['table'] ?? $_POST['table'];
-        $this->row_id = $_GET['id'] ?? $_POST['id'];
+        $this->table_name = $table_name;
+        $this->row_id = $row_id;
 
         $this->body = new Template($this->table_name . "/edit.html");
 
@@ -23,23 +23,13 @@ class EditPage extends FramePublic
         if (!isset($this->row_id)) $this->render_error("ID non specificato");
 
         parent::check_authorization(array_merge($actions, [$this->table_name . ".edit"]));
-
-        $query = "SELECT `utenti`.id FROM `utenti` ".
-            " JOIN `{$this->table_name}` ON `utenti`.id = `{$this->table_name}`.utente_id ".
-            " WHERE `utenti`.id = :uid AND `{$this->table_name}`.id = :id";
-        $query_prepared = $this->dbh->prepare($query);
-        $query_prepared->execute(['uid' => $this->auth->getCurrentUID(), 'id' => $this->row_id]);
-
-        if ($query_prepared->rowCount() == 0) {
-            $this->render_error("utente non autorizzato a modificare questa pagina");
-        }
     }
 
     public function handleRequest()
     {
         $params = $_POST;
 
-        if (isset($params['id'])) { // se le varibili da modificare sono settate
+        if (sizeof($params) > 0) { // se le varibili da modificare sono settate
             unset($params['table']);
             unset($params['id']);
 

@@ -1,0 +1,29 @@
+<!-- Table -->
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title"><[table_name]></h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                <table class="table table-bordered table-striped dataTableEdit">
+                    <thead>
+                    <tr>
+                        <[foreach]>
+                        <th><[column_name]></th>
+                        <[/foreach]>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <[foreach]>
+                    <[table_row]>
+                    <[/foreach]>
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+    </div>
+</div>

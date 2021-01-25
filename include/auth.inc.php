@@ -1,6 +1,6 @@
 <?php
 
-   Class Auth {
+   Class Auth_del {
 
       static function doLogin() {
          global  
