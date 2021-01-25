@@ -8,13 +8,9 @@ $main = new Template("frame-public.html");
 $body = new Template("articoli/show_single.html");
 
 $id = $_GET["id"];
-if(isset($_GET['created']))
-    $created = $_GET["created"];
-if(isset($_GET['rejected']))
-    $rejected = $_GET["rejected"];
 
 global $dbh;
-if (!$result = $dbh->query("SELECT `articoli`.*,AVG(rating) AS rating ".
+ if (!$result = $dbh->query("SELECT `articoli`.*,AVG(rating) AS rating ".
     " FROM articoli LEFT JOIN `recensioni` ON `articoli`.id = `recensioni`.articolo_id ".
     " WHERE `articoli`.id=$id")) {
     echo "Error: "; print_r($dbh->errorInfo());
@@ -28,8 +24,8 @@ for($i=0; $i<$result->rowCount(); $i++) {
 
 /* set Recensioni */
 
-$recensioni = new Template("articoli/recensioni.html");
-if (!$result = $dbh->query("SELECT * FROM recensioni WHERE articolo_id=$id")) {
+$recensioni = new Template("articoli/leggirecce.html");
+if (!$result = $dbh->query("SELECT * FROM recensioni")) {
     echo "Error: ", $result->errorInfo();
 }
 if ($result->rowCount() == 0) {
@@ -39,10 +35,6 @@ if ($result->rowCount() == 0) {
 
 for($i=0; $i<$result->rowCount(); $i++) {
     $data = $result->fetch(PDO::FETCH_ASSOC);
-    if(isset($created))
-        $recensioni->setContent("created", $created);
-    if(isset($rejected))
-        $recensioni->setContent("rejected", $rejected );
     $recensioni->setContent($data, null);
 }
 
