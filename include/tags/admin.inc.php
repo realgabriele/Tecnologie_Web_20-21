@@ -130,8 +130,6 @@ Class admin extends TagLibrary {
         $query_prepared->execute();
         $tab2_all = $query_prepared->fetchAll(PDO::FETCH_ASSOC);
 
-        print_r($assoc_ids);
-
         foreach ($tab2_all as $row) {
             $table_row = "";
 

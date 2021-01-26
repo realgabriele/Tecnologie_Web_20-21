@@ -10,14 +10,13 @@ global $dbh;
 $auth = new PHPAuth\Auth($dbh, new PHPAuth\Config($dbh));
 
 /* check authorization */
-/*$actions = ['backoffice', "backoffice.{$_POST['assoc_name']}.edit"];
-print_r($actions);
+$actions = ['backoffice', "backoffice.{$_POST['assoc_name']}.edit"];
 foreach ($actions as $action){
     $id = $auth->isAuthenticated ? $auth->getCurrentUID() : 0;
     if (!$auth->is_authorized($id, $action)) {
         echo("Operazione non autorizzata!");
     }
-}*/
+}
 
 $type = $_POST['type'];
 $action = $_POST['action'];

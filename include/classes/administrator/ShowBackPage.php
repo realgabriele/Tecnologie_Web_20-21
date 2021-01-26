@@ -23,7 +23,7 @@ class ShowBackPage extends FramePrivate
     {
         if (!isset($this->table_name)) $this->render_error("Tabella non specificata");
 
-        parent::check_authorization(array_merge($actions, ['backoffice' . $this->table_name . '.show']));
+        parent::check_authorization(array_merge($actions, ['backoffice.' . $this->table_name . '.show']));
     }
 
     public function updateBody()

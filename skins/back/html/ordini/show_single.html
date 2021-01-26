@@ -4,12 +4,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-1">
-                    <a href="admin_show.php?table=articoli">
+                    <a href="admin_show.php?table=ordini">
                         <button class="btn btn-primary"><i class="fas fa-angle-left"></i></button>
                     </a>
                 </div>
                 <div class="col-sm-6">
-                    <h1 class="m-0 text-dark">Articolo</h1>
+                    <h1 class="m-0 text-dark">Ordine</h1>
                 </div><!-- /.col -->
             </div><!-- /.row -->
         </div><!-- /.container-fluid -->
@@ -22,38 +22,29 @@
             <!-- User Informations -->
             <div class="row">
                 <!-- left column -->
-                <div class="col-md-8">
+                <div class="col-md-6">
                     <!-- general form elements -->
                     <div class="card card-primary">
                         <div class="card-header">
                             <h3 class="card-title">Informazioni</h3>
-                            <a href="admin_edit.php?table=articoli&id=<[id]>">
+                            <a href="admin_edit.php?table=ordini&id=<[id]>">
                                 <button class="btn btn-default float-right">Modifica</button>
                             </a>
                         </div>
                         <!-- /.card-header -->
                         <!-- card body start -->
                         <div class="card-body">
-                            <div class="card-group float-right">
-                                <div class="card-img">
-                                    <img src="<[base]>/<[foto]>" style="height: 250px">
-                                </div>
+                            <div class="card-group">
+                                <span class="card-label">ID dell'Ordine: </span>
+                                <span class="card-text"><[id]></span>
                             </div>
                             <div class="card-group">
-                                <span class="card-label">Nome del Prodotto: </span>
-                                <span class="card-text"><[nome]></span>
+                                <span class="card-label">Data: </span>
+                                <span class="card-text"><[timestamp::to_date library="utility]></span>
                             </div>
                             <div class="card-group">
-                                <span class="card-label">Prezzo: </span>
-                                <span class="card-text"><[prezzo::to_prezzo library=utility]></span>
-                            </div>
-                            <div class="card-group">
-                                <span class="card-label">Descrizione: </span>
-                                <span class="card-text"><[descrizione]></span>
-                            </div>
-                            <div class="card-group">
-                                <span class="card-label">Descrizione Lunga: </span>
-                                <span class="card-text"><[descrizione_lunga]></span>
+                                <span class="card-label">Ora: </span>
+                                <span class="card-text"><[timestamp::to_time library="utility]></span>
                             </div>
                         </div>
                         <!-- /.card-body -->
@@ -64,20 +55,9 @@
             </div>
 
             <[id::show_many2many
-            tab1_name="articoli" tab2_name="categorie"
-            tab1id_name="articolo" tab2id_name="categoria"
-            assoc_name="articolo_categoria" columns="nome;descrizione"
-            library=admin]>
-
-            <[id::show_one2many
-            tab1_name="articoli" tab2_name="recensioni"
-            tab1id_name="articolo" columns="titolo;rating;descrizione"
-            library=admin]>
-
-            <[id::show_many2many
-            tab1_name="articoli" tab2_name="ordini"
-            tab1id_name="articolo" tab2id_name="ordine"
-            assoc_name="articolo_ordine" columns="id;timestamp"
+            tab1_name="ordini" tab2_name="articoli"
+            tab1id_name="ordine" tab2id_name="articolo"
+            assoc_name="articolo_ordine" columns="nome;descrizione"
             library=admin]>
 
         </div><!-- /.container-fluid -->

@@ -46,6 +46,7 @@ function set_many2many(element, pars){
     };
     if(ajax_edit_request({...ajax_pars, ...pars})) {
         $(element).find("i").removeClass("edit-crossed").addClass("edit-checked");
+        $(element).attr("onclick", "unset_many2many(this,"+JSON.stringify(pars)+")");
     }
 }
 
@@ -56,5 +57,6 @@ function unset_many2many(element, pars){
     };
     if(ajax_edit_request({...ajax_pars, ...pars})) {
         $(element).find("i").removeClass("edit-checked").addClass("edit-crossed");
+        $(element).attr("onclick", "set_many2many(this,"+JSON.stringify(pars)+")");
     }
 }

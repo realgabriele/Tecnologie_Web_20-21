@@ -38,7 +38,7 @@ class FramePrivate
         $this->dbh = $dbh;
         $this->auth = new PHPAuth\Auth($dbh, new PHPAuth\Config($dbh));
 
-        // $this->check_authorization();
+        $this->check_authorization();
 
         $this->handleRequest();
 
@@ -51,7 +51,7 @@ class FramePrivate
         foreach ($actions as $action){
             $id = $this->auth->isAuthenticated ? $this->auth->getCurrentUID() : 0;
             if (!$this->auth->is_authorized($id, $action)) {
-                $this->render_error("Operazione non autorizzata!");
+                $this->render_error("Operazione non autorizzata: ". $action);
             }
         }
     }

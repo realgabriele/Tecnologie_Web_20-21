@@ -43,3 +43,10 @@ a[href], a[onclick], button[type=submit], .clickable {
     color: green;
     font-size: 1.5rem;
 }
+
+.custom-file-input {
+    cursor: pointer;
+}
+.custom-file-input ~ .custom-file-label::after {
+    content: "Sfoglia" !important;
+}

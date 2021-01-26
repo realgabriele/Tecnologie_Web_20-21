@@ -22,13 +22,17 @@ class EditBackPage extends FramePrivate
         if (!isset($this->table_name)) $this->render_error("Tabella non specificata");
         if (!isset($this->row_id)) $this->render_error("ID non specificato");
 
-        parent::check_authorization(array_merge($actions, ['backoffice' . $this->table_name . '.edit']));
+        parent::check_authorization(array_merge($actions, ['backoffice.' . $this->table_name . '.edit']));
 
     }
 
     public function handleRequest()
     {
         $params = $_POST;
+
+        if (isset($_FILES['foto']) && is_uploaded_file($_FILES['foto']['tmp_name'])) {
+            $params['foto'] = $this->save_image();
+        } else { unset($params['foto']); }
 
         if (sizeof($params) > 0) { // se le varibili da modificare sono settate
             unset($params['table']);
@@ -60,5 +64,23 @@ class EditBackPage extends FramePrivate
 
         $row = $query_prepared->fetch(PDO::FETCH_ASSOC);
         $this->body->setContent($row, null);
+    }
+
+    protected function save_image()
+    {
+        $imagePath = "skins/assets/";
+        $imageName = pathinfo($_FILES['foto']['tmp_name'], PATHINFO_FILENAME);
+        $imageExt = pathinfo($_FILES['foto']['name'], PATHINFO_EXTENSION);
+
+        // prevent overwrite of existing file
+        $i = '';
+        while(file_exists($imageName . $i . '.' . $imageExt)) {
+            $i++;
+        }
+
+        $basename = $imageName . $i . '.' . $imageExt;
+        if (move_uploaded_file($_FILES['foto']['tmp_name'], $imagePath . $basename))
+            return "../assets/" . $basename;
+        else return null;
     }
 }

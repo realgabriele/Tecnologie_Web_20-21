@@ -9,6 +9,7 @@ Class utility extends TagLibrary {
     }
 
     function shorten($name, $data, $pars) {
+        if (strlen($data) <= $pars['length']) return $data;
         return substr($data, 0, $pars['length']) . " ...";
     }
 

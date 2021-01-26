@@ -7,9 +7,9 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Tutti gli Articoli</h3>
+                            <h3 class="card-title">Tutti gli Ordini</h3>
                             <div class="float-right mr-4">
-                                <a href="admin_create.php?table=articoli">
+                                <a href="admin_create.php?table=ordini">
                                     <button type="submit" class="btn btn-primary"><i class="fas fa-plus"></i></button>
                                 </a>
                             </div>
@@ -19,22 +19,18 @@
                             <table class="table table-head-fixed text-nowrap dataTableMultiple">
                                 <thead>
                                 <tr>
-                                    <th>Nome</th>
-                                    <th>Prezzo</th>
-                                    <th>Descrizione</th>
-                                    <th>Descrizione Lunga</th>
+                                    <th>Id</th>
+                                    <th>Data e Ora</th>
                                     <th></th>
                                 </tr>
                                 </thead>
                                 <tbody class="table-body">
                                 <[foreach]>
                                 <tr>
-                                    <td><[nome]></td>
-                                    <td><[prezzo::to_prezzo library=utility]></td>
-                                    <td><[descrizione::shorten length="35" library=utility]></td>
-                                    <td><[descrizione_lunga::shorten length="65" library=utility]></td>
+                                    <td><[id]></td>
+                                    <td><[timestamp::to_date library="utility]> <[timestamp::to_time library="utility]></td>
                                     <td>
-                                        <a href="admin_show.php?table=articoli&id=<[id]>">
+                                        <a href="admin_show.php?table=ordini&id=<[id]>">
                                         <button class="btn btn-info float-right py-0">
                                             Vedi
                                         </button>

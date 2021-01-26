@@ -19,15 +19,15 @@ class CreateBackPage extends FramePrivate
     {
         if (!isset($this->table_name)) $this->render_error("Tabella non specificata");
 
-        parent::check_authorization(array_merge($actions, ['backoffice' . $this->table_name . '.create']));
+        parent::check_authorization(array_merge($actions, ['backoffice.' . $this->table_name . '.create']));
     }
 
     public function handleRequest()
     {
         $params = $_POST;
 
-        if (isset($_FILES['image'])) {
-            $params['image'] = $this->save_image();
+        if (isset($_FILES['foto']) && is_uploaded_file($_FILES['foto']['tmp_name'])) {
+            $params['foto'] = $this->save_image();
         }
 
         if (sizeof($params) > 0) { // se le varibili da modificare sono settate
@@ -52,7 +52,7 @@ class CreateBackPage extends FramePrivate
                 $this->body->setContent("success_msg", "Creato con successo");
                 // redirect alla pagina show_single
                 $this->new_row_id = $this->dbh->lastInsertId();
-                header("location: show.php?table={$this->table_name}&id={$this->new_row_id}");
+                header("location: admin_show.php?table={$this->table_name}&id={$this->new_row_id}");
                 die();
             }
         }
@@ -66,8 +66,8 @@ class CreateBackPage extends FramePrivate
     protected function save_image()
     {
         $imagePath = "skins/assets/";
-        $imageName = pathinfo($_FILES['image']['tmp_name'], PATHINFO_FILENAME);
-        $imageExt = pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
+        $imageName = pathinfo($_FILES['foto']['tmp_name'], PATHINFO_FILENAME);
+        $imageExt = pathinfo($_FILES['foto']['name'], PATHINFO_EXTENSION);
 
         // prevent overwrite of existing file
         $i = '';
@@ -76,8 +76,8 @@ class CreateBackPage extends FramePrivate
         }
 
         $basename = $imageName . $i . '.' . $imageExt;
-        if (move_uploaded_file($_FILES['image']['tmp_name'], $imagePath . $basename))
-            return $imagePath . $basename;
-        else return "";
+        if (move_uploaded_file($_FILES['foto']['tmp_name'], $imagePath . $basename))
+            return "../assets/" . $basename;
+        else return null;
     }
 }
