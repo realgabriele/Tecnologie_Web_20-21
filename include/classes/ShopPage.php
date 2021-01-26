@@ -33,7 +33,7 @@ class ShopPage extends FramePublic
         }
 
         if (isset($filtered_get['cat'])) {      // category id
-            $joins[] = " JOIN `articolo_categoria` AS AC ON id = AC.articolo_id ";
+            $joins[] = " JOIN `articolo_categoria` AS AC ON `articoli`.id = AC.articolo_id ";
 
             $conds = [];
             foreach ($filtered_get['cat'] as $i => $cat){
@@ -51,7 +51,7 @@ class ShopPage extends FramePublic
             $query .= " WHERE " . implode(" AND ", $conditions);
         }
 
-        $query .= " GROUP BY id ";  // no duplicates
+        $query .= " GROUP BY `articoli`.id ";  // no duplicates
 
         $this->query_prepared = $this->dbh->prepare($query);
         foreach ($parameters as $param => &$value) {
