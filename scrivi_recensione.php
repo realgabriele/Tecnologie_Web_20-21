@@ -58,5 +58,3 @@ for($i=0; $i<$result->rowCount(); $i++) {
 
 $main->setContent("body", $body->get());
 $main->close();
-
-?>

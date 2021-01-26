@@ -17,7 +17,6 @@ if($link === false){
 }
 
 // Riprendo Campi HTML
-
 $utente_id=$_SESSION['auth_uid'];
 $articolo_id = $_GET['id'];
 $titolo = mysqli_real_escape_string($link, $_REQUEST['titolo']);
@@ -41,6 +40,3 @@ if(mysqli_query($link, $sql)) {
         header('Location: show_item.php?id=' . $articolo_id . '&rejected=Recensione già esistente');
     }
 }
-
-
-?>

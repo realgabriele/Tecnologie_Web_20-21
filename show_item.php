@@ -10,6 +10,7 @@ $body = new Template("articoli/show_single.html");
 $id = $_GET["id"];
 if(isset($_GET['created']))
     $created = $_GET["created"];
+
 if(isset($_GET['rejected']))
     $rejected = $_GET["rejected"];
 
@@ -24,9 +25,6 @@ for($i=0; $i<$result->rowCount(); $i++) {
     $data = $result->fetch(PDO::FETCH_ASSOC);
     $body->setContent($data, null);
 }
-
-
-/* set Recensioni */
 
 $recensioni = new Template("articoli/recensioni.html");
 if (!$result = $dbh->query("SELECT * FROM recensioni WHERE articolo_id=$id")) {
@@ -49,5 +47,3 @@ for($i=0; $i<$result->rowCount(); $i++) {
 $body->setContent("recensioni", $recensioni->get());
 $main->setContent("body", $body->get());
 $main->close();
-
-?>

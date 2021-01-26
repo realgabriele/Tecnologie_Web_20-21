@@ -21,9 +21,6 @@ for($i=0; $i<$result->rowCount(); $i++) {
     $body->setContent($data, null);
 }
 
-
-/* set Recensioni */
-
 $recensioni = new Template("articoli/leggirecce.html");
 if (!$result = $dbh->query("SELECT * FROM recensioni")) {
     echo "Error: ", $result->errorInfo();
@@ -41,5 +38,3 @@ for($i=0; $i<$result->rowCount(); $i++) {
 $body->setContent("recensioni", $recensioni->get());
 $main->setContent("body", $body->get());
 $main->close();
-
-?>

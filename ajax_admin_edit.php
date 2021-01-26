@@ -45,7 +45,6 @@ if ($action=="delete" && $type=="many2many"){
     }
 }
 
-
 header('Content-Type: application/json');
 $array = array(
     "status" => "success",
