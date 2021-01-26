@@ -66,12 +66,15 @@ class FramePrivate
 
     public function updateHeader(){
         /* set user information */
-        if ($this->auth->isAuthenticated){
-            $user_data = $this->auth->getCurrentUser(true);
-        } else {
-            $user_data = ['not_authenticated' => 'true'];
-        }
+        $user_data = $this->auth->getCurrentUser(true);
         $this->main->setContent($user_data, null);
+
+        /* set left sidebar menu */
+        // todo: migliorare
+        $tables = ["utenti", "gruppi", "servizi", "articoli", "categorie", "recensioni", "ordini", "indirizzi", "metodipagamento"];
+        foreach ($tables as $table_name){
+            $this->main->setContent("table_name", $table_name);
+        }
     }
 
     public function getPage(){
@@ -82,14 +85,13 @@ class FramePrivate
     protected function render_error($message = ""){
         if (!$this->auth->isAuthenticated) {
             // show login page
-            $this->body = new Template("login.html");
-            $this->body->setContent("error_message", $message .
+            $this->main = new Template("login.html");
+            $this->main->setContent("error_message", $message .
                 "<br>Se sei autorizzato effettua il login");
         } else {
             $this->body = new Template("error.html");
             $this->body->setContent("error_message", $message);
         }
-        $this->updateHeader();
         echo $this->getPage();
         exit();
     }

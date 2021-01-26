@@ -97,6 +97,47 @@ Class admin extends TagLibrary {
     }
 
 
+    /** Create Table for a 1:n association
+     * between ordini and articolo_ordine
+     * associated with articoli
+     * $data: this row id
+     */
+    function show_articoliordine($name, $data, $pars) {
+        $result_table = new Template("show_table.html");
+        $result_table->setContent("table_name", "Articoli Ordinati");
+
+        $columns = ["`articoli`.nome",
+            "`articolo_ordine`.quantita",
+            "`articolo_ordine`.prezzo"];
+        $result_table->setContent("column_name", "nome");
+        $result_table->setContent("column_name", "quantita");
+        $result_table->setContent("column_name", "prezzo");
+
+        $column_names = implode(", ", $columns);
+
+        global $dbh;
+        $query = "SELECT DISTINCT {$column_names} FROM `articolo_ordine` " .
+            " JOIN `articoli` ON `articoli`.id = `articolo_ordine`.articolo_id ".
+            " WHERE ordine_id = {$data}";
+        $query_prepared = $dbh->prepare($query);
+        $query_prepared->execute();
+
+        $result = $query_prepared->fetchAll(PDO::FETCH_ASSOC);
+
+        foreach ($result as $row) {
+            $table_row = "";
+            foreach ($row as $item) {
+                $table_row .= "<td>{$item}</td>";
+            }
+            $table_row = "<tr>" . $table_row . "</tr>";
+
+            $result_table->setContent("table_row", $table_row);
+        }
+
+        return $result_table->get();
+    }
+
+
     /** Create Table for edit a n:n association
      * $data: this row id
      * $pars: tab1_name, tab2_name, tab1id_name, tab2id_name, assoc_name, columns

@@ -57,7 +57,7 @@ class RegisterPage extends FramePublic
         $this->body->setContent("success_msg", $this->success_msg);
         $this->body->setContent("error_msg", $this->error_msg);
 
-        $this->body->setContent("email_old", $_POST['email']);
-        $this->body->setContent("nome_old", $_POST['nome']);
+        $this->body->setContent("email_old", $_POST['email'] ?? null);
+        $this->body->setContent("nome_old", $_POST['nome'] ?? null);
     }
 }

@@ -160,11 +160,10 @@ class Auth  /* implements AuthInterface */
     }
 
     /**
-     * Logs out the session, identified by hash
-     * @param string $hash
+     * Logs out the current session
      * @return boolean
      */
-    public function logout($hash)
+    public function logout()
     {
         $this->isAuthenticated = false;
         $this->currentuser = null;
@@ -201,7 +200,6 @@ class Auth  /* implements AuthInterface */
 
     /**
      * Retrieves the UID associated with the current session
-     * @param string $hash
      * @return int $uid
      */
     public function getSessionUID()

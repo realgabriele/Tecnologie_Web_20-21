@@ -40,11 +40,27 @@
                             </div>
                             <div class="card-group">
                                 <span class="card-label">Data: </span>
-                                <span class="card-text"><[timestamp::to_date library="utility]></span>
+                                <span class="card-text"><[timestamp::to_date library="utility"]></span>
                             </div>
                             <div class="card-group">
                                 <span class="card-label">Ora: </span>
-                                <span class="card-text"><[timestamp::to_time library="utility]></span>
+                                <span class="card-text"><[timestamp::to_time library="utility"]></span>
+                            </div>
+                            <div class="card-group">
+                                <span class="card-label">Indirizzo di Spedizione: </span>
+                                <a href="admin_show.php?table=indirizzi&id=<[indirizzo_id]>">
+                                    <span class="card-text">Vedi</span>
+                                </a>
+                            </div>
+                            <div class="card-group">
+                                <span class="card-label">Metodo di Pagamento: </span>
+                                <a href="admin_show.php?table=metodipagamento&id=<[metodopagamento_id]>">
+                                    <span class="card-text">Vedi</span>
+                                </a>
+                            </div>
+                            <div class="card-group">
+                                <span class="card-label">Evaso: </span>
+                                <span class="card-text"><[evaso::to_boolean library="utility"]></span>
                             </div>
                         </div>
                         <!-- /.card-body -->
@@ -54,11 +70,7 @@
                 <!--/.col (left) -->
             </div>
 
-            <[id::show_many2many
-            tab1_name="ordini" tab2_name="articoli"
-            tab1id_name="ordine" tab2id_name="articolo"
-            assoc_name="articolo_ordine" columns="nome;descrizione"
-            library=admin]>
+            <[id::show_articoliordine library="admin"]>
 
         </div><!-- /.container-fluid -->
     </section>

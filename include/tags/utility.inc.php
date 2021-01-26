@@ -42,6 +42,11 @@ Class utility extends TagLibrary {
         }
         return $content;
     }
+
+    function to_boolean($name, $data, $pars){
+        if ($data) return "Vero";
+        return "Falso";
+    }
 }
 
 ?>
