@@ -1,84 +1,58 @@
 <div style="height: 700px">
-
     <link rel="stylesheet" href="<[base]>/css/show_item.css" />
     <link rel="stylesheet" href="<[base]>/css/recensioni.css" />
-
-
     <div class="container">
-
         <div class="col-md-4">
-
             <div class="card">
-
-                    <div class="card-head">
+                <div class="card-head">
                     <img src="<[foto]>"  class="product-img">
-                    </div>
-
+                </div>
                 <div class="card-body">
-
                     <div class="product-desc">
-
-                            <span class="product-title">
-                             <b><[nome]></b>
-                                    <span class="badge">
-                                        New
-                                    </span>
-                            </span>
-
-
+                        <span class="product-title">
+                        <b><[nome]></b>
+                        <span class="badge">
+                        New
+                        </span>
+                        </span>
                         <BR>
                         <span class="product-caption">
-                            <[descrizione]>
+                        <[descrizione]>
                         </span>
-
                     </div>
-
-                            <span class="product-rating">
-                            <[rating::to_stars library="utility"]>
-                            </span>
-
-                                                    <div class="product-properties">
-                                                    <br>
-                                                    <br>
-                                                             <span class="product-size">
-                                                             <ul class="ul-size">
-                                                             <li><a onclick="show_price(<[prezzo]>, 1, <[id]>)" class="active">1</a></li>
-                                                             <li><a onclick="show_price(<[prezzo]>, 5, <[id]>)" class="active">5</a></li>
-                                                             <li><a onclick="show_price(<[prezzo]>, 10, <[id]>)" class="active">10</a></li>
-                                                             </ul>
-                                                             </span>
-
-
-                                                              <span class="product-price">
-                                                              EUR<b id="total_item_price"> <[prezzo]> </b>
-                                                              </span>
-
-                                                              <span class="descrizione">
-                                                               INFORMAZIONI SU QUESTO ARTICOLO
-                                                               </span>
-
+                    <span class="product-rating">
+                    <[rating::to_stars library="utility"]>
+                    </span>
+                    <div class="product-properties">
+                        <br>
+                        <br>
+                        <span class="product-size">
+                            <ul class="ul-size">
+                                <li><a onclick="show_price(<[prezzo]>, 1, <[id]>)" class="active">1</a></li>
+                                <li><a onclick="show_price(<[prezzo]>, 5, <[id]>)" class="active">5</a></li>
+                                <li><a onclick="show_price(<[prezzo]>, 10, <[id]>)" class="active">10</a></li>
+                            </ul>
+                        </span>
+                        <span class="product-price">
+                        EUR<b id="total_item_price"> <[prezzo]> </b>
+                        </span>
+                        <span class="descrizione">
+                        INFORMAZIONI SU QUESTO ARTICOLO
+                        </span>
                         <span class="descrizione2">
-                            <[descrizione_lunga]>
+                        <[descrizione_lunga]>
                         </span>
-
-
-
                         <span class="recensioni">
-                            RECENSIONI
+                        RECENSIONI
                         </span>
-
                         <[recensioni]>
-
                         <a id="addmultiple-button" onclick="add_to_cart(this, <[id]>)" class="carrello">
                             <i class="fas fa-cart-plus"></i>
                         </a>
-
-
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-                        <script src="<[base]>/js/show_item.js"></script>
-
+<script src="<[base]>/js/show_item.js"></script>

@@ -15,5 +15,3 @@ global $dbh;
 $sql_delete = "DELETE FROM recensioni WHERE articolo_id='$articolo_id' AND utente_id='$utente_id'";
 $dbh->query($sql_delete);
 header ('Location:show_item.php?id=' . $articolo_id);
-
-?>
