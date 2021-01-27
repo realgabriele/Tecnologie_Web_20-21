@@ -57,7 +57,7 @@
     position: absolute;
     top: 90px;
     left: -100px;
-    color: deepskyblue;
+    color: #1e2838;
     font-size:30px;
 }
 
@@ -79,11 +79,29 @@
     color: orange;
 }
 
+.carta4
+{
+    position: absolute;
+    top: 50px;
+    left: -100px;
+    font-size:10px;
+    color: orange;
+}
+
 .modifica
 {
     position: absolute;
     top: 50px;
-    left: 280px;
+    left: 120px;
+    font-size:15px;
+    color:orange ;
+}
+
+.modifica2
+{
+    position: relative;
+    top: 50px;
+    left: 220px;
     font-size:15px;
     color:orange ;
 }
