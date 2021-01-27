@@ -43,17 +43,17 @@
 }
 
 #areautente-container .goto-edit {
-   position: absolute;
+   position: relative;
     color: orange;
     width: 50%;
-    top: 210px;
+    top: 10px;
     left: 70px;
     font-size: 20px;
 
 }
 #areautente-container .goto-edit2 {
     position: relative;
-    top: 360px;
+    top: 45px;
     width: 50%;
     left: 170px;
     color:orange;
@@ -72,16 +72,16 @@ position:relative;
 
 #areautente-container .scadenza {
     position: relative;
-    width: 18%;
+    width: 27%;
     top: 8px;
-    left: 90px;
+    left: 60px;
     color: #fff;
     background: #ffb13b;
     padding: 2px 5px;
     border-radius: 4px;
     margin-right: 200px;
     font-weight: bold;
-    font-size: 8px;
+    font-size: 13px;
     letter-spacing: 1px;
     margin: 0;
     color: #000000;
@@ -138,9 +138,9 @@ position:relative;
     left: 0px;
     width: 45%;
     top: 10px;
-    height:20px;
+    height:auto;
     font-weight: bold;
-    font-size: 10px;
+    font-size: 15px;
     text-align: center;
     display: block;
     color: #000000;
@@ -154,7 +154,6 @@ position:relative;
     position: relative;
     left: 70px;
     width: 45%;
-    height: 65px;
     top: -150px;
     font-weight: bold;
     font-size: 10px;
@@ -210,7 +209,7 @@ position:relative;
 
 #areautente-container h1.email {
     font-weight: bold;
-    font-size: 15px;
+    font-size: 20px;
     margin: 0;
     color: #000000;
     text-transform: lowercase;
@@ -218,7 +217,7 @@ position:relative;
 
 #areautente-container h1.nero {
     font-weight: bold;
-    font-size: 15px;
+    font-size: 20px;
     margin: 0;
     color: #000000;
 }
