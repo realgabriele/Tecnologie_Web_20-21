@@ -45,6 +45,7 @@
 #areautente-container .goto-edit {
     position: relative;
     color: orange;
+    width: 50%;
     top: 168px;
     left: 70px;
     font-size: 20px;
@@ -52,7 +53,7 @@
 }
 #areautente-container .goto-edit2 {
     position: relative;
-    top: 313px;
+    top: 360px;
     width: 50%;
     left: 170px;
     color:orange;

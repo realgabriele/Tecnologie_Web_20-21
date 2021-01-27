@@ -1,30 +1,47 @@
+<link rel="stylesheet" href="<[base]>/css/indirizzi.css" />
+
 <div class="container">
     <div class="row">
         <div class="col-1">
             <a href="show.php?table=metodipagamento">
+                <div class="back">
                 <div class="fa fa-angle-left fa-3x"></div>
+                </div>
             </a>
         </div>
         <div class="col-6">
             <div class="row">
+
                 <div class="h1"><[numero_carta]></div>
                 <a href="edit.php?table=metodipagamento&id=<[id]>">
+                    <div class="modifica">
                     <div class="fa fa-edit fa-2x pt-2 ml-5"></div>
+                    </div>
                 </a>
             </div>
             <div class="row">
-                <div class="h2 font-weight-bold"><[intestatario_carta]></div>
+                <div class="int2">
+                <div class="h2 font-weight-bold"> <font color="white"> <[intestatario_carta]> </font> </div>
+                </div>
             </div>
             <div class="row">
                 <div class="h3">
-                    <[scadenza_carta] -&nbsp;<[cvv_carta]>
+                    <div class="scadenza">
+                    SCAD: <[scadenza_carta]>
+                    </div>
+
+                    <div class="cvv">
+                        CVV: <[cvv_carta]>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="col-3">
             <div class="row">
                 <a href="delete.php?table=metodipagamento&id=<[id]>">
+                    <div class="carta3">
                     <div class="fa fa-trash fa-3x pt-2"></div>
+                    </div>
                 </a>
             </div>
         </div>
