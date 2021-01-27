@@ -16,10 +16,17 @@
 
                         <div class="link">
                         <a href="show.php?table=indirizzi">Indirizzi</a><br/>
+                        </div>
+                        <div class="link">
                         <a href="show.php?table=metodipagamento">Metodi di Pagamento</a><br/>
+                        </div>
+                        <div class="link">
                         <a href="show.php?table=ordini">Ordini</a><br/>
+                        </div>
+                        <div class="link">
                         <a href="show_wishlist.php?table=wishlist">Wishlist</a><br/>
                         </div>
+
 
                     </div>
                 </span>
@@ -30,18 +37,7 @@
             </span>
 
 
-            <a href="eliminautente.php">
-                <div class="goto-edit2">
-                    <i class="fas fa-trash"></i>
-                </div>
-            </a>
 
-
-            <a href="modificautente.php" class="goto-edit">
-                <div class="goto-edit">
-                    <i class="fas fa-user-edit"></i>
-                </div>
-            </a>
 
 
             <div class="nome">
@@ -53,12 +49,28 @@
                 <h1 class="email"><[email]></h1>
                 <br>
                 Indirizzi Spedizione: <i class="fas fa-shipping-fast"></i>
+                <[foreach]>
                 <h1 class="spedizione"> <[via]> - <[cap]> - <[citta]> </h1>
+                <[/foreach]>
                 <br>
                 <br>
                 Metodi Pagamento: <i class="fas fa-credit-card"></i>
                 <h1 class="pagamenti"> <[intestatario_carta]> - <[numero_carta]> </h1>
                 <h1 class="scadenza"> SCADENZA <[scadenza_carta]></h1>
+
+                <a href="eliminautente.php">
+                    <div class="goto-edit2">
+                        <i class="fas fa-trash"></i>
+                    </div>
+                </a>
+
+
+                <a href="modificautente.php" class="goto-edit">
+                    <div class="goto-edit">
+                        <i class="fas fa-user-edit"></i>
+                    </div>
+                </a>
+
             </div>
             <div class="overlay-container">
                 <div class="overlay">
@@ -68,7 +80,7 @@
                         <button class="ghost" id="signIn">Clicca qui</button>
                     </div>
                     <div class="overlay-panel overlay-right">
-                        <h1 class="bianco">Vuoi accedere ai tuoi ordini ?</h1>
+                        <h1 class="bianco">Vuoi accedere alla tua pagina personale ?</h1>
                         <br>
                         <button class="ghost" id="signUp">Clicca Qui</button>
                     </div>
