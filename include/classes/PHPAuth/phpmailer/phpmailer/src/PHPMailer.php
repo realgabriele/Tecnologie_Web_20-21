@@ -21,6 +21,11 @@
 
 namespace PHPMailer\PHPMailer;
 
+include "Exception.php";
+include "OAuth.php";
+include "POP3.php";
+include "SMTP.php";
+
 /**
  * PHPMailer - PHP email creation and transport class.
  *

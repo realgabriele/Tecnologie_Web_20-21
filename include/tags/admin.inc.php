@@ -12,11 +12,12 @@ Class admin extends TagLibrary {
         $result_table = new Template("show_table.html");
         $result_table->setContent("table_name", ucfirst($pars["tab2_name"]));
 
-        $columns = [];
+        $columns = ["`".$pars['tab2_name']."`.id AS fid"];
         foreach (explode(";", $pars['columns']) as $column) {
             $result_table->setContent("column_name", $column);
             $columns[] = "`".$pars['tab2_name']."`.".$column;
         }
+        $result_table->setContent("column_name", "");
         $column_names = implode(", ", $columns);
 
         global $dbh;
@@ -30,10 +31,14 @@ Class admin extends TagLibrary {
         $result = $query_prepared->fetchAll(PDO::FETCH_ASSOC);
 
         foreach ($result as $row) {
+            $row_id = $row['fid'];
+            unset($row['fid']);
+
             $table_row = "";
             foreach ($row as $item) {
                 $table_row .= "<td>{$item}</td>";
             }
+            $table_row .= "<td><a href='admin_show.php?table={$pars['tab2_name']}&id={$row_id}'>Vedi</a></td>";
             $table_row = "<tr>" . $table_row . "</tr>";
 
             $result_table->setContent("table_row", $table_row);
@@ -51,11 +56,12 @@ Class admin extends TagLibrary {
         $result_table = new Template("show_table.html");
         $result_table->setContent("table_name", ucfirst($pars["tab2_name"]));
 
-        $columns = [];
+        $columns = ["`".$pars['tab2_name']."`.id AS fid"];
         foreach (explode(";", $pars['columns']) as $column) {
             $result_table->setContent("column_name", $column);
             $columns[] = "`".$pars['tab2_name']."`.".$column;
         }
+        $result_table->setContent("column_name", "");
         $column_names = implode(", ", $columns);
 
         global $dbh;
@@ -67,10 +73,14 @@ Class admin extends TagLibrary {
         $result = $query_prepared->fetchAll(PDO::FETCH_ASSOC);
 
         foreach ($result as $row) {
+            $row_id = $row['fid'];
+            unset($row['fid']);
+
             $table_row = "";
             foreach ($row as $item) {
                 $table_row .= "<td>{$item}</td>";
             }
+            $table_row .= "<td><a href='admin_show.php?table={$pars['tab2_name']}&id={$row_id}'>Vedi</a></td>";
             $table_row = "<tr>" . $table_row . "</tr>";
 
             $result_table->setContent("table_row", $table_row);

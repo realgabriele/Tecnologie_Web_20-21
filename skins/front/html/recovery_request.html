@@ -1,0 +1,27 @@
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-sm-8 contant_form">
+            <h2 class="text_align_center">Recupera Password</h2>
+            <div class="form_section">
+                <form class="form_contant" method="post">
+                    <fieldset>
+                        <div class="row">
+                            <label>Inserisci il tuo indirizzo email</label>
+                            <input class="field_custom" placeholder="Email" type="email" name="email">
+                            <div class="center"><button type="submit" class="btn main_bt" href="#">Invia</button></div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+
+            <[if!empty success_msg]>
+            <div class="row mt-3">
+                <div class="col-12 alert alert-success">
+                    <[success_msg]>
+                </div>
+            </div>
+            <[/if!empty]>
+
+        </div>
+    </div>
+</div>

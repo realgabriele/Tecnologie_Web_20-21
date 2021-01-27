@@ -25,13 +25,12 @@ class LoginPage extends FramePublic
 
     public function handleRequest()
     {
-        if (isset($_POST['referer'])) $this->referer = $_POST['referer'];
+        if (isset($_POST['referer']) && $_POST['referer'] != null) $this->referer = $_POST['referer'];
 
         if ( isset($_POST['email']) && isset($_POST['password']) ) {
             $res = $this->auth->login($_POST['email'], $_POST['password']);
             if (!$res['error']) {
                 header("Location: " . $this->referer);
-                echo $this->referer;
                 die();
             } else {
                 $this->error_msg = "login error: " . $res['message'];

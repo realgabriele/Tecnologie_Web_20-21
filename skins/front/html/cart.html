@@ -1,28 +1,6 @@
 <link rel="stylesheet" href="<[base]>/css/cart.css">
 
 <div class="shopping-cart" id="shopping-cart-container">
-    <!-- inner page banner -->
-    <div id="inner_banner" class="section inner_banner_section">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="full">
-                        <div class="title-holder">
-                            <div class="title-holder-cell text-left">
-                                <h1 class="page-title">Shopping Cart</h1>
-                                <ol class="breadcrumb">
-                                    <li><a href="index.html">Home</a></li>
-                                    <li class="active">Shopping Cart</li>
-                                </ol>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- end inner page banner -->
-
     <div class="section padding_layout_1 Shopping_cart_section">
         <div class="container">
             <div class="row">
@@ -46,12 +24,12 @@
                                 <!-- Foto e Info -->
                                 <td class="col-md-6">
                                     <div class="media">
-                                        <a class="thumbnail pull-left" href="#">
-                                            <img class="media-object" src="<[foto]>" alt="#">
+                                        <a class="thumbnail pull-left" href="show_item.php?id=<[id]>">
+                                            <img class="media-object" src="<[foto]>" alt="foto">
                                         </a>
                                         <div class="media-body">
                                             <h4 class="media-heading">
-                                                <a href="#"><[nome]></a>
+                                                <a href="show_item.php?id=<[id]>"><[nome]></a>
                                             </h4>
                                             <span>Status: </span><span class="text-success">In Stock</span>
                                         </div>

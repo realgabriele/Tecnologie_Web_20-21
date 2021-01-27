@@ -24,11 +24,14 @@
         <b>Covid</b>Pharmacy
     </div>
     <!-- /.login-logo -->
+
     <div class="card">
         <div class="card-body login-card-body">
             <p class="login-box-msg">Effettua il login per entrare</p>
 
             <form action="login.php" method="post">
+                <input type="hidden" name="referer" value="<[referer]>">
+
                 <div class="input-group mb-3">
                     <input type="email" class="form-control" name="email" placeholder="Email">
                     <div class="input-group-append">
@@ -59,7 +62,7 @@
             </div>
 
             <p class="mb-1">
-                <a href="#">Ho dimenticato la password</a>
+                <a href="recovery.php">Ho dimenticato la password</a>
             </p>
             <p class="mb-0">
                 <a href="register.php" class="text-center">Registra un nuovo account</a>

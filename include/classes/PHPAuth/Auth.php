@@ -2,6 +2,10 @@
 
 namespace PHPAuth;
 
+require_once "phpmailer/phpmailer/src/PHPMailer.php";
+require_once "phpmailer/phpmailer/src/SMTP.php";
+require_once "phpmailer/phpmailer/src/Exception.php";
+
 use Exception;
 use PDO;
 use PHPMailer\PHPMailer\PHPMailer;
@@ -152,7 +156,7 @@ class Auth  /* implements AuthInterface */
 
         $state['uid'] = $row['id'];
         $state['error'] = false;
-        $state['message'] = "Richiesta inoltrata. Controlla la tua email";
+        $state['message'] = "Richiesta inoltrata! Controlla la tua email.";
         $state['token'] = $addRequest['token'];
         $state['expire'] = $addRequest["expire"];
 
@@ -684,47 +688,27 @@ class Auth  /* implements AuthInterface */
 
         // Check configuration for custom SMTP parameters
         try {
-            // Server settings
-            if ($this->config->smtp) {
+            $mail = new PHPMailer();
 
-                if ($this->config->smtp_debug) {
-                    $mail->SMTPDebug = $this->config->smtp_debug;
-                }
+            $mail->isSMTP();
+            $mail->Host = 'smtp.mailtrap.io';
+            $mail->SMTPAuth = true;
+            $mail->Username = '092cca23ee5559';
+            $mail->Password = '14569257412e78';
+            $mail->SMTPSecure = 'tls';
+            $mail->Port = 2525;
 
-                $mail->isSMTP();
-
-                $mail->Host = $this->config->smtp_host;
-                $mail->SMTPAuth = $this->config->smtp_auth;
-
-                // set SMTP auth username/password
-                if (!is_null($this->config->smtp_auth)) {
-                    $mail->Username = $this->config->smtp_username;
-                    $mail->Password = $this->config->smtp_password;
-                }
-
-                // set SMTPSecure (tls|ssl)
-                if (!is_null($this->config->smtp_security)) {
-                    $mail->SMTPSecure = $this->config->smtp_security;
-                }
-
-                $mail->Port = $this->config->smtp_port;
-            } //without this params internal mailer will be used.
-
-            //Recipients
-            $mail->setFrom($this->config->site_email, $this->config->site_name);
+            $mail->setFrom('no-reply@covid-pharmacy.com', 'CovidPharmacy');
             $mail->addAddress($email);
-
-            $mail->CharSet = $this->config->mail_charset;
-
-            //Content
+            $mail->Subject = 'CovidPharmacy - reset della password';
             $mail->isHTML(true);
+            $mailContent = "<h1>Reset della Password</h1>
+                            <p>per recuperare la password clicca <a href='http://192.168.1.40/gabrtag/Web_2021/recovery.php?key={$key}'>questo link</a></p>";
+            $mail->Body = $mailContent;
 
-            $mail->Subject = 'reset della password';
-            $mail->Body = "Per resettare la password clicca sul link seguente\n".
-                "http://192.168.1.40/gabrtag/Web_2021/password_reset.php?key={$key}";
-
-            if (!$mail->send())
+            if(!$mail->send()){
                 throw new Exception($mail->ErrorInfo);
+            }
 
             $return['error'] = false;
 

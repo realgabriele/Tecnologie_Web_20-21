@@ -15,7 +15,7 @@
                     <input type="password" name="repeat_password" placeholder="Repeat Password" />
                     <div class="alert-success"><[success_msg]></div>
                     <div class="alert-danger"><[error_msg]></div>
-                    <button>Registrati</button>
+                    <button class="clickable">Registrati</button>
                 </form>
             </div>
 
@@ -28,9 +28,9 @@
                     <span>per entrare in Covid Pharmacy</span>
                     <input type="email" name="email" placeholder="Email" value="<[email_old]>" />
                     <input type="password" name="password" placeholder="Password" />
-                    <a href="#">Hai dimenticato la password ?</a>
+                    <a href="recovery.php">Hai dimenticato la password ?</a>
                     <div class="alert-danger"><[error_msg]></div>
-                    <button>Log-In</button>
+                    <button class="clickable">Log-In</button>
                 </form>
             </div>
 
@@ -40,12 +40,12 @@
                     <div class="overlay-panel overlay-left">
                         <h1 class="bianco">Sei registrato ?</h1>
                         <p>Clicca qui per inserire le tue credenziali.</p>
-                        <button class="ghost" id="signIn">Log-In</button>
+                        <button class="ghost clickable" id="signIn">Log-In</button>
                     </div>
                     <div class="overlay-panel overlay-right">
                         <h1 class="bianco">Non sei registrato ?</h1>
                         <p>Nessun problema, clicca qui sotto per registrarti.</p>
-                        <button class="ghost" id="signUp">Registrati</button>
+                        <button class="ghost clickable" id="signUp">Registrati</button>
                     </div>
                 </div>
             </div>
