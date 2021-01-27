@@ -1,6 +1,24 @@
 
 
 /* form starting stylings ------------------------------- */
+
+
+
+.titolo3 {
+    position: absolute;
+    top: 180px;
+    left: 470px;
+    font-size: 15px;
+    font-weight: 300;
+    color: #fff;
+    background: #1C283B;
+    box-shadow: -5px 5px 5px rgba(0, 0, 0, 0.3);
+    padding: 2px 5px;
+    border-radius: 4px;
+    text-transform: uppercase;
+
+}
+
 .boxrecensione {
     position: absolute;
     top: 230px;
@@ -8,6 +26,7 @@
 
 
 }
+
 
 .descrizione2 {
     position: absolute;
@@ -23,6 +42,9 @@
     right: -580px;
     left: 470px;
 }
+
+
+
 
 .titolo2{
     position: absolute;

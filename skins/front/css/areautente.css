@@ -12,11 +12,9 @@
 }
 
 
-
-
-#areautente-container .benvenuto {
+#areautente-container .benvenuto2 {
     position: absolute;
-    top: 30px;
+    top: 90px;
     left: 40px;
     font-size: 25px;
     font-weight: 300;
@@ -29,12 +27,10 @@
     font-size: medium;
 }
 
-
-
-#areautente-container .edit {
+#areautente-container .benvenuto {
     position: absolute;
-    top: 130px;
-    left: 190px;
+    top: 30px;
+    left: 35px;
     font-size: 25px;
     font-weight: 300;
     color: #fff;
@@ -45,6 +41,26 @@
     text-transform: uppercase;
     font-size: medium;
 }
+
+#areautente-container .goto-edit {
+    position: relative;
+    color: orange;
+    width: 50%;
+    top: 168px;
+    left: 70px;
+    font-size: 20px;
+
+}
+#areautente-container .goto-edit2 {
+    position: relative;
+    top: 360px;
+    width: 50%;
+    left: 170px;
+    color:orange;
+    font-size: 20px;
+
+}
+
 
 #areautente-container .datanascita {
 position:relative;
@@ -133,6 +149,24 @@ position:relative;
     text-transform: uppercase;
 }
 
+#areautente-container .link {
+    margin-top: 25px;
+    position: relative;
+    margin-top: 10px;
+    left: 70px;
+    width: 45%;
+    height: 65px;
+    top: -150px;
+    font-weight: bold;
+    font-size: 10px;
+    text-align: center;
+    display: block;
+    color: #000000;
+    box-shadow: -5px 5px 5px rgba(0, 0, 0, 0.3) ;
+    border-radius: 4px;
+    text-transform: uppercase;
+}
+
 #areautente-container .pagamenti {
     position: relative;
     margin-top: 30px;
@@ -159,7 +193,7 @@ position:relative;
 
 #areautente-container .nome{
 
-    top: 150px;
+    top: 100px;
     align-content: center;
     padding: 20px 20px 5px 20px;
     margin-top: -5%;

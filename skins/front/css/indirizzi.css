@@ -1,0 +1,137 @@
+.titolo
+{
+    position: relative;
+    color: black;
+    text-transform: uppercase;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    left: -440px;
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
+    display: block;
+}
+
+.piu
+{
+    position: absolute;
+    top: 90px;
+    left: -110px;
+    color: deepskyblue;
+    font-size:30px;
+}
+
+.carta2
+{
+    position: absolute;
+    top: 75px;
+    left: -200px;
+    font-size: 20px;
+    color: orange;
+}
+
+.carta3
+{
+    position: absolute;
+    top: 50px;
+    left: -200px;
+    font-size:10px;
+    color: orange;
+}
+
+.modifica
+{
+    position: absolute;
+    top: 50px;
+    left: 280px;
+    font-size:15px;
+    color:orange ;
+}
+.back
+{
+
+    font-size:15px;
+    color:#1e2839 ;
+}
+
+.int2 {
+    position: relative;
+    width:auto;
+    color: #fff;
+    background: #1e2839;
+    padding: 2px 5px;
+    border-radius: 4px;
+    margin-right: 200px;
+    font-weight: bold;
+    font-size: 15px;
+    letter-spacing: 1px;
+    margin: 0;
+    color: #000000;
+
+}
+
+.scadenza {
+    position: absolute;
+    top: 110px;
+    width:auto;
+    color: #fff;
+    background: orange;
+    padding: 2px 5px;
+    border-radius: 4px;
+    margin-right: 200px;
+    font-weight: bold;
+    font-size: 15px;
+    letter-spacing: 1px;
+    margin: 0;
+    color: #000000;
+
+}
+
+.cvv {
+    position: absolute;
+    top: 140px;
+    width:auto;
+    color: #fff;
+    background: palevioletred;
+    padding: 2px 5px;
+    border-radius: 4px;
+    margin-right: 200px;
+    font-weight: bold;
+    font-size: 15px;
+    letter-spacing: 1px;
+    margin: 0;
+    color: #000000;
+
+}
+
+.int {
+    position: relative;
+    width: auto;
+    top: 8px;
+    left: 120px;
+    color: #fff;
+    background: #1e2839;
+    padding: 2px 5px;
+    border-radius: 4px;
+    margin-right: 200px;
+    font-weight: bold;
+    font-size: 15px;
+    letter-spacing: 1px;
+    margin: 0;
+    color: #000000;
+
+}
+
+.numerocarta{
+    color:#1e2839 ;
+}
+
+.numerocarta{
+    position: absolute;
+    right: 10px;
+}
+
+.font{
+    color: white;
+}
+

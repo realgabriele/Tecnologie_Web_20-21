@@ -1,33 +1,26 @@
-<style>
-    .goto-edit {
-        height: 80px;
-    }
-</style>
-<a href="modificautente.php" class="goto-edit">
-    <div class="edit">
-        <i class="fas fa-edit"></i>
-    </div>
-</a>
-<a href="eliminautente.php">
-    <div class="edit">
-        <i class="fas fa-edit"></i>
-    </div>
-</a>
+<link rel="stylesheet" href="<[base]>/css/areautente.css" />
+
+
+
+
 <div id="areautente-container" class="center">
 
     <div style="width: 1200px">
-        <link rel="stylesheet" href="<[base]>/css/areautente.css" />
         <!-- Registrazione -->
         <div class="container" id="container">
             <div class="form-container sign-up-container">
-                <span class="testotitolo">
-                     Benvenuto nei tuoi ordini <i id="igialla2" class="fas fa-box-open"></i>
+                  <span class="benvenuto2">
+                   Benvenuto nella sezione ordini <i class="fas fa-box-open"></i>
                     </span>
                     <div class="ordine">
+
+                        <div class="link">
                         <a href="show.php?table=indirizzi">Indirizzi</a><br/>
                         <a href="show.php?table=metodipagamento">Metodi di Pagamento</a><br/>
                         <a href="show.php?table=ordini">Ordini</a><br/>
                         <a href="show_wishlist.php?table=wishlist">Wishlist</a><br/>
+                        </div>
+
                     </div>
                 </span>
             </div>
@@ -35,6 +28,19 @@
             <span class="benvenuto">
             Benvenuto nell' area utente <i class="fas fa-address-card"></i>
             </span>
+
+
+            <a href="eliminautente.php">
+                <div class="goto-edit2">
+                    <i class="fas fa-trash"></i>
+                </div>
+            </a>
+            <a href="modificautente.php" class="goto-edit">
+                <div class="goto-edit">
+                    <i class="fas fa-user-edit"></i>
+                </div>
+            </a>
+
 
             <div class="nome">
                 Nome e cognome:
