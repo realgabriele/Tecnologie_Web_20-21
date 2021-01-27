@@ -143,7 +143,7 @@ class Auth  /* implements AuthInterface */
             return $state;
         }
 
-        $addRequest = $this->addRequest($row['id'], $email, "reset");
+        $addRequest = $this->addRequest($row['id'], $email);
 
         if ($addRequest['error'] == 1) {
             $state['message'] = $addRequest['message'];

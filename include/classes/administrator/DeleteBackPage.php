@@ -35,7 +35,9 @@ class DeleteBackPage extends FramePrivate
             } else {
                 $this->body->setContent("success_msg", "Eliminato con successo");
                 // redirect alla pagina show_multiple
-                header("location: admin_show.php?table={$this->table_name}");
+                if (isset($_GET['user_id']))
+                    header("location: admin_show.php?table=utenti&id={$_GET['user_id']}");
+                else header("location: admin_show.php?table={$this->table_name}");
                 die();
             }
     }

@@ -71,7 +71,7 @@ class FramePrivate
 
         /* set left sidebar menu */
         // todo: migliorare
-        $tables = ["utenti", "gruppi", "servizi", "articoli", "categorie", "recensioni", "ordini", "indirizzi", "metodipagamento"];
+        $tables = ["utenti", "gruppi", "servizi", "articoli", "categorie", "recensioni", "ordini"];
         foreach ($tables as $table_name){
             $this->main->setContent("table_name", $table_name);
         }

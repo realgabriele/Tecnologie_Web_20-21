@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Creato il: Gen 25, 2021 alle 19:13
+-- Creato il: Gen 27, 2021 alle 12:35
 -- Versione del server: 8.0.22-0ubuntu0.20.04.3
 -- Versione PHP: 7.4.3
 
@@ -35,8 +35,8 @@ CREATE TABLE `articoli` (
   `nome` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `descrizione` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `descrizione_lunga` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
-  `foto` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
-  `prezzo` float NOT NULL
+  `foto` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '../assets/na.png',
+  `prezzo` float DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -46,7 +46,7 @@ CREATE TABLE `articoli` (
 INSERT INTO `articoli` (`id`, `nome`, `descrizione`, `descrizione_lunga`, `foto`, `prezzo`) VALUES
 (1, 'Mascherina Chirurgica', 'mascherina chirurgica bellissima', 'Una maschera (o mascherina) chirurgica, nota anche come maschera medica,\r\n                            o maschera facciale per uso medico,o mascherina igienica (soprattutto tra gli italiani svizzeri),\r\n                            è un dispositivo destinato a essere indossato dagli operatori sanitari durante un intervento chirurgico\r\n                            o altre attività in ambito sanitario al fine di evitare la dispersione di agenti patogeni.', 'https://i.postimg.cc/kDP21W0R/DEFDEF.png', 0.5),
 (2, 'Amuchina Mani', 'Gel disinfettante mani', 'Amuchina Gel X-GERM Disinfettante Mani è un gel antisettico, studiato per disinfettare a fondo la pelle delle mani. La sua formulazione è in grado di ridurre efficacemente in pochi secondi germi e batteri presenti sulla cute. Amuchina Gel X-GERM Disinfettante Mani è attivo su virus, funghi e batteri.', 'https://i.postimg.cc/W4YHndfV/DEFDEF-copia.png', 2.75),
-(3, 'prova', NULL, NULL, NULL, 0);
+(3, 'prova', NULL, NULL, '../assets/na.png', 0);
 
 -- --------------------------------------------------------
 
@@ -93,7 +93,9 @@ CREATE TABLE `articolo_categoria` (
 INSERT INTO `articolo_categoria` (`articolo_id`, `categoria_id`) VALUES
 (1, 1),
 (1, 3),
-(2, 2);
+(2, 2),
+(3, 2),
+(3, 3);
 
 -- --------------------------------------------------------
 
@@ -103,6 +105,7 @@ INSERT INTO `articolo_categoria` (`articolo_id`, `categoria_id`) VALUES
 
 DROP TABLE IF EXISTS `articolo_ordine`;
 CREATE TABLE `articolo_ordine` (
+  `id` int NOT NULL,
   `ordine_id` int NOT NULL,
   `articolo_id` int NOT NULL,
   `quantita` int DEFAULT NULL,
@@ -113,11 +116,11 @@ CREATE TABLE `articolo_ordine` (
 -- Dump dei dati per la tabella `articolo_ordine`
 --
 
-INSERT INTO `articolo_ordine` (`ordine_id`, `articolo_id`, `quantita`, `prezzo`) VALUES
-(6, 1, 4, 0.5),
-(6, 2, 3, 2.75),
-(8, 1, 5, 0.4),
-(8, 2, 2, 2.7);
+INSERT INTO `articolo_ordine` (`id`, `ordine_id`, `articolo_id`, `quantita`, `prezzo`) VALUES
+(1, 6, 1, 4, 0.5),
+(2, 6, 2, 3, 2.75),
+(3, 8, 1, 5, 0.4),
+(4, 8, 3, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -180,7 +183,8 @@ CREATE TABLE `gruppi` (
 
 INSERT INTO `gruppi` (`id`, `nome`, `descrizione`) VALUES
 (1, 'authenticated', 'generic authenticated user'),
-(2, 'admin', 'administrator');
+(2, 'admin', 'backoffice administrator'),
+(4, 'gestore articoli', 'gestione degli articoli e tabelle associate');
 
 -- --------------------------------------------------------
 
@@ -216,7 +220,73 @@ INSERT INTO `gruppo_servizio` (`gruppo_id`, `servizio_id`) VALUES
 (1, 15),
 (1, 16),
 (1, 17),
-(1, 18);
+(1, 18),
+(2, 19),
+(2, 20),
+(2, 21),
+(2, 22),
+(2, 23),
+(2, 24),
+(2, 25),
+(2, 26),
+(2, 27),
+(2, 28),
+(2, 29),
+(2, 30),
+(2, 31),
+(2, 32),
+(2, 33),
+(2, 34),
+(2, 35),
+(2, 36),
+(2, 37),
+(2, 38),
+(2, 39),
+(2, 40),
+(2, 41),
+(2, 42),
+(2, 43),
+(2, 44),
+(2, 45),
+(2, 46),
+(2, 47),
+(2, 48),
+(2, 49),
+(2, 50),
+(2, 51),
+(2, 52),
+(2, 53),
+(2, 54),
+(2, 55),
+(2, 56),
+(2, 57),
+(2, 58),
+(2, 59),
+(2, 60),
+(2, 61),
+(2, 62),
+(2, 63),
+(2, 64),
+(2, 65),
+(2, 66),
+(2, 67),
+(2, 68),
+(2, 69),
+(2, 70),
+(2, 71),
+(4, 19),
+(4, 20),
+(4, 21),
+(4, 22),
+(4, 23),
+(4, 24),
+(4, 25),
+(4, 26),
+(4, 31),
+(4, 32),
+(4, 33),
+(4, 34),
+(4, 71);
 
 -- --------------------------------------------------------
 
@@ -244,8 +314,7 @@ CREATE TABLE `indirizzi` (
 INSERT INTO `indirizzi` (`id`, `utente_id`, `alias`, `nome`, `cognome`, `via`, `citta`, `provincia`, `cap`) VALUES
 (1, 3, 'casa mia 1', 'Nomignolo', 'Cognomignolo', 'via Fasulla, 123 - sc. B', 'Springfield', 'SP', '50123'),
 (2, 1, 'casa altra', 'Carolina', 'Vissuti', 'viale dei Giradini', 'L\'Aquila', 'AQ', '67100'),
-(5, 3, 'Nuova casa', 'Amministra', 'Tore', 'via comunale, 4', 'Roma', 'RM', '55001'),
-(9, 3, 'provaaq', 'bnfadl', 'nbsjldf', 'ksdlfdsj', '', '', '');
+(5, 3, 'Nuova casa', 'Amministra', 'Tore', 'via comunale, 4', 'Roma', 'RM', '55001');
 
 -- --------------------------------------------------------
 
@@ -269,7 +338,8 @@ CREATE TABLE `metodipagamento` (
 
 INSERT INTO `metodipagamento` (`id`, `utente_id`, `intestatario_carta`, `numero_carta`, `scadenza_carta`, `cvv_carta`) VALUES
 (1, 3, 'Administratore', '4537890672066', '2021-08-01', '123'),
-(2, 3, 'Lalla Llero', '47820951702', '2020-01-13', '111');
+(2, 3, 'Lalla Llero', '47820951702', '2020-01-13', '111'),
+(3, 3, 'lellle', 'ashkd', '2020-05-18', '123');
 
 -- --------------------------------------------------------
 
@@ -283,16 +353,17 @@ CREATE TABLE `ordini` (
   `utente_id` int NOT NULL,
   `indirizzo_id` int NOT NULL,
   `metodopagamento_id` int NOT NULL,
-  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `evaso` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dump dei dati per la tabella `ordini`
 --
 
-INSERT INTO `ordini` (`id`, `utente_id`, `indirizzo_id`, `metodopagamento_id`, `timestamp`) VALUES
-(6, 3, 1, 2, '2020-12-29 10:22:46'),
-(8, 3, 5, 1, '2020-12-30 09:31:34');
+INSERT INTO `ordini` (`id`, `utente_id`, `indirizzo_id`, `metodopagamento_id`, `timestamp`, `evaso`) VALUES
+(6, 3, 5, 2, '2020-12-29 10:22:46', 0),
+(8, 3, 5, 1, '2020-12-30 09:31:34', 1);
 
 -- --------------------------------------------------------
 
@@ -398,7 +469,7 @@ CREATE TABLE `recensioni` (
 --
 
 INSERT INTO `recensioni` (`id`, `utente_id`, `articolo_id`, `titolo`, `descrizione`, `rating`) VALUES
-(1, 1, 1, 'Bellissimo TOP', 'mi sono trovato molto bene', 5),
+(1, 1, 1, 'Bellissimo TOP!!', 'mi sono trovato molto bene :)', 5),
 (2, 1, 2, 'Non ce niente di meglio', 'questo boccione mi ha salvato la vita', 5),
 (3, 2, 1, 'buona qualita', NULL, 4),
 (4, 3, 1, 'si e\' rotta subito', 'per fortuna che era monouso', 2);
@@ -421,7 +492,6 @@ CREATE TABLE `servizi` (
 --
 
 INSERT INTO `servizi` (`id`, `nome`, `descrizione`) VALUES
-(1, 'articolo.update', 'update di articolo'),
 (2, 'indirizzi.show', NULL),
 (3, 'indirizzi.edit', NULL),
 (4, 'indirizzi.create', NULL),
@@ -438,7 +508,60 @@ INSERT INTO `servizi` (`id`, `nome`, `descrizione`) VALUES
 (15, 'wishlist.edit', NULL),
 (16, 'wishlist.share', NULL),
 (17, 'utenti.show', NULL),
-(18, 'recensioni.write', NULL);
+(18, 'recensioni.write', NULL),
+(19, 'backoffice.articoli.show', NULL),
+(20, 'backoffice.articoli.edit', NULL),
+(21, 'backoffice.articoli.create', NULL),
+(22, 'backoffice.articoli.delete', NULL),
+(23, 'backoffice.articolo_categoria.show', NULL),
+(24, 'backoffice.articolo_categoria.edit', NULL),
+(25, 'backoffice.articolo_categoria.create', NULL),
+(26, 'backoffice.articolo_categoria.delete', NULL),
+(27, 'backoffice.articolo_ordine.show', NULL),
+(28, 'backoffice.articolo_ordine.edit', NULL),
+(29, 'backoffice.articolo_ordine.create', NULL),
+(30, 'backoffice.articolo_ordine.delete', NULL),
+(31, 'backoffice.categorie.show', NULL),
+(32, 'backoffice.categorie.edit', NULL),
+(33, 'backoffice.categorie.create', NULL),
+(34, 'backoffice.categorie.delete', NULL),
+(35, 'backoffice.gruppi.show', NULL),
+(36, 'backoffice.gruppi.edit', NULL),
+(37, 'backoffice.gruppi.create', NULL),
+(38, 'backoffice.gruppi.delete', NULL),
+(39, 'backoffice.gruppo_servizio.show', NULL),
+(40, 'backoffice.gruppo_servizio.edit', NULL),
+(41, 'backoffice.gruppo_servizio.create', NULL),
+(42, 'backoffice.gruppo_servizio.delete', NULL),
+(43, 'backoffice.indirizzi.show', NULL),
+(44, 'backoffice.indirizzi.edit', NULL),
+(45, 'backoffice.indirizzi.create', NULL),
+(46, 'backoffice.indirizzi.delete', NULL),
+(47, 'backoffice.metodipagamento.show', NULL),
+(48, 'backoffice.metodipagamento.edit', NULL),
+(49, 'backoffice.metodipagamento.create', NULL),
+(50, 'backoffice.metodipagamento.delete', NULL),
+(51, 'backoffice.recensioni.show', NULL),
+(52, 'backoffice.recensioni.edit', NULL),
+(53, 'backoffice.recensioni.create', NULL),
+(54, 'backoffice.recensioni.delete', NULL),
+(55, 'backoffice.ordini.show', NULL),
+(56, 'backoffice.ordini.edit', NULL),
+(57, 'backoffice.ordini.create', NULL),
+(58, 'backoffice.ordini.delete', NULL),
+(59, 'backoffice.utente_gruppo.show', NULL),
+(60, 'backoffice.utente_gruppo.edit', NULL),
+(61, 'backoffice.utente_gruppo.create', NULL),
+(62, 'backoffice.utente_gruppo.delete', NULL),
+(63, 'backoffice.servizi.show', NULL),
+(64, 'backoffice.servizi.edit', NULL),
+(65, 'backoffice.servizi.create', NULL),
+(66, 'backoffice.servizi.delete', NULL),
+(67, 'backoffice.utenti.show', NULL),
+(68, 'backoffice.utenti.edit', NULL),
+(69, 'backoffice.utenti.create', NULL),
+(70, 'backoffice.utenti.delete', NULL),
+(71, 'backoffice', 'accesso al backoffice');
 
 -- --------------------------------------------------------
 
@@ -459,7 +582,9 @@ CREATE TABLE `utente_gruppo` (
 INSERT INTO `utente_gruppo` (`utente_id`, `gruppo_id`) VALUES
 (3, 1),
 (3, 2),
-(4, 1);
+(3, 4),
+(4, 1),
+(5, 1);
 
 -- --------------------------------------------------------
 
@@ -552,7 +677,8 @@ ALTER TABLE `articolo_categoria`
 -- Indici per le tabelle `articolo_ordine`
 --
 ALTER TABLE `articolo_ordine`
-  ADD PRIMARY KEY (`ordine_id`,`articolo_id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `ordine_id` (`ordine_id`,`articolo_id`);
 
 --
 -- Indici per le tabelle `articolo_wishlist`
@@ -658,7 +784,13 @@ ALTER TABLE `wishlist_condivisione`
 -- AUTO_INCREMENT per la tabella `articoli`
 --
 ALTER TABLE `articoli`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT per la tabella `articolo_ordine`
+--
+ALTER TABLE `articolo_ordine`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT per la tabella `categorie`
@@ -670,7 +802,7 @@ ALTER TABLE `categorie`
 -- AUTO_INCREMENT per la tabella `gruppi`
 --
 ALTER TABLE `gruppi`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT per la tabella `indirizzi`
@@ -682,7 +814,7 @@ ALTER TABLE `indirizzi`
 -- AUTO_INCREMENT per la tabella `metodipagamento`
 --
 ALTER TABLE `metodipagamento`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT per la tabella `ordini`
@@ -700,13 +832,13 @@ ALTER TABLE `phpauth_requests`
 -- AUTO_INCREMENT per la tabella `servizi`
 --
 ALTER TABLE `servizi`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
 
 --
 -- AUTO_INCREMENT per la tabella `utenti`
 --
 ALTER TABLE `utenti`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT per la tabella `wishlist`

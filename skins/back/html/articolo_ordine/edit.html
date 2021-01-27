@@ -5,12 +5,17 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-1">
-                    <a href="admin_show.php?table=indirizzi">
+                    <a href="admin_show.php?table=ordini&id=<[ordine_id]>">
                         <button class="btn btn-primary"><i class="fas fa-angle-left"></i></button>
                     </a>
                 </div>
                 <div class="col-sm-6">
-                    <h1>Crea Nuovo Indirizzo</h1>
+                    <h1>Modifica Articolo all'interno dell'Ordine</h1>
+                </div>
+                <div class="col-sm-4">
+                    <a href="admin_delete.php?table=articolo_ordine&id=<[id]>" class="float-right" style="width: 200px">
+                        <button class="btn btn-block btn-danger">Elimina</button>
+                    </a>
                 </div>
             </div>
         </div><!-- /.container-fluid -->
@@ -23,9 +28,8 @@
                 <div class="col-md-6">
                     <!-- general form elements -->
                     <div class="card card-primary">
-                        <!-- /.card-header -->
                         <!-- form start -->
-                        <form role="form" action="admin_create.php?table=indirizzi" method="POST">
+                        <form role="form" action="admin_edit.php?table=articolo_ordine&id=<[id]>" method="POST">
                             <div class="card-body">
                                 <[if!empty success_msg]>
                                 <div class="form-group">
@@ -45,54 +49,27 @@
                                 <[/if!empty]>
 
                                 <div class="form-group">
-                                    <label>Nome dell'Indirizzo</label>
-                                    <input type="text" class="form-control"
-                                           name="alias" value="<[alias_old]>">
+                                    <label class="mr-3">Articolo:</label>
+                                    <a href="admin_show.php?table=articoli&id=<[articolo_id]>">
+                                        <[articolo_id::show_many2one tab2_name="articoli" column="nome" library="admin"]>
+                                    </a>
                                 </div>
                                 <div class="form-group">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <label>Cognome</label>
-                                            <input type="text" class="form-control"
-                                                   name="cognome" value="<[cognome_old]>">
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label>Nome</label>
-                                            <input type="text" class="form-control"
-                                                   name="nome" value="<[nome_old]>">
-                                        </div>
-                                    </div>
+                                    <label>Quantità</label>
+                                    <input type="number" class="form-control"
+                                           name="quantita" value="<[quantita]>">
                                 </div>
                                 <div class="form-group">
-                                    <label>Via</label>
-                                    <input type="text" class="form-control"
-                                           name="via" value="<[via_old]>">
-                                </div>
-                                <div class="form-group">
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <label>Città</label>
-                                            <input type="text" class="form-control"
-                                                   name="citta" value="<[citta_old]>">
-                                        </div>
-                                        <div class="col-md-4">
-                                            <label>Provincia</label>
-                                            <input type="text" class="form-control"
-                                                   name="provincia" value="<[provincia_old]>">
-                                        </div>
-                                        <div class="col-md-4">
-                                            <label>CAP</label>
-                                            <input type="text" class="form-control"
-                                                   name="cap" value="<[cap_old]>">
-                                        </div>
-                                    </div>
+                                    <label>Prezzo</label>
+                                    <input type="number" class="form-control" step="0.01" min="0"
+                                           name="prezzo" value="<[prezzo]>">
                                 </div>
                             </div>
                             <!-- /.card-body -->
 
                             <div class="card-footer">
-                                <button type="submit" class="btn btn-primary">Crea</button>
-                                <a href="admin_show.php?table=indirizzi">
+                                <button type="submit" class="btn btn-primary">Salva</button>
+                                <a href="admin_show.php?table=ordini&id=<[ordine_id]>">
                                     <div class="btn btn-default float-right">Annulla</div>
                                 </a>
                             </div>
@@ -100,7 +77,6 @@
                     </div> <!-- /.card -->
                 </div> <!--/.col (right) -->
             </div> <!-- /.row -->
-
         </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->

@@ -49,14 +49,27 @@
                                 <[/if!empty]>
 
                                 <div class="form-group">
-                                    <label>Nome</label>
-                                    <input type="text" class="form-control"
-                                           name="nome" value="<[nome]>">
+                                    <label class="mr-4">Metodo di Pagamento</label>
+                                    <select class="form-control" name="metodopagamento_id" id='metodipagamento_select'>
+                                        <[utente_id::select_by_uid
+                                        tab1_name="metodipagamento" columns="numero_carta;intestatario_carta"
+                                        library=admin]>
+                                    </select>
                                 </div>
                                 <div class="form-group">
-                                    <label>Email</label>
-                                    <input type="email" class="form-control"
-                                           name="email" value="<[email]>">
+                                    <label class="mr-4">Indirizzo di Spedizione</label>
+                                    <select class="form-control" name="indirizzo_id" id='indirizzi_select'>
+                                        <[utente_id::select_by_uid
+                                        tab1_name="indirizzi" columns="via;nome;cognome"
+                                        library=admin]>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label class="mr-4">Evaso</label>
+                                    <input type="radio" id="evaso_0" name="evaso" value="0">
+                                    <label class="mr-4">No</label>
+                                    <input type="radio" id="evaso_1" name="evaso" value="1">
+                                    <label class="mr-4">Si</label>
                                 </div>
                             </div>
                             <!-- /.card-body -->
@@ -77,3 +90,10 @@
     <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
+
+<script>
+    document.getElementById("evaso_<[evaso]>").checked = true;
+    document.getElementById("metodipagamento_select").value = <[metodopagamento_id]>;
+    document.getElementById("indirizzi_select").value = <[indirizzo_id]>;
+
+</script>

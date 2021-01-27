@@ -47,6 +47,12 @@
                                 <span class="card-text"><[timestamp::to_time library="utility"]></span>
                             </div>
                             <div class="card-group">
+                                <span class="card-label">Utente: </span>
+                                <a href="admin_show.php?table=utenti&id=<[utente_id]>">
+                                    <span class="card-text"><[utente_id::show_many2one tab2_name="utenti" column="nome" library="admin"]></span>
+                                </a>
+                            </div>
+                            <div class="card-group">
                                 <span class="card-label">Indirizzo di Spedizione: </span>
                                 <a href="admin_show.php?table=indirizzi&id=<[indirizzo_id]>">
                                     <span class="card-text">Vedi</span>

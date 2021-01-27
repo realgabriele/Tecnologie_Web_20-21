@@ -104,14 +104,17 @@ Class admin extends TagLibrary {
      */
     function show_articoliordine($name, $data, $pars) {
         $result_table = new Template("show_table.html");
-        $result_table->setContent("table_name", "Articoli Ordinati");
+        $result_table->setContent("table_name", "Articoli Ordinati" .
+            "<div class='float-right ml-5'><a href='admin_create.php?table=articolo_ordine&order_id={$data}'><button type='submit' class='btn btn-primary'><i class='fas fa-plus'></i></button></a></div>");
 
-        $columns = ["`articoli`.nome",
+        $columns = ["`articolo_ordine`.id",
+            "`articoli`.nome",
             "`articolo_ordine`.quantita",
             "`articolo_ordine`.prezzo"];
         $result_table->setContent("column_name", "nome");
         $result_table->setContent("column_name", "quantita");
         $result_table->setContent("column_name", "prezzo");
+        $result_table->setContent("column_name", "");
 
         $column_names = implode(", ", $columns);
 
@@ -125,10 +128,16 @@ Class admin extends TagLibrary {
         $result = $query_prepared->fetchAll(PDO::FETCH_ASSOC);
 
         foreach ($result as $row) {
+            $row_id = $row['id'];
+            unset($row['id']);
+
             $table_row = "";
             foreach ($row as $item) {
                 $table_row .= "<td>{$item}</td>";
             }
+            // edit button
+            $table_row .= "<td><a href='admin_edit.php?table=articolo_ordine&id={$row_id}'>Modifica</Modifica></a></td>";
+
             $table_row = "<tr>" . $table_row . "</tr>";
 
             $result_table->setContent("table_row", $table_row);
@@ -158,7 +167,7 @@ Class admin extends TagLibrary {
         global $dbh;
 
         // get IDs already associated with the current row
-        $query = "SELECT DISTINCT `{$pars['tab2id_name']}_id` FROM {$pars['assoc_name']} " .
+        $query = "SELECT DISTINCT {$pars['tab2id_name']}_id FROM {$pars['assoc_name']} " .
             " WHERE {$pars['tab1id_name']}_id = {$data}";
         $query_prepared = $dbh->prepare($query);
         $query_prepared->execute();
@@ -188,6 +197,39 @@ Class admin extends TagLibrary {
         }
 
         return $result_table->get();
+    }
+
+    /**
+     * returns a <select> with the rows of the defined user
+     * $data: user ID
+     * $pars: tab1_name, columns
+     */
+    function select_by_uid($name, $data, $pars){
+        $columns = ["`".$pars['tab1_name']."`.id"];
+        foreach (explode(";", $pars['columns']) as $column) {
+            $columns[] = "`".$pars['tab1_name']."`.".$column;
+        }
+        $column_names = implode(", ", $columns);
+
+        global $dbh;
+        $query = "SELECT DISTINCT {$column_names} FROM {$pars['tab1_name']} " .
+            " WHERE utente_id = {$data}";
+        $query_prepared = $dbh->prepare($query);
+        $query_prepared->execute();
+
+        $result = $query_prepared->fetchAll(PDO::FETCH_ASSOC);
+
+        $content = "";
+        foreach ($result as $row) {
+            $row_id = $row['id'];
+            unset($row['id']);
+
+            $select_row = implode(" | ", $row);
+            $select_row = "<option value='{$row_id}'>" . $select_row . "</option>";
+            $content .= $select_row;
+        }
+
+        return $content;
     }
 
 }

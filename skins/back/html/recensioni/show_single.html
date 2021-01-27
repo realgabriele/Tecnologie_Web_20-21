@@ -69,32 +69,6 @@
                 <!--/.col (left) -->
             </div>
 
-            <[id::show_many2many
-            tab1_name="utenti" tab2_name="gruppi"
-            tab1id_name="utente" tab2id_name="gruppo"
-            assoc_name="utente_gruppo" columns="nome;descrizione"
-            library=admin]>
-
-            <[id::show_one2many
-            tab1_name="utenti" tab2_name="ordini"
-            tab1id_name="utente" columns="id;timestamp"
-            library=admin]>
-
-            <[id::show_one2many
-            tab1_name="utenti" tab2_name="recensioni"
-            tab1id_name="utente" columns="titolo;rating;descrizione"
-            library=admin]>
-
-            <[id::show_one2many
-            tab1_name="utenti" tab2_name="indirizzi"
-            tab1id_name="utente" columns="alias;nome;cognome;via;citta;provincia;cap"
-            library=admin]>
-
-            <[id::show_one2many
-            tab1_name="utenti" tab2_name="metodipagamento"
-            tab1id_name="utente" columns="intestatario_carta;numero_carta;scadenza_carta"
-            library=admin]>
-
         </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->

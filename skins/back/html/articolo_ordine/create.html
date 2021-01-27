@@ -20,7 +20,7 @@
         <div class="container-fluid">
             <div class="row">
                 <!-- left column -->
-                <div class="col-md-6">
+                <div class="col-md-12">
                     <!-- general form elements -->
                     <div class="card card-primary">
                         <!-- /.card-header -->
@@ -44,16 +44,41 @@
                                 </div>
                                 <[/if!empty]>
 
-                                <div class="form-group">
-                                    <label>Nome</label>
-                                    <input type="text" class="form-control"
-                                           name="nome" value="<[nome_old]>">
-                                </div>
-                                <div class="form-group">
-                                    <label>Email</label>
-                                    <input type="email" class="form-control"
-                                           name="email" value="<[email_old]>">
-                                </div>
+                                <input type="hidden" name="ordine_id" value="<[ordine_id]>">
+
+                                <table class="table table-head-fixed text-nowrap dataTableMultiple">
+                                    <thead>
+                                    <tr>
+                                        <th>Sel</th>
+                                        <th>Nome</th>
+                                        <th>Prezzo</th>
+                                        <th>Descrizione</th>
+                                        <th>Descrizione Lunga</th>
+                                        <th></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody class="table-body">
+                                    <[foreach]>
+                                    <tr>
+                                        <td>
+                                        <input type="radio" name="articolo_id" value="<[id]>"></td>
+                                        <td><[nome]></td>
+                                        <td><[prezzo::to_prezzo library=utility]></td>
+                                        <td><[descrizione::shorten length="35" library=utility]></td>
+                                        <td><[descrizione_lunga::shorten length="65" library=utility]></td>
+                                        <td>
+                                            <a href="admin_show.php?table=articoli&id=<[id]>">
+                                                <button class="btn btn-info float-right py-0">
+                                                    Vedi
+                                                </button>
+                                            </a>
+                                        </td>
+                                    </td>
+                                    <[/foreach]>
+                                    </tbody>
+                                </table>
+
+
                             </div>
                             <!-- /.card-body -->
 

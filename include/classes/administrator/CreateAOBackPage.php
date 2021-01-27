@@ -12,18 +12,8 @@ class CreateAOBackPage extends CreateBackPage
 
     public function handleRequest()
     {
-        $params = $_POST;
+        if (isset($_POST['ordine_id']) && isset($_POST['articolo_id'])) { // se le varibili da modificare sono settate
 
-        if (sizeof($params) > 0) { // se le varibili da modificare sono settate
-            unset($params['table']);
-            unset($params['id']);
-
-            $insertCol = implode(', ', array_keys($params));
-            $insertVal = implode(', ', array_map(function ($value) {
-                return '?';
-            }, $params));
-
-            $query = " INSERT INTO {$this->table_name} ({$insertCol}) VALUES ({$insertVal})";
             $query = "INSERT INTO `articolo_ordine` ".
                 " (ordine_id, articolo_id, quantita, prezzo) ".
                 " SELECT :ordine_id, `articoli`.id, 1, `articoli`.prezzo ".
@@ -31,17 +21,17 @@ class CreateAOBackPage extends CreateBackPage
                 " WHERE `articoli`.id = :articolo_id";
 
             $query_prepared = $this->dbh->prepare($query);
-            $bindParams = array_values($params);
+            $bindParams = ["ordine_id"=>$_POST['ordine_id'], "articolo_id"=>$_POST['articolo_id']];
 
             if (!$query_prepared->execute($bindParams)) {
                 // $this->render_error("database error: "  . $query_prepared->errorCode());
-                // print_r($query_prepared->errorInfo());
+                print_r($query_prepared->errorInfo());
                 $this->body->setContent("error_msg", "database error: "  . $query_prepared->errorCode());
             } else {
                 $this->body->setContent("success_msg", "Creato con successo");
                 // redirect alla pagina show_single
                 $this->new_row_id = $this->dbh->lastInsertId();
-                header("location: admin_show.php?table={$this->table_name}&id={$this->new_row_id}");
+                header("location: admin_edit.php?table={$this->table_name}&id={$this->new_row_id}");
                 die();
             }
         }
@@ -51,5 +41,17 @@ class CreateAOBackPage extends CreateBackPage
     {
         parent::updateBody();
         $this->body->setContent("ordine_id", $this->order_id);
+
+        // set all the articles in DB
+        $query = "SELECT * FROM `articoli`";
+        $query_prepared = $this->dbh->prepare($query);
+        $query_prepared->execute();
+
+        $result = $query_prepared->fetchAll(PDO::FETCH_ASSOC);
+
+        foreach ($result as $row) {
+            $this->body->setContent($row, null);
+        }
+
     }
 }
