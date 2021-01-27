@@ -5,7 +5,7 @@ session_start();
 global $skin;
 $skin = "skins/back";
 $GLOBALS['config']['skin'] = $skin;
-$GLOBALS['config']['base'] = "/gabrtag/Web_2021/$skin";
+$GLOBALS['config']['base'] = "$skin";
 
 /* general */
 require "include/template2.inc.php";

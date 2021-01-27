@@ -43,10 +43,10 @@
 }
 
 #areautente-container .goto-edit {
-    position: relative;
+   position: absolute;
     color: orange;
     width: 50%;
-    top: 168px;
+    top: 210px;
     left: 70px;
     font-size: 20px;
 
@@ -152,7 +152,6 @@ position:relative;
 #areautente-container .link {
     margin-top: 25px;
     position: relative;
-    margin-top: 10px;
     left: 70px;
     width: 45%;
     height: 65px;
