@@ -1,18 +1,22 @@
+<link rel="stylesheet" href="<[base]>/css/indirizzi.css" />
+
+
 <div class="container">
-    <div class="h1">Ordini: </div>
+    <div class="titoloo">Ordini: </div>
     <div class="row">
-        <div class="col-1">
+        <div class="carta4p">
             <div class="fa fa-box-open fa-4x"></div>
         </div>
         <div class="col">
             <[if!empty id]><[foreach]>
             <div class="row">
-                <div class="col-9 ml-5 elemento-multiple-container">
+                <div class="col-5 ml-5 elemento-multiple-container">
                     <a href="show_order.php?table=ordini&id=<[id]>">
                         <div class="row">
-                            <div style="font-size: 26px">Ordine n. <span class="font-weight-bold"><[id]></span>
+                            <div style="font-size: 26px">Ordine n.
+                                <span class="font-weight-bold"><[id]></span>
                                 del <span class="font-weight-bold"><[timestamp::to_date library="utility]></span>
-                                alle <span class="font-weight-bold"><[timestamp::to_time library="utility]></span>
+                                delle <span class="font-weight-bold"><[timestamp::to_time library="utility]></span>
                             </div>
                         </div>
                     </a>
