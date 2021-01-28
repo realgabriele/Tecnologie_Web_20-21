@@ -70,17 +70,26 @@
 </div>
 
 <div class="box">
+    <table>
+        <tr>
     <[if!empty id_wishlist]><[foreach]>
+            <td>
     <form id="addtowish_<[id_wishlist]>" method="post" action="show_wishlist.php?table=wishlist&id=<[id_wishlist]>">
+
         <input type="hidden" name="add" value="<[id_articolo]>">
+
         <a class="wish" id="addmultiple-button" onclick="document.getElementById('addtowish_<[id_wishlist]>').submit()">
             <font color="white">  AGGIUNGI A <b id="total_item_price"> <[nome_wishlist]> </b> </font>
         </a>
+        <br>
+        <br>
+        <br>
+      
     </form>
+            </td>
     <[/foreach]><[/if!empty]>
-    <a class="wish" id="addmultiple-button" onclick="">
-        <font color="white">  AGGIUNGI A <b id="total_item_price"> WISHLIST </b> </font>
-    </a>
+        </tr>
+    </table>
 
 </div>
 
