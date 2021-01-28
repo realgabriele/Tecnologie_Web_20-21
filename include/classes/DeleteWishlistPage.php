@@ -9,8 +9,11 @@ class DeleteWishlistPage extends DeletePage
         // remove old articolo_wishlist entries
         $query = "DELETE FROM `articolo_wishlist` WHERE wishlist_id = ?";
         $query_prepared = $this->dbh->prepare($query);
-        $a = $query_prepared->execute([$this->row_id]);
+        $query_prepared->execute([$this->row_id]);
 
         // remove old wishlist_condivisione entries
+        $query = "DELETE FROM `wishlist_condivisione` WHERE wishlist_id = ?";
+        $query_prepared = $this->dbh->prepare($query);
+        $query_prepared->execute([$this->row_id]);
     }
 }

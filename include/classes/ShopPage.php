@@ -27,8 +27,8 @@ class ShopPage extends FramePublic
 
         if (isset($filtered_get['q'])) {        // query string
             $conditions[] = " ( nome LIKE :q OR ".
-                " descrizione LIKE :q OR ".
-                " descrizione_lunga LIKE :q ) ";
+                " `articoli`.descrizione LIKE :q OR ".
+                " `articoli`.descrizione_lunga LIKE :q ) ";
             $parameters['q'] = "%" . $filtered_get['q'] . "%";
         }
 
@@ -74,14 +74,20 @@ class ShopPage extends FramePublic
             $this->body->setContent($row, null);
         }
 
-        // set lista di Categorie
-        if (!$result = $this->dbh->query("SELECT * FROM `categorie`")){
-            echo "Error: "; print_r($this->dbh->errorInfo());
-        }
-        $data = $result->fetchAll(PDO::FETCH_ASSOC);
-        foreach ($data as $row) {
-            $row['check'] = in_array($row['id'], $_GET['cat'] ?? []) ? "checked" : "";
-            $this->body->setContent(array_key_append($row, "_cat"), null);
+        if (sizeof($data) > 0) {
+            // set lista di Categorie
+            $query = "SELECT DISTINCT `categorie`.* FROM `categorie` ".
+                " JOIN `articolo_categoria` ON `categorie`.id = categoria_id ".
+                " WHERE `articolo_id` IN  ( " . implode(", ", array_column($data, "id")) . " ) ";
+
+            if (!$result = $this->dbh->query($query)){
+                echo "Error: "; print_r($this->dbh->errorInfo());
+            }
+            $data = $result->fetchAll(PDO::FETCH_ASSOC);
+            foreach ($data as $row) {
+                $row['check'] = in_array($row['id'], $_GET['cat'] ?? []) ? "checked" : "";
+                $this->body->setContent(array_key_append($row, "_cat"), null);
+            }
         }
     }
 }

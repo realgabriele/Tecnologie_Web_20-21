@@ -46,6 +46,8 @@ class RegisterPage extends FramePublic
             if ($res['error']) {
                 $this->error_msg = "registration error: " . $res['message'];
             } else {
+                $new_uid = $res['uid'];
+                $this->dbh->query("INSERT INTO `utente_gruppo` (`utente_id`, `gruppo_id`) VALUES ('{$new_uid}', '1')");
                 $this->success_msg = "registrazione completata!";
             }
         }

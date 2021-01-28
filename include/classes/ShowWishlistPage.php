@@ -42,6 +42,25 @@ class ShowWishlistPage extends ShowPage
         }
     }
 
+    public function handleRequest()
+    {
+        if ($this->can_edit) {
+            if (isset($_POST['add'])) {
+                // insert articolo_wishlist entry
+                $query = "INSERT INTO `articolo_wishlist` (wishlist_id, articolo_id) VALUES (?, ?)";
+                $query_prepared = $this->dbh->prepare($query);
+                $query_prepared->execute([$this->row_id, $_POST['del']]);
+            }
+
+            if (isset($_POST['del'])) {
+                // remove articolo_wishlist entry
+                $query = "DELETE FROM `articolo_wishlist` WHERE wishlist_id = ? AND articolo_id = ?";
+                $query_prepared = $this->dbh->prepare($query);
+                $query_prepared->execute([$this->row_id, $_POST['del']]);
+            }
+        }
+    }
+
     protected function single_page_body()
     {
         parent::single_page_body();
@@ -78,7 +97,7 @@ class ShowWishlistPage extends ShowPage
         $result = $query_prepared->fetchAll(PDO::FETCH_ASSOC);
 
         foreach ($result as $row) {
-            $this->body->setContent($row, null);
+            $this->body->setContent(array_key_append($row, "_shared"), null);
         }
     }
 }

@@ -5,7 +5,7 @@ session_start();
 global $skin;
 $skin = "skins/back";
 $GLOBALS['config']['skin'] = $skin;
-$GLOBALS['config']['base'] = "$skin";
+$GLOBALS['config']['base'] = "/gabrtag/Web_2021/$skin";
 
 /* general */
 require "include/template2.inc.php";
@@ -36,7 +36,7 @@ class FramePrivate
         /* load Authentication / Authorization class */
         global $dbh;
         $this->dbh = $dbh;
-        $this->auth = new PHPAuth\Auth($dbh, new PHPAuth\Config($dbh));
+        $this->auth = new PHPAuth\Auth();
 
         $this->check_authorization();
 

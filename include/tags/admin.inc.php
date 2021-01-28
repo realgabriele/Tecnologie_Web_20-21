@@ -38,7 +38,7 @@ Class admin extends TagLibrary {
             foreach ($row as $item) {
                 $table_row .= "<td>{$item}</td>";
             }
-            $table_row .= "<td><a href='admin_show.php?table={$pars['tab2_name']}&id={$row_id}'>Vedi</a></td>";
+            $table_row .= "<td class='float-right'><a href='admin_show.php?table={$pars['tab2_name']}&id={$row_id}'><i class='fas fa-caret-square-right fa-2x mr-3'></i></a></td>";
             $table_row = "<tr>" . $table_row . "</tr>";
 
             $result_table->setContent("table_row", $table_row);
@@ -80,7 +80,7 @@ Class admin extends TagLibrary {
             foreach ($row as $item) {
                 $table_row .= "<td>{$item}</td>";
             }
-            $table_row .= "<td><a href='admin_show.php?table={$pars['tab2_name']}&id={$row_id}'>Vedi</a></td>";
+            $table_row .= "<td class='float-right'><a href='admin_show.php?table={$pars['tab2_name']}&id={$row_id}'><i class='fas fa-caret-square-right fa-2x mr-3'></i></a></td>";
             $table_row = "<tr>" . $table_row . "</tr>";
 
             $result_table->setContent("table_row", $table_row);

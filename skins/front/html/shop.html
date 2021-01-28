@@ -48,7 +48,7 @@
         <div class="side_bar">
           <div class="side_bar_blog">
             <form>
-              <h4>SEARCH</h4>
+              <h4>FILTRA</h4>
               <div class="side_bar_search">
                 <div class="input-group stylish-input-group">
                   <input class="form-control" placeholder="Search" type="text" name="q" value="<[q_old]>">
@@ -64,12 +64,12 @@
               <h4>CATEGORIE</h4>
               <div class="categary">
                 <ul>
-                  <[foreach]>
+                  <[if!empty id_cat]><[foreach]>
                   <li>
                     <input type="checkbox" id="cat<[id_cat]>" name="cat[]" value="<[id_cat]>" <[check_cat]> >
                     <label for="cat<[id_cat]>" class="ml-3"><[nome_cat]></label><br>
                   </li>
-                  <[/foreach]>
+                  <[/foreach]><[/if!empty]>
                 </ul>
               </div>
 

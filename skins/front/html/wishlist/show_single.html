@@ -24,7 +24,7 @@
                     </div>
                 </div>
                 <!-- Nome -->
-                <div class="col-7">
+                <div class="col-5">
                     <div class="media-body">
                         <h3 class="media-heading pt-4">
                             <a href="show_item.php?id=<[id_articolo]>"><[nome_articolo]></a>
@@ -35,6 +35,15 @@
                 <!-- Prezzo -->
                 <div class="col-3">
                     <p class="price_table"><[prezzo_articolo::to_prezzo library="utility"]></p>
+                </div>
+
+                <div class="col-1">
+                    <form method="post">
+                        <input type="hidden" name="del" value="<[id_articolo]>">
+                        <button type="submit" class="mt-4 ml-5" style="background: transparent; border: none">
+                            <i class="fa fa-minus-square fa-2x"></i>
+                        </button>
+                    </form>
                 </div>
             </div>
             <[/foreach]><[/if!empty]>

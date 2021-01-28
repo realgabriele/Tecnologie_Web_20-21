@@ -28,4 +28,23 @@
         </div>
 
     </div>
+
+    <[if!empty id_shared]>
+    <div class="titolow">Condivise con me: </div>
+    <div class="row">
+        <div class="col">
+            <[foreach]>
+            <div class="row">
+                <div class="col-7 ml-5 elemento-multiple-container">
+                    <a href="show_wishlist.php?table=wishlist&id=<[id_shared]>">
+                        <div class="row">
+                            <div style="font-size: 26px"><[nome_shared]></div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <[/foreach]>
+        </div>
+    </div>
+    <[/if!empty]>
 </div>

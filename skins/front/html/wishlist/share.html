@@ -1,25 +1,37 @@
 <div class="container">
+    <div class="row">
     <div class="col-1">
         <a href="show_wishlist.php?table=wishlist&id=<[id_wishlist]>">
             <div class="fa fa-angle-left fa-3x"></div>
         </a>
     </div>
+    <div class="col-7">
     <div class="h1">condivisione: <[nome_wishlist]> </div>
-    <div class="row">
+    </div>
+    </div>
+    <div class="row mt-4">
         <div class="col-1">
-            <i class="fas fa-share-alt fa-4x"></i>
+            <i class="fas fa-share-alt fa-4x mt-5"></i>
         </div>
-        <div class="col">
-            <div class="row">
-                <div class="col-9 ml-5 elemento-multiple-container">
-                    <form method="post">
-                        <input type="email" name="add" />
-                        <input type="submit" />
-                    </form>
+        <div class="col-10">
+            <div class="row mb-3">
+                <div class="col-5">
+                    <div class="justify-content-center" style="width: 1500px;">
+                        <form class="form-inline mr-auto" method="post">
+                            <div class="md-form ">
+                                <label>Condividi con:</label>
+                                <input class="form-control" name="add" type="email" placeholder="Email">
+                                <button type="submit" class="btn-primary" style="border-radius: 7px">
+                                    <i class="fa fa-plus p-2"></i>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
+
             <[if!empty id_utente]><[foreach]>
-            <div class="row">
+            <div class="row mt-2">
                 <div class="col-9 ml-5 elemento-multiple-container">
                     <div class="row">
                         <div class="col-10">
@@ -28,8 +40,8 @@
                         <div class="col-2">
                             <form method="post">
                                 <input type="hidden" name="del" value="<[id_utente]>">
-                                <button type="submit" class="button">
-                                    <i class="fa fa-minus"></i>
+                                <button type="submit" class="btn-primary" style="border-radius: 7px">
+                                    <i class="fa fa-minus p-2"></i>
                                 </button>
                             </form>
                         </div>

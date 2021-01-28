@@ -77,7 +77,7 @@ class CreateBackPage extends FramePrivate
 
         $basename = $imageName . $i . '.' . $imageExt;
         if (move_uploaded_file($_FILES['foto']['tmp_name'], $imagePath . $basename))
-            return "../assets/" . $basename;
+            return $imagePath . $basename;
         else return null;
     }
 }

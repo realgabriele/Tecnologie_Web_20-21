@@ -77,6 +77,10 @@ class FramePublic
         }
         $this->main->setContent($user_data, null);
 
+        if ($this->auth->is_authorized($this->auth->getCurrentUID()??0, 'backoffice')){
+            $this->main->setContent("is_admin", "true");
+        }
+
 
         /* set every Item inside the Cart-Sidebar */
         foreach ($this->cart->getItems() as $cart_item) {

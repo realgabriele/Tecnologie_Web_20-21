@@ -7,7 +7,7 @@ require "include/classes/PHPAuth/Auth.php";
 require "include/classes/PHPAuth/Config.php";
 
 global $dbh;
-$auth = new PHPAuth\Auth($dbh, new PHPAuth\Config($dbh));
+$auth = new PHPAuth\Auth();
 
 /* check authorization */
 $actions = ['backoffice', "backoffice.{$_POST['assoc_name']}.edit"];
