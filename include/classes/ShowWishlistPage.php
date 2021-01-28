@@ -49,7 +49,7 @@ class ShowWishlistPage extends ShowPage
                 // insert articolo_wishlist entry
                 $query = "INSERT INTO `articolo_wishlist` (wishlist_id, articolo_id) VALUES (?, ?)";
                 $query_prepared = $this->dbh->prepare($query);
-                $query_prepared->execute([$this->row_id, $_POST['del']]);
+                $query_prepared->execute([$this->row_id, $_POST['add']]);
             }
 
             if (isset($_POST['del'])) {
