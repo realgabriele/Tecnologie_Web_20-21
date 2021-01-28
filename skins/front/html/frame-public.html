@@ -99,15 +99,15 @@
                                         <i class="fa fa-user fa-2x"></i>
                                     </a>
                                     <ul>
-                                        <[if!empty is_admin]>
-                                        <li><a href="admin.php">Amministrazione</a></li>
-                                        <[/if!empty]>
                                         <[if!empty nome]>
                                         <li><a href="userpage.php"><[nome]></a></li>
                                         <li><a href="logout.php">Logout</a></li>
                                         <[/if!empty]>
                                         <[if!empty not_authenticated]>
                                         <li><a href="login.php">Login</a></li>
+                                        <[/if!empty]>
+                                        <[if!empty is_admin]>
+                                        <li><a href="admin.php">Amministrazione</a></li>
                                         <[/if!empty]>
                                     </ul>
                                 </li>

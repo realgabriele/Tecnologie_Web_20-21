@@ -17,23 +17,25 @@
                 <!-- Foto -->
                 <div class="col-2">
                     <div class="media">
-                        <img class="media-object" src="<[foto]>" alt="#">
+                        <a href="show_item.php?id=<[id_articolo]>">
+                            <img class="media-object" src="<[foto_articolo]>" alt="#">
+                        </a>
                     </div>
                 </div>
                 <!-- Nome -->
                 <div class="col-7">
                     <div class="media-body">
                         <h4 class="media-heading">
-                            <a href="show_item.php?id=<[articoli.id]>"><[nome]></a>
+                            <a href="show_item.php?id=<[id_articolo]>"><[nome_articolo]></a>
                         </h4>
-                        <span>Prezzo: <[prezzo::to_prezzo library="utility"]></span>
-                        <span>Quantita: <[quantita]></span>
+                        <span>Prezzo: <[prezzo_articolo::to_prezzo library="utility"]></span>
+                        <span>Quantita: <[quantita_articolo]></span>
                     </div>
                 </div>
 
                 <!-- Prezzo Totale -->
                 <div class="col-3 text-center pt-5">
-                    <p class="price_table"><[prezzo-totale::to_prezzo library="utility"]></p>
+                    <p class="price_table"><[prezzo-totale_articolo::to_prezzo library="utility"]></p>
                 </div>
             </div>
             <[/foreach]>

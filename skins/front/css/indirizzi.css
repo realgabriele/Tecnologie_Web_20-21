@@ -36,7 +36,7 @@
     text-transform: uppercase;
     margin-top: 5px;
     margin-bottom: 15px;
-    left: -470px;
+
     font-weight: bold;
     font-size: 20px;
     text-align: center;
@@ -55,18 +55,17 @@
 .alias{
     text-transform: uppercase;
     position: relative;
-    left: 160px;
+    left: 140px;
     font-weight: bold;
-    color: #fff;
-    background: orange;
-    padding: 2px 5px;
+    background: #00A8FF;
+    padding: 1px 10px;
     border-radius: 4px;
     margin-right: 200px;
     font-weight: bold;
-    font-size: 10px;
+    font-size: 21px;
     letter-spacing: 1px;
     margin: 0;
-    color: #000000;
+    color: #fff;
 }
 
 .titoloi

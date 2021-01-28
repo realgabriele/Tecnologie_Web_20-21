@@ -1,17 +1,19 @@
 <link rel="stylesheet" href="<[base]>/css/indirizzi.css" />
+
 <div class="container">
-    <div class="titoloi">Indirizzi: </div>
+    <div class="h1">Indirizzi: </div>
     <div class="row">
+        <div class="col-1">
+            <div class="fa fa-map-marker fa-4x"></div>
+        </div>
         <div class="col">
             <[if!empty id]><[foreach]>
-            <div class="row">
+            <div class="row mb-3">
                 <div class="col-7 ml-5 elemento-multiple-container">
                     <a href="show.php?table=indirizzi&id=<[id]>">
                         <div class="row">
                             <div class="alias">
-                                <font color="black">
                             <[alias]>
-                                </font>
                             </div>
                         </div>
                     </a>
@@ -19,12 +21,12 @@
                         <div class="nome">
                          <a href="show.php?table=indirizzi&id=<[id]>">
                              <font color="#898989">
-                        CITOFONO: <[nome]> <[cognome]>
+                        <[via]>
                              </font>
                         </div>
                     </div>
-                    <div class="row ml-4">
-                        <div class="int"> <font color="white">  <[via]></div> </font>
+                    <div class="row">
+                        <div class="int"> <font color="white"><[nome]> <[cognome]> </font></div>
                     </div>
                 </div>
             </div>
@@ -32,12 +34,8 @@
         </div>
         <div class="col-2">
             <a href="create.php?table=indirizzi">
-                <div class="piu">
-                    <div class="fas fa-plus"></div>
-                </div>
-                <div class="carta2">
-                    <div class="fa fa-shipping-fast fa-4x"></div>
-                </div>
+                <i class="fa fa-shipping-fast fa-3x"></i>
+                <i class="fas fa-plus fa-2x position-absolute"></i>
             </a>
         </div>
     </div>
