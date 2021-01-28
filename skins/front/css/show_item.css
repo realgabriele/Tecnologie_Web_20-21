@@ -47,6 +47,15 @@
     margin-top: -8%;
     margin-left: 3%;
 }
+.wishlist
+{
+    position: relative;
+    top:25px;
+    left: 85px;
+    font-size: 6px;
+    color: #5c98cb;
+}
+
 
 .card-body {
     height: 280px;
