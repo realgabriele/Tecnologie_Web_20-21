@@ -1,21 +1,20 @@
-<link rel="stylesheet" href="<[base]>/css/indirizzi.css" />
-
-
-<div class="container">
-    <div class="titolo">Metodi di Pagamento: </div>
+<div class="container show_container">
+    <div class="h1">Metodi di Pagamento: </div>
     <div class="row">
+        <div class="col-1">
+            <div class="fa fa-credit-card fa-4x"></div>
+        </div>
         <div class="col">
             <[if!empty id]><[foreach]>
             <div class="row">
-                <div class="col-7 ml-5 elemento-multiple-container">
+                <div class="col-9 ml-5 elemento-multiple-container">
                     <a href="show.php?table=metodipagamento&id=<[id]>">
                         <div class="row">
-                            <div class="h1"><[numero_carta::hide_cardnumber library="utility"]>
-                            </div>
+                            <div class="h1"><[numero_carta::hide_cardnumber library="utility"]></div>
                         </div>
                     </a>
                     <div class="row ml-4">
-                        <div class="int"> <font color="white"> <[intestatario_carta]></div> </font>
+                        <div class="h2 font-weight-bold"><[intestatario_carta]></div>
                     </div>
                 </div>
             </div>
@@ -23,11 +22,9 @@
         </div>
         <div class="col-2">
             <a href="create.php?table=metodipagamento">
-                <div class="piu">
-                <div class="fas fa-plus"></div>
-                </div>
-                <div class="carta2">
-                <div class="fa fa-credit-card fa-4x"></div>
+                <div class="align-top">
+                    <i class="fa fa-credit-card fa-3x"></i>
+                    <i class="fas fa-plus fa-2x position-absolute"></i>
                 </div>
             </a>
         </div>

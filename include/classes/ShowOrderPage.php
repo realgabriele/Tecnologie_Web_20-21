@@ -21,7 +21,7 @@ class ShowOrderPage extends ShowPage
 
         foreach ($result as $row) {
             $row["prezzo-totale"] = $row['prezzo'] * $row['quantita'];
-            $this->body->setContent($row, null);
+            $this->body->setContent(array_key_append($row, "_articolo"), null);
         }
 
     }

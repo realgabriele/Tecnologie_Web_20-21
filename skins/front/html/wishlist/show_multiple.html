@@ -1,50 +1,52 @@
 <link rel="stylesheet" href="<[base]>/css/indirizzi.css" />
 <div class="container">
-    <div class="titolow">Le mie Wishlist: </div>
     <div class="row">
-
-        <div class="col">
+        <div class="col-10">
+            <div class="row">
+                <div class="titolow">Le mie Wishlist: </div>
+            </div>
             <[if!empty id]><[foreach]>
             <div class="row">
                 <div class="col-7 ml-5 elemento-multiple-container">
                     <a href="show_wishlist.php?table=wishlist&id=<[id]>">
                         <div class="row">
-                            <div style="font-size: 26px"><[nome]></div>
+                            <div class="ml-2" style="font-size: 26px"><[nome]></div>
                         </div>
                     </a>
                 </div>
             </div>
             <[/foreach]><[/if!empty]>
+
+            <[if!empty id_shared]>
+            <div class="row">
+                <div class="titolow">Condivise con me: </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <[foreach]>
+                    <div class="row">
+                        <div class="col-7 ml-5 elemento-multiple-container">
+                            <a href="show_wishlist.php?table=wishlist&id=<[id_shared]>">
+                                <div class="row">
+                                    <div class="ml-2" style="font-size: 26px"><[nome_shared]></div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <[/foreach]>
+                </div>
+            </div>
+            <[/if!empty]>
+
         </div>
         <div class="col-2">
             <a href="create.php?table=wishlist">
-                <div class="piu2">
-                    <div class="fas fa-plus"></div>
-                </div>
-                <div class="carta5">
-                    <div class="fa fa-list-ul fa-4x"></div>
-                </div>
+                <div class="fa fa-list-ul fa-3x"></div>
+                <div class="fas fa-plus fa-2x position-absolute"></div>
             </a>
         </div>
 
     </div>
 
-    <[if!empty id_shared]>
-    <div class="titolow">Condivise con me: </div>
-    <div class="row">
-        <div class="col">
-            <[foreach]>
-            <div class="row">
-                <div class="col-7 ml-5 elemento-multiple-container">
-                    <a href="show_wishlist.php?table=wishlist&id=<[id_shared]>">
-                        <div class="row">
-                            <div style="font-size: 26px"><[nome_shared]></div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <[/foreach]>
-        </div>
-    </div>
-    <[/if!empty]>
+
 </div>

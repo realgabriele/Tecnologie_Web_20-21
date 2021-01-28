@@ -20,6 +20,15 @@ footer {
 
 /** show_multiple **/
 .elemento-multiple-container {
-    box-shadow: 5px 5px 5px 3px rgba(0, 0, 0, 0.2);
+    box-shadow: 3px 3px 3px 2px #00A8FF;
     margin-bottom: 20px;
+    min-height: 50px;
+}
+
+.show_container .h1 {
+    color: black;
+}
+
+.show_container .fa {
+    /*color: #00A8FF;*/
 }
