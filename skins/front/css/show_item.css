@@ -231,6 +231,7 @@
 .wish {
     background: orange;
     padding: 7px 20px;
+    text-transform: uppercase;
     text-align: center;
     display: inline-block;
     font-size: 10px;
