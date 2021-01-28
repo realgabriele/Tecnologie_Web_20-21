@@ -46,10 +46,11 @@
 
 .nome{
     position: relative;
+    text-transform: uppercase;
     top: 5px;
     font-size:25px;
     font-weight: bold;
-    left: 60px;
+    left: 85px;
 }
 
 .alias{
@@ -290,7 +291,7 @@
     text-transform: uppercase;
     width: auto;
     top: 8px;
-    left: 120px;
+    left: 140px;
     color: #fff;
     background: #1e2839;
     padding: 2px 5px;
