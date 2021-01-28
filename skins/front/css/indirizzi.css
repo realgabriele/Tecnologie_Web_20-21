@@ -54,6 +54,7 @@
 
 .alias{
     text-transform: uppercase;
+    width: auto;
     position: relative;
     left: 160px;
     font-weight: bold;
@@ -68,6 +69,33 @@
     margin: 0;
     color: #000000;
 }
+
+
+
+.box {
+    position: absolute;
+    top: 250px;
+    left: 620px;
+    height: auto;
+    width: auto;
+}
+
+
+.alias2{
+    margin-top: 3px;
+    font-size: 15px;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #ffffff;
+    background: #5c98cb;
+    padding: 2px 5px;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 10px;
+    letter-spacing: 1px;
+    color: #000000;
+}
+
 
 .titoloi
 {
