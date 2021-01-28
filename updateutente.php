@@ -7,13 +7,9 @@ require "include/dbms.inc.php";
 session_start();
 
 
-$link = mysqli_connect("localhost", "root", "", "tdw2021");
 
 
-// Connessione al db
-if($link === false){
-    die("ERROR: Could not connect. " . mysqli_connect_error());
-}
+global $dbh;
 
 // Riprendo Campi HTML
 
@@ -24,8 +20,8 @@ $nome=$_REQUEST['nome'];
 $email=$_REQUEST['email'];
 $password=password_hash($_REQUEST['password'], PASSWORD_BCRYPT);
 
-$sql_update = "UPDATE utenti SET nome='$nome', email='$email', password='$password' WHERE id=$utente_id";
-if(mysqli_query($link, $sql_update)) {
+if ($sql_update = $dbh->query( "UPDATE utenti SET nome='$nome', email='$email', password='$password' WHERE id=$utente_id")){
+//if(mysqli_query($link, $sql_update)) {
     echo "Utente aggiornato con successo!";
     header('Location: areautente.php');
 }
