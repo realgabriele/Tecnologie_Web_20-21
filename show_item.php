@@ -1,8 +1,11 @@
 <?php
 
+session_start();
+
 require "include/config.inc.php";
 require "include/template2.inc.php";
 require "include/dbms.inc.php";
+require "include/utility.inc.php";
 
 $main = new Template("frame-public.html");
 $body = new Template("articoli/show_single.html");
@@ -43,6 +46,21 @@ for($i=0; $i<$result->rowCount(); $i++) {
         $recensioni->setContent("rejected", $rejected );
     $recensioni->setContent($data, null);
 }
+
+
+/* Add to Wishlist buttons */
+$query = "SELECT * FROM wishlist WHERE utente_id = {$_SESSION['auth_uid']}";
+if ($res = $dbh->query($query)){
+    foreach ($res->fetchAll(PDO::FETCH_ASSOC) as $row) {
+        $row = array_key_append($row, "_wishlist");
+        $row['id_articolo'] = $id;
+        $body->setContent($row, null);
+    }
+}
+
+/* end Add to Wishlist */
+
+
 
 $body->setContent("recensioni", $recensioni->get());
 $main->setContent("body", $body->get());
