@@ -23,7 +23,8 @@ foreach ($actions as $action) {
 $query = "SELECT DATE(timestamp) dt, COUNT(1) conta " .
     " FROM ordini " .
     " WHERE timestamp >= DATE(NOW()) - INTERVAL 1 WEEK + INTERVAL 0 SECOND " .
-    " GROUP BY DATE(timestamp) ";
+    " GROUP BY DATE(timestamp) " .
+    " ORDER BY dt";
 
 $query_prepared = $dbh->prepare($query);
 if (!$query_prepared->execute()) {

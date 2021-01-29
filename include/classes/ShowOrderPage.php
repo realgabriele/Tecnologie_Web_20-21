@@ -7,6 +7,7 @@ class ShowOrderPage extends ShowPage
     protected function single_page_body()
     {
         parent::single_page_body();
+        $totale = 0;
 
         // show : articolo_ordine + articoli
         $query = "SELECT ao.*, foto, nome ".
@@ -21,8 +22,10 @@ class ShowOrderPage extends ShowPage
 
         foreach ($result as $row) {
             $row["prezzo-totale"] = $row['prezzo'] * $row['quantita'];
+            $totale += $row["prezzo-totale"];
             $this->body->setContent(array_key_append($row, "_articolo"), null);
         }
 
+        $this->body->setContent("totale_ordine", $totale);
     }
 }

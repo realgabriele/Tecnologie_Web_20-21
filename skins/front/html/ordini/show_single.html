@@ -7,9 +7,14 @@
         </div>
         <div class="col">
             <div class="row">
+                <div class="col-md-8">
                 <div style="font-size: 26px">Ordine n. <span class="font-weight-bold"><[id]></span>
                     del <span class="font-weight-bold"><[timestamp::to_date library="utility]></span>
                     alle <span class="font-weight-bold"><[timestamp::to_time library="utility]></span>
+                </div>
+                </div>
+                <div class="col-md-3 float-right" id="evaso_alert" style="display: none">
+                    <div class="alert alert-success alert-inline" role="alert">Il tuo ordine è stato evaso</div>
                 </div>
             </div>
             <[foreach]>
@@ -17,7 +22,7 @@
                 <!-- Foto -->
                 <div class="col-2">
                     <div class="media">
-                        <a href="show_item.php?id=<[id_articolo]>">
+                        <a href="show_item.php?id=<[articolo_id_articolo]>">
                             <img class="media-object" src="<[foto_articolo]>" alt="#">
                         </a>
                     </div>
@@ -26,7 +31,7 @@
                 <div class="col-7">
                     <div class="media-body">
                         <h4 class="media-heading">
-                            <a href="show_item.php?id=<[id_articolo]>"><[nome_articolo]></a>
+                            <a href="show_item.php?id=<[articolo_id_articolo]>"><[nome_articolo]></a>
                         </h4>
                         <span>Prezzo: <[prezzo_articolo::to_prezzo library="utility"]></span>
                         <span>Quantita: <[quantita_articolo]></span>
@@ -34,11 +39,27 @@
                 </div>
 
                 <!-- Prezzo Totale -->
-                <div class="col-3 text-center pt-5">
+                <div class="col-3 text-center">
                     <p class="price_table"><[prezzo-totale_articolo::to_prezzo library="utility"]></p>
                 </div>
             </div>
             <[/foreach]>
+
+            <!-- Totale Ordine -->
+            <div class="row border-top border-primary border-3" style="border-width: 10px">
+                <div class="col-9 text-right" style="margin-top: 30px;">
+                    <div class="media-body">
+                        <h3 class="media-heading">Totale:</h3>
+                    </div>
+                </div>
+                <div class="col-3 text-center">
+                    <p class="price_table"><[totale_ordine::to_prezzo library="utility"]></p>
+                </div>
+            </div>
         </div>
     </div>
 </div>
+
+<script>
+    if (<[evaso]>) document.getElementById("evaso_alert").style.display = 'block';
+</script>

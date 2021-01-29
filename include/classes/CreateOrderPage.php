@@ -25,5 +25,8 @@ class CreateOrderPage  extends CreatePage
         $query = "DELETE FROM `articolo_carrello` WHERE carrello_id = ?";
         $query_prepared = $this->dbh->prepare($query);
         $query_prepared->execute([$this->cart->getCartId()]);
+
+        header("location: show_order.php?table={$this->table_name}&id={$this->new_row_id}");
+        die();
     }
 }

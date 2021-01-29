@@ -64,6 +64,5 @@ global $dbh;
     }
 
 
-
 $main->setContent("body", $body->get());
 $main->close();

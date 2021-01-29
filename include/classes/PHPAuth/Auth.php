@@ -693,8 +693,8 @@ class Auth  /* implements AuthInterface */
             $mail->isSMTP();
             $mail->Host = 'smtp.mailtrap.io';
             $mail->SMTPAuth = true;
-            $mail->Username = '092cca23ee5559';
-            $mail->Password = '14569257412e78';
+            $mail->Username = '2b6ead411b254c';
+            $mail->Password = '377e883e313f5a';
             $mail->SMTPSecure = 'tls';
             $mail->Port = 2525;
 

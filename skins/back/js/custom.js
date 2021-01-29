@@ -84,7 +84,7 @@ $(document).ready(function () {
                 labels  : my_labels,
                 datasets: [{
                     type                : 'line',
-                    data                :  [3, 4],
+                    data                :  my_values,
                     backgroundColor     : 'transparent',
                     borderColor         : '#007bff',
                     pointBorderColor    : '#007bff',
